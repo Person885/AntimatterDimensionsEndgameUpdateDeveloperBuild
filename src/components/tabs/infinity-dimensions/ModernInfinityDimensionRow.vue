@@ -103,7 +103,7 @@ export default {
       this.isCapped = dimension.isCapped;
       if (this.isCapped) {
         this.capIP.copyFrom(dimension.hardcapIPAmount);
-        this.hardcap = dimension.purchaseCap;
+        this.hardcap.copyFrom(dimension.purchaseCap);
       }
       this.isContinuumActive = Laitela.continuumActive && !this.isEC8Running && Alpha.currentStage >= 9 && !player.disablePostReality;
       if (this.isContinuumActive) this.continuumValue = dimension.continuumValue;

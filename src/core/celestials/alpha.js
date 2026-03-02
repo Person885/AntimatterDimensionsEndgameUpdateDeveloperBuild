@@ -1086,8 +1086,8 @@ export const Alpha = {
   },
   get totalSpeedBoost() {
     return Decimal.pow(Decimal.max(Decimal.log10(Currency.etherealPower.value).sub(7), 0).div(7).add(1), 2).timesEffectsOf(
-      Achievement(202),
-      Achievement(203)
+      Achievement(212),
+      Achievement(213)
     );
   },
   get cosmicSectorMinBoost() {

@@ -66,6 +66,7 @@ export default {
       <DescriptionDisplay :config="upgrade.config" />
       <EffectDisplay :config="upgrade.config" />
       <CostDisplay
+        v-if="!isBought"
         :config="upgrade.config"
         name="Antimatter"
       />

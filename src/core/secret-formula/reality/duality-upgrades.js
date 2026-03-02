@@ -277,11 +277,11 @@ export const dualityUpgrades = [
     id: 24,
     cost: new Decimal(1.5e19),
     formatCost: x => format(x, 1),
-    requirement: () => `Have ${format(6e6, 2, 2)}? Antimatter Galaxies in Ra's Reality
+    requirement: () => `Have ${format(106e6, 2, 2)} Antimatter Galaxies in Ra's Reality
       with Celestial Matter toggled off`,
     hasFailed: () => !Ra.isRunning || !player.requirementChecks.reality.noCelMatter,
     checkRequirement: () => Ra.isRunning && player.requirementChecks.reality.noCelMatter &&
-      player.galaxies.gte(DC.E9E15),
+      player.galaxies.gte(106e6),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     canLock: true,
     lockEvent: "turn on Celestial Matter",

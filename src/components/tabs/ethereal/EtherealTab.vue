@@ -9,7 +9,8 @@ export default {
       nextSectorAt: new Decimal(),
       sectorBoost: new Decimal(),
       isExtended: false,
-      canExtend: false
+      canExtend: false,
+      isBetter: false,
     };
   },
   computed: {
@@ -35,7 +36,8 @@ export default {
       this.nextSectorAt.copyFrom(Ethereal.sectorThreshold);
       this.sectorBoost.copyFrom(Ethereal.sectorBoost);
       this.isExtended = player.endgame.ethereal.isExtended;
-      this.canExtend = this.etherealPower.gte(1e10);
+      this.canExtend = this.etherealPower.gte(1e25);
+      this.isBetter = Alpha.isDestroyed;
     },
     extendEthereal() {
       return player.endgame.ethereal.isExtended = true;
@@ -57,7 +59,7 @@ export default {
         <span class="c-normal-ethereal-text">
           Ethereal Power income is based on Celestial Points, Singularities, and Reality Machine amounts.
         </span>
-        <span v-if="false">It is also based on Galactic Power amounts above {{ format(DC.NUMMAX, 2, 2) }}.</span>
+        <span v-if="isBetter">It is also based on Galactic Power amounts above {{ format(DC.NUMMAX, 2, 2) }}.</span>
       </div>
       <div>
         <span class="c-normal-ethereal-text">Your Cosmic Sector is </span>
@@ -78,7 +80,7 @@ export default {
       class="l-ethereal-extension-unlock"
     >
       <div v-if="!canExtend">
-        <span class="c-normal-ethereal-text">Reach {{ format(1e10, 2, 2) }} Ethereal Power to Extend the Ethereal.</span>
+        <span class="c-normal-ethereal-text">Reach {{ format(1e25, 2, 2) }} Ethereal Power to Extend the Ethereal.</span>
       </div>
       <div v-if="canExtend">
         <button

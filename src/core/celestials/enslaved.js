@@ -316,12 +316,12 @@ export const Tesseracts = {
 
   capIncrease(count = this.bought, extra = this.extra, mult = this.totalMult) {
     const totalCount = (count + extra) * mult;
-    const base = totalCount < 1 ? 0 : 250e3 * Math.pow(2, totalCount);
-    return base * (AlchemyResource.boundless.effectValue + 1) * ((ExpansionPack.enslavedPack.isBought && !player.disablePostReality) ? 2 : 1);
+    const base = totalCount < 1 ? DC.D0 : Decimal.pow(2, totalCount).times(250e3);
+    return base.times(AlchemyResource.boundless.effectValue + 1).times((ExpansionPack.enslavedPack.isBought && !player.disablePostReality) ? 2 : 1);
   },
 
   get nextTesseractIncrease() {
-    return this.capIncrease(this.bought + 1) - this.capIncrease(this.bought);
+    return this.capIncrease(this.bought + 1).sub(this.capIncrease(this.bought));
   },
 };
 

@@ -1949,7 +1949,7 @@ export const celestialNavigation = {
           }
           let pelleString = "Pelle's Doomed Reality is still intact";
           let progressString = "Disable more nerfs/Strikes to continue";
-          if (!Achievement(195).isUnlocked && !ImaginaryUpgrade(30).isAvailableForPurchase) {
+          if (!Achievement(204).isUnlocked && !ImaginaryUpgrade(30).isAvailableForPurchase) {
             const remainingNerfs = (PelleAchievementUpgrade.all.length + PelleDestructionUpgrade.all.length +
               PelleRealityUpgrade.all.length + PelleImaginaryUpgrade.all.length + PelleCelestialUpgrade.all.length +
               PellePerkUpgrade.all.length + PelleAlchemyUpgrade.all.length) - (PelleAchievementUpgrade.all.filter(u => u.isBought).length +
@@ -1958,7 +1958,7 @@ export const celestialNavigation = {
               PellePerkUpgrade.all.filter(u => u.isBought).length + PelleAchievementUpgrade.all.filter(u => u.isBought).length);
             pelleString = "Pelle's Doomed Reality is still intact";
             progressString = `${formatInt(remainingNerfs)} nerfs remain`;
-          } else if (Achievement(195).isUnlocked && !ImaginaryUpgrade(30).isAvailableForPurchase) {
+          } else if (Achievement(204).isUnlocked && !ImaginaryUpgrade(30).isAvailableForPurchase) {
             const hexString = ["starting to break", "breaking apart", "visibly breaking", "almost broken", "on the verge of breaking"];
             const remainingStrikes = PelleStrikeUpgrade.all.length - PelleStrikeUpgrade.all.filter(u => u.isBought).length;
             pelleString = "Pelle's Doomed Reality is " + hexString[5 - remainingStrikes];

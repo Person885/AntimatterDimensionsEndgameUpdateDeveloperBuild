@@ -10397,6 +10397,274 @@ kbd {
   padding: 0.5rem;
 }
 
+.c-penteract-button {
+  font-family: Typewriter, serif;
+  color: #c000e0;
+  background: #401060;
+  border: var(--var-border-width, 0.2rem) solid;
+  border-radius: var(--var-border-radius, 0.4rem);
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  transition-duration: 0.15s;
+  animation: a-penteract-shift 5s infinite;
+  cursor: pointer;
+}
+
+.s-base--dark .c-penteract-button {
+  background: #a000c0;
+  animation: a-penteract-shift-dark 5s infinite;
+}
+
+.c-penteract-button:hover {
+  color: #c000e0;
+  background: var(--color-eternity);
+}
+
+.s-base--dark .c-penteract-button:hover {
+  background: var(--color-eternity);
+}
+
+.c-penteract-button--disabled {
+  color: var(--color-eternity);
+  background: #401060;
+  animation: none;
+  cursor: default;
+}
+
+.s-base--dark .c-penteract-button--disabled {
+  color: var(--color-eternity);
+  background: #401060;
+  animation: none;
+  cursor: default;
+}
+
+.c-penteract-button--disabled:hover {
+  color: var(--color-eternity);
+  background: #401060;
+}
+
+.s-base--dark .c-penteract-button--disabled:hover {
+  color: var(--color-eternity);
+  background: #401060;
+}
+
+@keyframes a-penteract-shift {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem var(--color-eternity), -1.5rem -1.5rem 0.5rem var(--color-eternity); }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem var(--color-eternity), -1.5rem 1.5rem 0.5rem var(--color-eternity); }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem var(--color-eternity), 1.5rem 1.5rem 0.5rem var(--color-eternity); }
+}
+
+@keyframes a-penteract-shift-dark {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem var(--color-eternity), -1.5rem -1.5rem 0.5rem var(--color-eternity); }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem var(--color-eternity), -1.5rem 1.5rem 0.5rem var(--color-eternity); }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem var(--color-eternity), 1.5rem 1.5rem 0.5rem var(--color-eternity); }
+}
+
+.o-primary-btn--penteract-toggle {
+  font-size: 1.2rem;
+}
+
+.c-hexeract-button {
+  font-family: Typewriter, serif;
+  color: #808080;
+  background: black;
+  border: var(--var-border-width, 0.2rem) solid;
+  border-radius: var(--var-border-radius, 0.4rem);
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  transition-duration: 0.15s;
+  animation: a-hexeract-shift 5s infinite;
+  cursor: pointer;
+}
+
+.s-base--dark .c-hexeract-button {
+  background: #202020;
+  animation: a-hexeract-shift-dark 5s infinite;
+}
+
+.c-hexeract-button:hover {
+  color: #808080;
+  background: black;
+}
+
+.s-base--dark .c-hexeract-button:hover {
+  background: #202020;
+}
+
+.c-hexeract-button--disabled {
+  color: #101010;
+  background: black;
+  animation: none;
+  cursor: default;
+}
+
+.s-base--dark .c-hexeract-button--disabled {
+  color: #202020;
+  background: #101010;
+  animation: none;
+  cursor: default;
+}
+
+.c-hexeract-button--disabled:hover {
+  color: #101010;
+  background: black;
+}
+
+.s-base--dark .c-hexeract-button--disabled:hover {
+  color: #202020;
+  background: #101010;
+}
+
+@keyframes a-hexeract-shift {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem black, -1.5rem -1.5rem 0.5rem black; }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem black, -1.5rem 1.5rem 0.5rem black; }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem black, 1.5rem 1.5rem 0.5rem black; }
+}
+
+@keyframes a-hexeract-shift-dark {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem #202020, -1.5rem -1.5rem 0.5rem #202020; }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem #202020, -1.5rem 1.5rem 0.5rem #202020; }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem #202020, 1.5rem 1.5rem 0.5rem #202020; }
+}
+
+.o-primary-btn--hexeract-toggle {
+  font-size: 1.2rem;
+}
+
+.c-hepteract-button {
+  font-family: Typewriter, serif;
+  color: #a0a0e0;
+  background: #101060;
+  border: var(--var-border-width, 0.2rem) solid;
+  border-radius: var(--var-border-radius, 0.4rem);
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  transition-duration: 0.15s;
+  animation: a-hepteract-shift 5s infinite;
+  cursor: pointer;
+}
+
+.s-base--dark .c-hepteract-button {
+  background: #8080e0;
+  animation: a-hepteract-shift-dark 5s infinite;
+}
+
+.c-hepteract-button:hover {
+  color: #a0a0e0;
+  background: var(--color-celestials);
+}
+
+.s-base--dark .c-hepteract-button:hover {
+  background: var(--color-celestials);
+}
+
+.c-hepteract-button--disabled {
+  color: var(--color-celestials);
+  background: #101060;
+  animation: none;
+  cursor: default;
+}
+
+.s-base--dark .c-hepteract-button--disabled {
+  color: var(--color-celestials);
+  background: #101060;
+  animation: none;
+  cursor: default;
+}
+
+.c-hepteract-button--disabled:hover {
+  color: var(--color-celestials);
+  background: #101060;
+}
+
+.s-base--dark .c-hepteract-button--disabled:hover {
+  color: var(--color-celestials);
+  background: #101060;
+}
+
+@keyframes a-hepteract-shift {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem var(--color-celestials), -1.5rem -1.5rem 0.5rem var(--color-celestials); }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem var(--color-celestials), -1.5rem 1.5rem 0.5rem var(--color-celestials); }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem var(--color-celestials), 1.5rem 1.5rem 0.5rem var(--color-celestials); }
+}
+
+@keyframes a-hepteract-shift-dark {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem var(--color-celestials), -1.5rem -1.5rem 0.5rem var(--color-celestials); }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem var(--color-celestials), -1.5rem 1.5rem 0.5rem var(--color-celestials); }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem var(--color-celestials), 1.5rem 1.5rem 0.5rem var(--color-celestials); }
+}
+
+.o-primary-btn--hepteract-toggle {
+  font-size: 1.2rem;
+}
+
+.c-octeract-button {
+  font-family: Typewriter, serif;
+  color: #ff3050;
+  background: #801010;
+  border: var(--var-border-width, 0.2rem) solid;
+  border-radius: var(--var-border-radius, 0.4rem);
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  transition-duration: 0.15s;
+  animation: a-octeract-shift 5s infinite;
+  cursor: pointer;
+}
+
+.s-base--dark .c-octeract-button {
+  background: #e02040;
+  animation: a-octeract-shift-dark 5s infinite;
+}
+
+.c-octeract-button:hover {
+  color: #ff3050;
+  background: crimson;
+}
+
+.s-base--dark .c-octeract-button:hover {
+  background: crimson;
+}
+
+.c-octeract-button--disabled {
+  color: crimson;
+  background: #801010;
+  animation: none;
+  cursor: default;
+}
+
+.s-base--dark .c-octeract-button--disabled {
+  color: crimson;
+  background: #801010;
+  animation: none;
+  cursor: default;
+}
+
+.c-octeract-button--disabled:hover {
+  color: crimson;
+  background: #801010;
+}
+
+.s-base--dark .c-octeract-button--disabled:hover {
+  color: crimson;
+  background: #801010;
+}
+
+@keyframes a-octeract-shift {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem crimson, -1.5rem -1.5rem 0.5rem crimson; }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem crimson, -1.5rem 1.5rem 0.5rem crimson; }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem crimson, 1.5rem 1.5rem 0.5rem crimson; }
+}
+
+@keyframes a-octeract-shift-dark {
+  0% { box-shadow: 1.5rem 1.5rem 0.5rem crimson, -1.5rem -1.5rem 0.5rem crimson; }
+  50% { box-shadow: 1.5rem -1.5rem 0.5rem crimson, -1.5rem 1.5rem 0.5rem crimson; }
+  100% { box-shadow: -1.5rem -1.5rem 0.5rem crimson, 1.5rem 1.5rem 0.5rem crimson; }
+}
+
+.o-primary-btn--octeract-toggle {
+  font-size: 1.2rem;
+}
+
 /* #region reality-tab */
 
 .c-reality-tab__reality-machines {

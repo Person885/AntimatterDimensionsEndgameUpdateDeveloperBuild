@@ -25,6 +25,7 @@ import ExpansionPacksTab from "./endgame/ExpansionPacksTab";
 import GalacticPowerTab from "./galactic-power/GalacticPowerTab";
 import GlyphSetRecordsTab from "./glyph-set-records/GlyphSetRecordsTab";
 import GlyphsTab from "./glyphs/GlyphsTab";
+import HypercubesTab from "./hypercubes/HypercubesTab";
 import ImaginaryUpgradesTab from "./imaginary-upgrades/ImaginaryUpgradesTab";
 import InfinityChallengesTab from "./infinity-challenges/InfinityChallengesTab";
 import InfinityDimensionsTab from "./infinity-dimensions/InfinityDimensionsTab";
@@ -109,6 +110,7 @@ const TabComponents = {
   EndgameUpgradesTab,
   GalacticPowerTab,
   EtherealTab,
+  HypercubesTab,
   ShopTab,
   MultiplierBreakdownTab
 };

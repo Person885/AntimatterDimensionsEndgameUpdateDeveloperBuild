@@ -626,6 +626,15 @@ export const tabs = [
         id: 8,
         hidable: true,
       },
+      {
+        key: "hypercubes",
+        name: "Hypercubes",
+        symbol: "<i class='fas fa-cubes'></i>",
+        component: "HypercubesTab",
+        condition: () => DualityUpgrade(25).isBought,
+        id: 9,
+        hidable: true,
+      },
     ],
   }
 ];

@@ -52,7 +52,7 @@ export default {
     replicantiChanceSetup() {
       return new ReplicantiUpgradeButtonSetup(
         ReplicantiUpgrade.chance,
-        value => `Replicate chance: ${formatPercents(value.toNumber())}`,
+        value => `Replicate chance: ${formatDecimalPercents(value)}`,
         cost => `+${formatPercents(0.01)} Costs: ${format(cost)} IP`
       );
     },

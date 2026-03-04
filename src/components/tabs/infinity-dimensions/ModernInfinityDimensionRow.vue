@@ -35,7 +35,7 @@ export default {
       continuumValue: new Decimal(0),
       isAutobuyerOn: false,
       isEC8Running: false,
-      hardcap: InfinityDimensions.HARDCAP_PURCHASES,
+      hardcap: new Decimal(InfinityDimensions.HARDCAP_PURCHASES),
       eternityReached: false,
       enslavedRunning: false,
     };

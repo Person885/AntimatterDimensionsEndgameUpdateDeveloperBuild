@@ -1231,6 +1231,14 @@ window.player = {
       hepteracts: 0,
       octeracts: 0
     },
+    celDimExpansion: {
+      totalTickBought: DC.D0,
+      dimBoosts: DC.D0,
+      galaxies: DC.D0,
+      infinities: DC.D0,
+      infinityPoints: DC.D0,
+      isBroken: false,
+    },
   },
   endgameMasteries: {
     skills: DC.D0,

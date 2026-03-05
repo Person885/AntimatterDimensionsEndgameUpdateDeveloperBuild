@@ -303,7 +303,7 @@ export function buyCelestialTickSpeed() {
 }
 
 export function buyMaxCelestialTickSpeed() {
-  if (!Tickspeed.isAvailableForPurchase || !Tickspeed.isAffordable) return;
+  if (!CelestialTickspeed.isAvailableForPurchase || !CelestialTickspeed.isAffordable) return;
   let boughtTickspeed = false;
 
   const purchases = CelestialTickspeed.costScale.getMaxBoughtDecimal(

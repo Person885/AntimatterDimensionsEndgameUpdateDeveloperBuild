@@ -456,6 +456,19 @@ window.player = {
       bestCEPminVal: DC.D0,
       bestCelestialInfinitiesPerMs: DC.D0,
     },
+    bestCelestialEternity: {
+      time: DC.BEMAX,
+      realTime: Number.MAX_VALUE,
+      bestCEPminCelestialReality: DC.D0,
+    },
+    thisCelestialReality: {
+      time: DC.D0,
+      realTime: 0,
+      maxCM: DC.D0,
+      maxCIP: DC.D0,
+      maxCEP: DC.D0,
+      bestCelestialEternitiesPerMs: DC.D0,
+    },
     permanent: {
       maxCP: DC.D0,
       maxDP: DC.D0,

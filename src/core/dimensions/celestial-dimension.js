@@ -382,7 +382,7 @@ export class CelestialDimBoost {
     return DC.E1;
   }
 
-  static multiplierToNDTier() {
+  static multiplierToCDTier() {
     return CelestialDimBoost.power.pow(this.purchasedBoosts).clampMin(1);
   }
 

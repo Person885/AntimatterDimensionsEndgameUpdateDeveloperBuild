@@ -287,3 +287,521 @@ export const CelestialDimensions = {
     return Math.pow(base, exponent) * (Alpha.isRunning ? Alpha.celestialMatterConversionNerf : 1);
   }
 };
+
+export function getCelestialTickspeedMultiplier() {
+  const base = new Decimal(1.5);
+  const galaxies = player.endgame.celDimExpansion.galaxies;
+  return base.pow(galaxies.add(1));
+}
+
+export function buyCelestialTickSpeed() {
+  if (!CelestialTickspeed.isAvailableForPurchase || !CelestialTickspeed.isAffordable) return false;
+  Currency.celestialMatter.subtract(CelestialTickspeed.cost);
+  player.endgame.celDimExpansion.totalTickBought = player.endgame.celDimExpansion.totalTickBought.add(1);
+  GameUI.update();
+  return true;
+}
+
+export function resetCelestialTickspeed() {
+  player.endgame.celDimExpansion.totalTickBought = DC.D0;
+}
+
+export function buyMaxCelestialTickSpeed() {
+  if (!Tickspeed.isAvailableForPurchase || !Tickspeed.isAffordable) return;
+  let boughtTickspeed = false;
+
+  const purchases = CelestialTickspeed.costScale.getMaxBoughtDecimal(
+    player.endgame.celDimExpansion.totalTickBought, Currency.celestialMatter.value, 1);
+  if (purchases === null) {
+    return;
+  }
+  Currency.celestialMatter.subtract(Decimal.pow10(purchases.logPrice));
+  player.endgame.celDimExpansion.totalTickBought = player.endgame.celDimExpansion.totalTickBought.add(purchases.quantity);
+  boughtTickspeed = true;
+}
+
+export const CelestialTickspeed = {
+  get isUnlocked() {
+    return Achievement(221).isUnlocked;
+  },
+
+  get isAvailableForPurchase() {
+    return this.isUnlocked &&
+      (player.endgame.celDimExpansion.isBroken || this.cost.lt(DC.NUMMAX));
+  },
+
+  get isAffordable() {
+    return Currency.celestialMatter.gte(this.cost);
+  },
+
+  get multiplier() {
+    return getCelestialTickSpeedMultiplier();
+  },
+
+  get current() {
+    return this.baseValue;
+  },
+
+  get cost() {
+    return this.costScale.calculateCostDecimal(player.endgame.celDimExpansion.totalTickBought);
+  },
+
+  get costScale() {
+    return new ExponentialCostScaling({
+      baseCost: 1000,
+      baseIncrease: 10,
+      costScale: 10,
+      scalingCostThreshold: Number.MAX_VALUE
+    });
+  },
+
+  get baseValue() {
+    return DC.D1.times(getCelestialTickSpeedMultiplier().pow(this.totalUpgrades));
+  },
+
+  get totalUpgrades() {
+    let boughtTickspeed = player.totalTickBought;
+    return new Decimal(boughtTickspeed);
+  }
+};
+
+class CelestialDimBoostRequirement {
+  constructor(amount) {
+    this.amount = amount;
+  }
+
+  get isSatisfied() {
+    const matter = Currency.celestialMatter.value;
+    return matter.gte(this.amount);
+  }
+}
+
+export class CelestialDimBoost {
+  static get power() {
+    return DC.E1;
+  }
+
+  static multiplierToNDTier() {
+    return CelestialDimBoost.power.pow(this.purchasedBoosts).clampMin(1);
+  }
+
+  static get maxBoosts() {
+    return DC.BEMAX;
+  }
+
+  static get canBeBought() {
+    if (CelestialDimBoost.purchasedBoosts.gte(this.maxBoosts)) return false;
+    if (player.endgame.celestialMatter.gt(DC.NUMMAX) && !player.endgame.celDimExpansion.isBroken) return false;
+    return true;
+  }
+
+  static get lockText() {
+    if (CelestialDimBoost.purchasedBoosts.gte(this.maxBoosts)) {
+      return null;
+    }
+    return null;
+  }
+
+  static get requirement() {
+    return this.bulkRequirement(1);
+  }
+
+  static bulkRequirement(bulk) {
+    const targetResets = CelestialDimBoost.purchasedBoosts.add(bulk);
+    let amount = DC.E30;
+    amount = amount.mul(DC.E30.pow(targetResets.sub(1)).round());
+
+    amount = Decimal.round(amount);
+
+    return new CelestialDimBoostRequirement(amount);
+  }
+
+  static get unlockedByBoost() {
+    if (CelestialDimBoost.lockText !== null) return CelestialDimBoost.lockText;
+
+    const boostEffects = `give a ${formatX(CelestialDimBoost.power, 2, 1)} multiplier to all Dimensions`;
+
+    const areDimensionsKept = false;
+    if (areDimensionsKept) return boostEffects[0].toUpperCase() + boostEffects.substring(1);
+    return `Reset your Dimensions to ${boostEffects}`;
+  }
+
+  static get purchasedBoosts() {
+    return Decimal.fromDecimal(player.endgame.celDimExpansion.dimBoosts.floor());
+  }
+
+  static get totalBoosts() {
+    return Decimal.floor(this.purchasedBoosts);
+  }
+
+  static get startingDimensionBoosts() {
+    return DC.D0;
+  }
+}
+
+// eslint-disable-next-line max-params
+export function softCelestialReset(tempBulk, forcedCDReset = false, forcedCMReset = false) {
+  if (Currency.celestialMatter.gt(DC.NUMMAX)) return;
+  const bulk = Decimal.min(tempBulk, CelestialDimBoost.maxBoosts.sub(player.endgame.celDimExpansion.dimBoosts));
+  EventHub.dispatch(GAME_EVENT.CELESTIAL_DIMBOOST_BEFORE, bulk);
+  player.endgame.celDimExpansion.dimBoosts = (Decimal.max(DC.D0, player.endgame.celDimExpansion.dimBoosts.add(bulk)));
+  const canKeepDimensions = false;
+  if (forcedCDReset || !canKeepDimensions) {
+    CelestialDimensions.reset();
+    resetCelestialTickspeed();
+  }
+  const canKeepCelMatter = false;
+  if (!forcedCMReset && canKeepCelMatter) {
+    Currency.unnerfedcelestialMatter.bumpTo(Currency.unnerfedCelestialMatter.startingValue);
+    Currency.celestialMatter.bumpTo(Currency.unnerfedCelestialMatter.startingValue);
+  } else {
+    Currency.unnerfedCelestialMatter.reset();
+    Currency.celestialMatter.reset();
+  }
+  EventHub.dispatch(GAME_EVENT.CELESTIAL_DIMBOOST_AFTER, bulk);
+}
+
+export function manualRequestCelestialDimensionBoost(bulk) {
+  if ((Currency.celestialMatter.value.gt(DC.NUMMAX) && !player.endgame.celDimExpansion.isBroken) || !CelestialDimBoost.requirement.isSatisfied) return;
+  if (!CelestialDimBoost.canBeBought) return;
+  if (GameEnd.creditsEverClosed) return;
+  if (player.options.confirmations.celestialDimensionBoost) {
+    Modal.celestialDimensionBoost.show({ bulk });
+    return;
+  }
+  requestCelestialDimensionBoost(bulk);
+}
+
+export function requestCelestialDimensionBoost(bulk) {
+  if ((Currency.celestialMatter.value.gt(DC.NUMMAX) && !player.endgame.celDimExpansion.isBroken) || !CelestialDimBoost.requirement.isSatisfied) return;
+  if (!CelestialDimBoost.canBeBought) return;
+  if (false && bulk) maxBuyCelestialDimBoosts();
+  else softCelestialReset(1);
+}
+
+function maxBuyCelestialDimBoosts() {
+  const req1 = CelestialDimBoost.bulkRequirement(1);
+  if (!req1.isSatisfied) return;
+  const req2 = CelestialDimBoost.bulkRequirement(2);
+  if (!req2.isSatisfied) {
+    softCelestialReset(1);
+    return;
+  }
+
+  let amount = DC.E30;
+  let multiplierPerDB = DC.E30;
+
+  const cm = Currency.celestialMatter.value;
+  let calcBoosts;
+  calcBoosts = cm.max(1).div(amount).log(multiplierPerDB);
+  
+  // Add one cause (x-b)/i is off by one otherwise
+  if (calcBoosts.floor().add(1).lte(CelestialDimBoost.purchasedBoosts)) return;
+  calcBoosts = calcBoosts.sub(CelestialDimBoost.purchasedBoosts);
+  const minBoosts = Decimal.min(DC.BEMAX, calcBoosts.floor().add(1));
+  softCelestialReset(minBoosts);
+}
+
+class CelestialGalaxyRequirement {
+  constructor(amount) {
+    this.amount = amount;
+  }
+
+  get isSatisfied() {
+    const matter = Currency.celestialMatter.value;
+    return matter.gte(this.amount);
+  }
+}
+
+export const CELESTIAL_GALAXY_TYPE = {
+  NORMAL: 0,
+  DISTANT: 1,
+  REMOTE: 2
+};
+
+export class CelestialGalaxy {
+  static get baseRemoteStart() {
+    return 800;
+  }
+  
+  static get remoteStart() {
+    return this.baseRemoteStart;
+  }
+
+  static get remoteGalaxyStrength() {
+    return 1.002;
+  }
+
+  static get requirement() {
+    return this.requirementAt(player.endgame.celDimExpansion.galaxies);
+  }
+
+  /**
+   * Figure out what galaxy number we can buy up to
+   * @param {number} currency Either dim 8 or dim 6, depends on current challenge
+   * @returns {number} Max number of galaxies (total)
+   */
+  static buyableGalaxies(currency, currGal = player.endgame.celDimExpansion.galaxies) {
+    const distantStart = CelestialGalaxy.costScalingStart;
+    const scale = CelestialGalaxy.costMult;
+    let base = CelestialGalaxy.baseCost;
+
+    const firstScale = Decimal.min(CelestialGalaxy.costScalingStart, CelestialGalaxy.remoteStart);
+
+    if (currency.lt(CelestialGalaxy.requirementAt(firstScale).amount)) {
+      return Decimal.max(currency.add(1).log10().sub(base).div(scale).floor().add(1), currGal);
+    }
+
+    if (currency.lt(CelestialGalaxy.requirementAt(CelestialGalaxy.remoteStart).amount)) {
+      const a = new Decimal(1);
+      const b = new Decimal(scale).add(1).sub(distantStart * 2);
+      const c = base.add(new Decimal(Math.pow(distantStart, 2) - distantStart - scale)).sub(currency.add(1).log10());
+      const quad = decimalQuadraticSolution(a, b, c).floor();
+      return Decimal.max(quad, currGal);
+    }
+
+    if (CelestialGalaxy.requirementAt(CelestialGalaxy.remoteStart).amount.lt(currency)) {
+      let estimate = new Decimal(Decimal.log(currency.add(1).log10().div(CelestialGalaxy.requirementAt(CelestialGalaxy.remoteStart).amount), CelestialGalaxy.remoteGalaxyStrength))
+        .add(CelestialGalaxy.remoteStart).floor();
+      if (CelestialGalaxy.requirementAt(estimate).amount.lte(currency) && CelestialGalaxy.requirementAt(estimate.add(1)).amount.gt(currency)) {
+        return Decimal.max(estimate.add(1), currGal);
+      }
+      let n = 0;
+      while (n < 20 && !(CelestialGalaxy.requirementAt(estimate).amount.lte(currency) && CelestialGalaxy.requirementAt(estimate.add(1)).amount.gt(currency))) {
+        estimate = estimate.add(new Decimal(Decimal.log(currency.add(1).log10().div(CelestialGalaxy.requirementAt(estimate).amount), CelestialGalaxy.remoteGalaxyStrength)));
+        n++;
+      }
+      let x = 0;
+      if (CelestialGalaxy.requirementAt(estimate).amount.lte(currency) && CelestialGalaxy.requirementAt(estimate.add(1)).amount.gt(currency)) return Decimal.max(estimate.add(1), currGal);
+      if (CelestialGalaxy.requirementAt(estimate.add(1)).amount.lte(currency)) {
+        while (x < 50) {
+          estimate = estimate.add(1);
+          x++;
+        }
+        return Decimal.max(estimate.add(1), currGal);
+      }
+      if (CelestialGalaxy.requirementAt(estimate).amount.gt(currency)) {
+        while (x < 50) {
+          estimate = estimate.sub(1);
+          x++;
+        }
+        return Decimal.max(estimate.add(1), currGal);
+      }
+      throw new Error("A finite value for Celestial Galaxy bulk was not found.");
+    }
+
+    return new Decimal(bulkBuyBinarySearch(new Decimal(currency.add(1).log10()), {
+      costFunction: x => this.requirementAt(x).amount,
+      cumulative: false,
+    }, player.endgame.celDimExpansion.galaxies.toNumber())).floor().add(1).max(currGal);
+  }
+
+  static requirementAt(galaxies) {
+    const equivGal = Decimal.min(CelestialGalaxy.remoteStart, galaxies);
+    let amount = CelestialGalaxy.baseCost.add((equivGal.times(CelestialGalaxy.costMult)));
+    const type = CelestialGalaxy.typeAt(galaxies);
+
+    if (type === CELESTIAL_GALAXY_TYPE.DISTANT || type === CELESTIAL_GALAXY_TYPE.REMOTE) {
+      const galaxyCostScalingStart = this.costScalingStart;
+      const galaxiesAfterDistant = Decimal.clampMin(equivGal.sub(galaxyCostScalingStart).add(1), 0);
+      amount = amount.add(Decimal.pow(galaxiesAfterDistant, 2).add(galaxiesAfterDistant));
+    }
+
+    if (type === CELESTIAL_GALAXY_TYPE.REMOTE) {
+      amount = amount.times(Decimal.pow(Galaxy.remoteGalaxyStrength, new Decimal(galaxies).sub(Galaxy.remoteStart - 1)));
+    }
+
+    amount = Decimal.pow10(amount);
+    return new GalaxyRequirement(amount);
+  }
+
+  static get costMult() {
+    return 30;
+  }
+
+  static get baseCost() {
+    return 30;
+  }
+
+  static get canBeBought() {
+    if (EternityChallenge(6).isRunning && !Enslaved.isRunning) return false;
+    if (NormalChallenge(8).isRunning || InfinityChallenge(7).isRunning) return false;
+    if (Currency.celestialMatter.value.gt(DC.NUMMAX) && !player.endgame.celDimExpansion.isBroken) return false;
+    return true;
+  }
+
+  static get lockText() {
+    if (this.canBeBought) return null;
+    return null;
+  }
+
+  static get costScalingStart() {
+    return 100;
+  }
+
+  static get type() {
+    return this.typeAt(player.endgame.celDimExpansion.galaxies);
+  }
+
+  static typeAt(galaxies) {
+    if (new Decimal(galaxies).gte(CelestialGalaxy.remoteStart)) {
+      return CELESTIAL_GALAXY_TYPE.REMOTE;
+    }
+    if (new Decimal(galaxies).gte(this.costScalingStart)) {
+      return CELESTIAL_GALAXY_TYPE.DISTANT;
+    }
+    return CELESTIAL_GALAXY_TYPE.NORMAL;
+  }
+}
+
+function celestialGalaxyReset() {
+  EventHub.dispatch(GAME_EVENT.CELESTIAL_GALAXY_RESET_BEFORE);
+  player.endgame.celDimExpansion.galaxies = player.endgame.celDimExpansion.galaxies.add(1);
+  if (false) {
+    player.endgame.celDimExpansion.dimBoosts = new Decimal(0);
+  }
+  softCelestialReset(0);
+  EventHub.dispatch(GAME_EVENT.CELESTIAL_GALAXY_RESET_AFTER);
+}
+
+export function manualRequestCelestialGalaxyReset(bulk) {
+  if (!CelestialGalaxy.canBeBought || !CelestialGalaxy.requirement.isSatisfied) return;
+  if (GameEnd.creditsEverClosed) return;
+  if (player.options.confirmations.celestialGalaxy) {
+    Modal.celestialGalaxy.show({ bulk: false && bulk });
+    return;
+  }
+  requestCelestialGalaxyReset(bulk);
+}
+
+// All galaxy reset requests, both automatic and manual, eventually go through this function; therefore it suffices
+// to restrict galaxy count for RUPG7's requirement here and nowhere else
+export function requestCelestialGalaxyReset(bulk, limit = DC.BEMAX) {
+  const restrictedLimit = limit;
+  if (false && bulk) return maxBuyCelestialGalaxies(restrictedLimit);
+  if (player.endgame.celDimExpansion.galaxies.gte(restrictedLimit) || !CelestialGalaxy.canBeBought ||
+    !CelestialGalaxy.requirement.isSatisfied) return false;
+  celestialGalaxyReset();
+  return true;
+}
+
+function maxBuyCelestialGalaxies(limit = DC.BEMAX) {
+  if (player.endgame.celDimExpansion.galaxies.gte(limit) || !CelestialGalaxy.canBeBought) return false;
+  // Check for ability to buy one galaxy (which is pretty efficient)
+  const req = CelestialGalaxy.requirement;
+  if (!req.isSatisfied) return false;
+  const matter = Currency.celestialMatter.value;
+  const newGalaxies = Decimal.clampMax(
+    CelestialGalaxy.buyableGalaxies(matter),
+    limit);
+  // Galaxy count is incremented by galaxyReset(), so add one less than we should:
+  player.endgame.celDimExpansion.galaxies = newGalaxies.sub(1);
+  celestialGalaxyReset();
+  return true;
+}
+
+export function manualCelestialCrunchResetRequest() {
+  if (Currency.celestialMatter.value.lt(DC.NUMMAX)) return;
+  if (GameEnd.creditsEverClosed) return;
+  // We show the modal under two conditions - on the first ever celestial infinity (to explain the mechanic) and
+  // post-break (to show total CIP and celInfinities gained)
+  if (player.options.confirmations.celestialCrunch && (player.endgame.celDimExpansion.celestialInfinities.lt(1) ||player.endgame.celDimExpansion.isBroken)) {
+    Modal.celestialCrunch.show();
+  } else {
+    celestialCrunchResetRequest();
+  }
+}
+
+export function celestialCrunchResetRequest() {
+  if (!Player.canCrunch) return;
+  celestialCrunchReset();
+}
+
+export function celestialCrunchReset(forced = false) {
+  if (!forced && !Currency.celestialMatter.gte(DC.NUMMAX)) return;
+
+  if (Currency.celestialMatter.gte(DC.NUMMAX)) {
+    EventHub.dispatch(GAME_EVENT.CELESTIAL_CRUNCH_BEFORE);
+    celestialCrunchGiveRewards();
+  }
+
+  celestialCrunchResetValues();
+  EventHub.dispatch(GAME_EVENT.CELESTIAL_CRUNCH_AFTER);
+}
+
+function celestialCrunchGiveRewards() {
+  celestialCrunchUpdateStatistics();
+
+  const celestialInfinityPoints = gainedCelestialInfinityPoints();
+  Currency.celestialInfinityPoints.add(celestialInfinityPoints);
+  Currency.celestialInfinities.add(gainedCelestialInfinities().round());
+
+  celestialCrunchTabChange(player.endgame.celDimExpansion.celestialInfinities.lt(1));
+}
+
+function celestialCrunchUpdateStatistics() {
+  player.records.bestCelestialInfinity.bestCIPminCelestialEternity =
+    player.records.bestCelestialInfinity.bestCIPminCelestialEternity.clampMin(player.records.thisCelestialInfinity.bestCIPmin);
+  player.records.thisCelestialInfinity.bestCIPmin = DC.D0;
+
+  player.records.thisCelestialEternity.bestCelestialInfinitiesPerMs = player.records.thisCelestialEternity.bestCelestialInfinitiesPerMs.clampMin(
+    gainedCelestialInfinities().round().dividedBy(Math.clampMin(33, player.records.thisCelestialInfinity.realTime))
+  );
+
+  const celestialInfinityPoints = gainedCelestialInfinityPoints();
+
+  addCelestialInfinityTime(
+    player.records.thisCelestialInfinity.time,
+    player.records.thisCelestialInfinity.realTime,
+    celestialInfinityPoints,
+    gainedCelestialInfinities().round()
+  );
+
+  player.records.bestCelestialInfinity.time =
+    Decimal.min(player.records.bestCelestialInfinity.time, player.records.thisCelestialInfinity.time);
+  player.records.bestCelestialInfinity.realTime =
+    Math.min(player.records.bestCelestialInfinity.realTime, player.records.thisCelestialInfinity.realTime);
+}
+
+function celestialCrunchTabChange(firstCelestialInfinity) {
+  const earlyGame = player.records.bestCelestialInfinity.time.gt(60000) && !player.endgame.celDimExpansion.isBroken;
+
+  if (firstCelestialInfinity) {
+    Tab.endgame.celestialInfinityUpgrades.show();
+  } else if (earlyGame) {
+    Tab.dimensions.celestial.show();
+  }
+}
+
+export function secondSoftCelestialReset() {
+  Endgame.resetNoReward();
+  player.endgame.celDimExpansion.dimBoosts = DC.D0;
+  player.endgame.celDimExpansion.galaxies = DC.D0;
+  player.records.thisCelestialInfinity.maxCM = DC.D0;
+  Currency.unnerfedCelestialMatter.reset();
+  Currency.celestialMatter.reset();
+  softCelestialReset(0, true, true);
+  player.records.thisCelestialInfinity.time = DC.D0;
+  player.records.thisCelestialInfinity.realTime = 0;
+  player.records.totalCelestialInfinityCelMatter = DC.E1;
+}
+
+export function preProductionGenerateCIP(diff) {
+  if (false) {
+    const genPeriod = Time.bestCelestialInfinityRealTime.totalMilliseconds.clampMin(1e-100).times(10);
+    let genCount;
+    if (new Decimal(diff).gte(DC.E100)) {
+      genCount = Decimal.div(diff, genPeriod);
+    } else {
+      // Partial progress (fractions from 0 to 1) are stored in player.endgame.celDimExpansion.partCelestialInfinityPoint
+      const diffnum = Decimal.clamp(new Decimal(diff), 1e-300, 1e300);
+      player.endgame.celDimExpansion.partCelestialInfinityPoint = player.endgame.celDimExpansion.partCelestialInfinityPoint.add(diffnum.div(genPeriod.clampMax(1e300)));
+      genCount = Decimal.floor(player.partCelestialInfinityPoint);
+      player.endgame.celDimExpansion.partCelestialInfinityPoint = player.endgame.celDimExpansion.partCelestialInfinityPoint.sub(genCount);
+    }
+    let gainedPerGen = player.records.bestCelestialInfinity.time.gte(999999999999) ? DC.D0 : DC.D0;//CelestialInfinityUpgrade smth
+    const gainedThisTick = new Decimal(genCount).times(gainedPerGen);
+    if (Decimal.isFinite(gainedThisTick)) Currency.celestialInfinityPoints.add(gainedThisTick);
+  }
+  Currency.celestialInfinityPoints.add(DC.D0);//CelestialBreakInfinityUpgrade smth .ipGen.effectOrDefault(DC.D0).times(diff).div(60000));
+}

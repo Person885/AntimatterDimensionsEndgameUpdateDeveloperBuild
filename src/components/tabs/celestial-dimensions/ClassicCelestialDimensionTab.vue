@@ -26,6 +26,7 @@ export default {
       creditsClosed: false,
       showLockedDimCostNote: true,
       isEffectActive: false,
+      isExpanded: false,
     };
   },
   methods: {
@@ -39,6 +40,7 @@ export default {
       this.totalDimCap.copyFrom(CelestialDimensions.totalDimCap);
       this.creditsClosed = GameEnd.creditsEverClosed;
       this.isEffectActive = player.endgame.celestialMatterMultiplier.isActive;
+      this.isExpanded = Achievement(221).isUnlocked;
     },
     maxAll() {
       CelestialDimensions.buyMax();
@@ -86,15 +88,15 @@ export default {
       All Celestial Dimensions can be purchased until {{ format(totalDimCap, 2, 2) }} Celestial Points.
     </div>
     <div>You are getting {{ format(matterPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
-    <CelestialTickspeedRow />
+    <CelestialTickspeedRow v-if="isExpanded"/>
     <div class="l-dimensions-container">
       <CelestialDimensionRow
         v-for="tier in 8"
         :key="tier"
         :tier="tier"
       />
-      <CelestialDimensionBoostRow />
-      <CelestialGalaxyRow />
+      <CelestialDimensionBoostRow v-if="isExpanded"/>
+      <CelestialGalaxyRow v-if="isExpanded"/>
     </div>
     <div v-if="showLockedDimCostNote">
       Hold shift to see the Celestial Point cost for locked Celestial Dimensions.

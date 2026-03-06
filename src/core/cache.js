@@ -140,6 +140,8 @@ export const GameCache = {
 
   totalIPMult: new Lazy(() => totalIPMult()),
 
+  totalCIPMult: new Lazy(() => totalCIPMult()),
+
   challengeTimeSum: new Lazy(() => player.challenge.normal.bestTimes.reduce(Decimal.sumReducer)),
 
   infinityChallengeTimeSum: new Lazy(() => player.challenge.infinity.bestTimes.reduce(Decimal.sumReducer)),

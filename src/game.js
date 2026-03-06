@@ -388,6 +388,16 @@ export function gainedCelestialInfinities() {
   return DC.D1;
 }
 
+export function gainedCelestialInfinityPoints() {
+  const div = Effects.min(308);
+  let cip = player.endgame.celDimExpansion.isBroken
+    ? Decimal.pow10(player.records.thisCelestialInfinity.maxCM.log10().div(div).sub(0.75))
+    : new Decimal(308 / div);
+  cip = cip.times(GameCache.totalCIPMult.value);
+
+  return cip.floor();
+}
+
 export function updateRefresh() {
   GameStorage.save();
   location.reload(true);

@@ -806,3 +806,8 @@ export function preProductionGenerateCIP(diff) {
   }
   Currency.celestialInfinityPoints.add(DC.D0);//CelestialBreakInfinityUpgrade smth .ipGen.effectOrDefault(DC.D0).times(diff).div(60000));
 }
+
+export function totalCIPMult() {
+  let cipMult = DC.D1;
+  return cipMult;
+}

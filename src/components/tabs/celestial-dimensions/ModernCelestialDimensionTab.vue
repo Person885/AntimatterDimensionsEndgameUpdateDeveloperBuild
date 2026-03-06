@@ -1,5 +1,5 @@
 <script>
-import CelelestialDimensionBoostRow from "./ModernCelestialDimensionBoostRow";
+import CelestialDimensionBoostRow from "./ModernCelestialDimensionBoostRow";
 import CelestialDimensionRow from "./ModernCelestialDimensionRow";
 import CelestialGalaxyRow from "./ModernCelestialGalaxyRow";
 import CelestialTickspeedRow from "./CelestialTickspeedRow";

@@ -1,5 +1,7 @@
 <script>
+import CelelestialDimensionBoostRow from "@/components/tabs/antimatter-dimensions/ModernCelestialDimensionBoostRow";
 import CelestialDimensionRow from "./ModernCelestialDimensionRow";
+import CelestialGalaxyRow from "@/components/tabs/antimatter-dimensions/ModernCelestialGalaxyRow";
 import CelestialTickspeedRow from "./CelestialTickspeedRow";
 import PrimaryButton from "@/components/PrimaryButton";
 
@@ -7,7 +9,9 @@ export default {
   name: "ModernCelestialDimensionTab",
   components: {
     PrimaryButton,
+    CelestialDimensionBoostRow,
     CelestialDimensionRow,
+    CelestialGalaxyRow,
     CelestialTickspeedRow
   },
   data() {
@@ -127,6 +131,10 @@ export default {
         :key="tier"
         :tier="tier"
       />
+    </div>
+    <div class="resets-container">
+      <CelestialDimensionBoostRow />
+      <CelestialGalaxyRow />
     </div>
     <div v-if="showLockedDimCostNote">
       Hold shift to see the Celestial Point cost for locked Celestial Dimensions.

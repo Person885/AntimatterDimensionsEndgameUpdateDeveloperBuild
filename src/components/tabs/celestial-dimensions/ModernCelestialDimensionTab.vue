@@ -33,6 +33,8 @@ export default {
       alphaDecayRemnant: 0,
       hasRemnant: false,
       isExpanded: false,
+      canCrunch: false,
+      isBroken: false,
     };
   },
   methods: {
@@ -53,6 +55,8 @@ export default {
       this.alphaDecayRemnant = CelestialDimensions.alphaDecayRemnant;
       this.hasRemnant = Alpha.isDestroyed;
       this.isExpanded = Achievement(221).isUnlocked;
+      this.canCrunch = Currency.celestialMatter.value.gte(DC.NUMMAX);
+      this.isBroken = player.endgame.celDimExpansion.isBroken;
     },
     maxAll() {
       CelestialDimensions.buyMax();
@@ -65,6 +69,10 @@ export default {
         "c-celestial-dim-description__accent": !this.unstable,
         "c-celestial-dim-description__accent-unstable": this.unstable,
       };
+    },
+    celestialCrunch() {
+      if (player.endgame.celDimExpansion.celestialInfinities.gt(0)) celestialCrunchResetRequest();
+      else Modal.celestialCrunch.show();
     }
   }
 };
@@ -86,44 +94,56 @@ export default {
         Toggle Celestial Matter
       </PrimaryButton>
     </div>
-    <div>
-      <p>
-        You have
-        <span :class="instabilityClassObject()">{{ format(celestialMatter, 2, 1) }}</span>
-        <span v-if="unstable"> Unstable</span> Celestial Matter,
-        <br>
-        <span>
-          increased by
-          <span :class="instabilityClassObject()">{{ formatPow(conversionExponent, 2, 3) }}</span>
-        </span>
-        to a
-        <span :class="instabilityClassObject()">
-          {{ formatX(dimMultiplier, 2, 1) }}<span v-if="!isEffectActive"> (Disabled)</span>
-        </span>
-        multiplier to
-        <span>Game Speed.</span>
-        <div v-if="unstable">
-          You <i>would</i> have <span :class="instabilityClassObject()">{{ format(unnerfedCelestialMatter, 2, 1) }}</span>
-          Celestial Matter, but you don't.
+    <div v-if="!canCrunch || isBroken">
+      <div>
+        <p>
+          You have
+          <span :class="instabilityClassObject()">{{ format(celestialMatter, 2, 1) }}</span>
+          <span v-if="unstable"> Unstable</span> Celestial Matter,
           <br>
-          This is because at <span :class="instabilityClassObject()">{{ format(softcap, 2, 1) }}</span> Celestial Matter, your
-          Celestial Matter was softcapped.
-          <br>
-          Currently, Celestial Matter above this amount is being raised to the power of
-          <span :class="instabilityClassObject()">{{ format(1 / softcapPow, 2, 3) }}</span>.
-          <br>
-          The softcap to Celestial Matter is solely based on your Celestial Matter Softcap Magnitude, which is currently
-          <span :class="instabilityClassObject()">{{ format(softcapPow, 2, 3) }}</span>.
-        </div>
-      </p>
+          <span>
+            increased by
+            <span :class="instabilityClassObject()">{{ formatPow(conversionExponent, 2, 3) }}</span>
+          </span>
+          to a
+          <span :class="instabilityClassObject()">
+            {{ formatX(dimMultiplier, 2, 1) }}<span v-if="!isEffectActive"> (Disabled)</span>
+          </span>
+          multiplier to
+          <span>Game Speed.</span>
+          <div v-if="unstable">
+            You <i>would</i> have <span :class="instabilityClassObject()">{{ format(unnerfedCelestialMatter, 2, 1) }}</span>
+            Celestial Matter, but you don't.
+            <br>
+            This is because at <span :class="instabilityClassObject()">{{ format(softcap, 2, 1) }}</span> Celestial Matter, your
+            Celestial Matter was softcapped.
+            <br>
+            Currently, Celestial Matter above this amount is being raised to the power of
+            <span :class="instabilityClassObject()">{{ format(1 / softcapPow, 2, 3) }}</span>.
+            <br>
+            The softcap to Celestial Matter is solely based on your Celestial Matter Softcap Magnitude, which is currently
+            <span :class="instabilityClassObject()">{{ format(softcapPow, 2, 3) }}</span>.
+          </div>
+        </p>
+      </div>
+      <div v-if="hasRemnant">
+        Remnants of Alpha Decay are raising all Celestial Dimensions to the power of
+        <span class="c-celestial-dim-description__accent-unstable">{{ format(alphaDecayRemnant, 2, 3) }}</span>,
+        which increases to a cap of {{ formatInt(1) }} over {{ formatInt(5) }} real-time hours this Endgame.
+      </div>
+      <div>
+        All Celestial Dimensions can be purchased until {{ format(totalDimCap, 2, 2) }} Celestial Points.
+      </div>
     </div>
-    <div v-if="hasRemnant">
-      Remnants of Alpha Decay are raising all Celestial Dimensions to the power of
-      <span class="c-celestial-dim-description__accent-unstable">{{ format(alphaDecayRemnant, 2, 3) }}</span>,
-      which increases to a cap of {{ formatInt(1) }} over {{ formatInt(5) }} real-time hours this Endgame.
-    </div>
-    <div>
-      All Celestial Dimensions can be purchased until {{ format(totalDimCap, 2, 2) }} Celestial Points.
+    <div v-if="canCrunch && !isBroken">
+      <button
+        :class="{
+          'btn-celestial-crunch': true
+        }"
+        @click="celestialCrunch"
+      >
+        Celestial Crunch
+      </button>
     </div>
     <div>You are getting {{ format(matterPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
     <CelestialTickspeedRow v-if="isExpanded"/>

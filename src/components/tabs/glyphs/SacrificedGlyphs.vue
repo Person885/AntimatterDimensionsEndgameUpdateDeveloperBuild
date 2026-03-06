@@ -20,7 +20,7 @@ export default {
   computed: {
     types: () => GLYPH_TYPES.filter(type => type !== "cursed" && type !== "companion"),
     lastMachines() {
-      return this.lastMachines.lt(DC.E20000)
+      return this.lastMachines.gte(DC.E20000)
         ? `${quantify("Dual Machine", this.lastMachines.dividedBy(DC.E20000), 2)}`
         : (this.lastMachines.lt(DC.E10000)
           ? `${quantify("Reality Machine", this.lastMachines, 2)}`

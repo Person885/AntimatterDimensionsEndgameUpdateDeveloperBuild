@@ -802,7 +802,7 @@ export function preProductionGenerateCIP(diff) {
       genCount = Decimal.floor(player.partCelestialInfinityPoint);
       player.endgame.celDimExpansion.partCelestialInfinityPoint = player.endgame.celDimExpansion.partCelestialInfinityPoint.sub(genCount);
     }
-    let gainedPerGen = player.records.bestCelestialInfinity.time.gte(999999999999) ? DC.D0 : DC.D0;//CelestialInfinityUpgrade smth
+    let gainedPerGen = player.records.bestCelestialInfinity.time.gte(999999999999) ? DC.D0 : GameCache.totalCIPMult.value;
     const gainedThisTick = new Decimal(genCount).times(gainedPerGen);
     if (Decimal.isFinite(gainedThisTick)) Currency.celestialInfinityPoints.add(gainedThisTick);
   }

@@ -422,6 +422,9 @@ export const migrations = {
       if (player.celestials.pelle.doomed) player.dilation.rebuyables[3] = 0;
     },
     //Start with 100 since Endgame is a "new era"
+    100: player => {
+      endgameMigration(player);
+    },
     101: player => {
       endgameMigration(player);
     }

@@ -10725,7 +10725,7 @@ kbd {
 
 .o-celestial-infinity-upgrade--bought {
   color: black;
-  background-color: linear-gradient(var(--color-infinity), var(--color-celestials));
+  background: linear-gradient(var(--color-infinity), var(--color-celestials));
   border-color: black;
   cursor: default;
 }
@@ -10736,7 +10736,7 @@ kbd {
 
 .s-base--metro .o-celestial-infinity-upgrade--bought {
   color: black;
-  background-color: linear-gradient(var(--color-infinity), var(--color-celestials));
+  background: linear-gradient(var(--color-infinity), var(--color-celestials));
   border-color: black;
 }
 
@@ -10788,7 +10788,7 @@ kbd {
 .t-s6 .o-celestial-infinity-upgrade--bought,
 .t-s10 .o-celestial-infinity-upgrade--bought {
   color: var(--color-text-inverted);
-  background-color: linear-gradient(var(--color-infinity), var(--color-celestials));
+  background: linear-gradient(var(--color-infinity), var(--color-celestials));
   border-color: black;
 }
 

@@ -106,7 +106,7 @@ export const pelleRifts = {
       const fill = totalFill > 6.5
         ? (totalFill - 6.5) / 7 + 6.5
         : totalFill;
-      return Decimal.pow(6, Decimal.pow(6, Decimal.pow(6, Math.max(fill, 200) / 10 + 0.1)).minus(6))
+      return Decimal.pow(6, Decimal.pow(6, Decimal.pow(6, Math.min(fill, 200) / 10 + 0.1)).minus(6))
         .div(1e5)
         .plus(Decimal.pow(10, fill / 10 + 0.1))
         .times(Decimal.pow(6, Decimal.pow(6, Decimal.log10(Math.max(fill - 199, 1)).pow(3)).sub(1)));

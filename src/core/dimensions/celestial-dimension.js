@@ -3,7 +3,7 @@ import { DimensionState } from "./dimension";
 
 export function celestialDimensionCommonMultiplier() {
   let mult = DC.D1;
-  mult = mult.timesEffectsOf(EndgameUpgrade(11));
+  mult = mult.timesEffectsOf(EndgameUpgrade(11), CelestialInfinityUpgrade.rawCelestialDimMult, CelestialInfinityUpgrade.antimatterCeelstialDimBuff);
   mult = mult.times(Ethereal.sectorBoost);
   mult = mult.times(CelestialDimBoost.multiplierToCDTier());
   return mult;
@@ -117,7 +117,7 @@ class CelestialDimensionState extends DimensionState {
   }
 
   get powerMultiplier() {
-    return new Decimal(this._powerMultiplier).pow(SingularityMilestone.perPurchaseDimMult.effectOrDefault(1));
+    return new Decimal(CelestialInfinityUpgrade.celDimPurchaseBoost.effectOrDefault(this._powerMultiplier)).pow(SingularityMilestone.perPurchaseDimMult.effectOrDefault(1));
   }
 
   get purchases() {
@@ -281,7 +281,7 @@ export const CelestialDimensions = {
 
   get conversionExponent() {
     if (player.disablePostReality && !Alpha.isRunning) return 0;
-    let base = 2;
+    let base = CelestialInfinityUpgrade.celestialMatterConversionBuff.effectOrDefault(2);
     if (Pelle.isDoomed) base /= 10;
     let exponent = 1;
     if (base > 1) exponent *= Effects.product(EndgameMastery(104), Ra.unlocks.celestialDimensionConversionPower);
@@ -292,7 +292,7 @@ export const CelestialDimensions = {
 
 export function getCelestialTickSpeedMultiplier() {
   const base = new Decimal(1.05);
-  const eachGalaxy = new Decimal(1.02);
+  const eachGalaxy = new Decimal(CelestialInfinityUpgrade.celGalaxyBuff.effectOrDefault(1.02));
   const galaxies = player.endgame.celDimExpansion.galaxies;
   return base.times(eachGalaxy.pow(galaxies));
 }
@@ -381,7 +381,7 @@ class CelestialDimBoostRequirement {
 
 export class CelestialDimBoost {
   static get power() {
-    return DC.E1;
+    return new Decimal(CelestialInfinityUpgrade.celDimBoostBuff.effectOrDefault(10));
   }
 
   static multiplierToCDTier() {
@@ -778,8 +778,8 @@ function celestialCrunchTabChange(firstCelestialInfinity) {
 
 export function secondSoftCelestialReset() {
   Endgame.resetNoReward();
-  player.endgame.celDimExpansion.dimBoosts = DC.D0;
-  player.endgame.celDimExpansion.galaxies = DC.D0;
+  player.endgame.celDimExpansion.dimBoosts = new Decimal(CelestialInfinityUpgrade.buffedStart.effectOrDefault(0));
+  player.endgame.celDimExpansion.galaxies = CelestialInfinityUpgrade.buffedStart.isBought ? DC.D1 : DC.D0;
   player.records.thisCelestialInfinity.maxCM = DC.D0;
   Currency.unnerfedCelestialMatter.reset();
   Currency.celestialMatter.reset();

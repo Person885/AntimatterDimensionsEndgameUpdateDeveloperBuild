@@ -287,6 +287,13 @@ window.GLYPH_MIME_TYPE = "text/x-ivark-glyph";
 // in order for reality glyph color parsing to work properly in the cosmetic handler
 window.GlyphRarities = [
   {
+    minStrength: 4.75,
+    name: "Empyrean",
+    darkColor: "#20a0a0",
+    lightColor: "#208080",
+    darkHighContrast: "#40ffff",
+    lightHighContrast: "#40c0c0"
+  }, {
     minStrength: 4.125,
     name: "Elysian",
     darkColor: "#8020a0",

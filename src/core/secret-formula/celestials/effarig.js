@@ -79,12 +79,12 @@ export const effarigUnlocks = {
     cost: new Decimal("1e4550")
   },
   maxRarityBoost: {
-    id: 9,
+    id: 10,
     description: "Relic Shards boost Glyph Rarity cap at a reduced rate",
     cost: new Decimal("1e4750")
   },
   extendRun: {
-    id: 10,
+    id: 11,
     description: "Unlock Effarig’s Endgame",
     cost: new Decimal("1e5000")
   }

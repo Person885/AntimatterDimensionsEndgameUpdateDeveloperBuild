@@ -222,6 +222,7 @@ export default {
         celestialInfinity.hasBest = bestCelestialInfinity.realTime < 999999999999;
         celestialInfinity.best.setFrom(bestCelestialInfinity.time);
         celestialInfinity.this.setFrom(records.thisCelestialInfinity.time);
+        celestialInfinity.thisReal.setFrom(new Decimal(records.thisCelestialInfinity.realTime));
         celestialInfinity.bestRate.copyFrom(bestCelestialInfinity.bestCIPminCelestialEternity);
       }
       this.updateMatterScale();

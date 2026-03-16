@@ -606,16 +606,10 @@ Currency.celestialMatter = new class extends DecimalCurrency {
     player.records.thisCelestialInfinity.maxCM = player.records.thisCelestialInfinity.maxCM.max(value);
     player.records.thisCelestialEternity.maxCM = player.records.thisCelestialEternity.maxCM.max(value);
     player.records.thisCelestialReality.maxCM = player.records.thisCelestialReality.maxCM.max(value);
-  }
-
-  add(amount) {
-    super.add(amount);
-    if (amount.gt(0)) {
-      player.records.totalCelMatter = player.records.totalCelMatter.add(amount);
-      player.records.totalCelestialRealityCelMatter = player.records.totalCelestialRealityCelMatter.add(amount);
-      player.records.totalCelestialEternityCelMatter = player.records.totalCelestialEternityCelMatter.add(amount);
-      player.records.totalCelestialInfinityCelMatter = player.records.totalCelestialInfinityCelMatter.add(amount);
-    }
+    player.records.totalCelMatter = player.records.totalCelMatter.max(value);
+    player.records.totalCelestialRealityCelMatter = player.records.totalCelestialRealityCelMatter.max(value);
+    player.records.totalCelestialEternityCelMatter = player.records.totalCelestialEternityCelMatter.max(value);
+    player.records.totalCelestialInfinityCelMatter = player.records.totalCelestialInfinityCelMatter.max(value);
   }
 }();
 

@@ -603,13 +603,6 @@ Currency.celestialMatter = new class extends DecimalCurrency {
   set value(value) {
     const newValue = Decimal.min(value, DC.NUMMAX);
     player.endgame.celestialMatter = newValue;
-    player.records.thisCelestialInfinity.maxCM = player.records.thisCelestialInfinity.maxCM.max(value);
-    player.records.thisCelestialEternity.maxCM = player.records.thisCelestialEternity.maxCM.max(value);
-    player.records.thisCelestialReality.maxCM = player.records.thisCelestialReality.maxCM.max(value);
-    player.records.totalCelMatter = player.records.totalCelMatter.max(value);
-    player.records.totalCelestialRealityCelMatter = player.records.totalCelestialRealityCelMatter.max(value);
-    player.records.totalCelestialEternityCelMatter = player.records.totalCelestialEternityCelMatter.max(value);
-    player.records.totalCelestialInfinityCelMatter = player.records.totalCelestialInfinityCelMatter.max(value);
   }
 }();
 

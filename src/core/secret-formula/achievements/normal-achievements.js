@@ -1562,7 +1562,7 @@ export const normalAchievements = [
     description: "Encounter the third Pelle Strike.",
     checkRequirement: () => PelleStrikes.eternity.hasStrike,
     checkEvent: GAME_EVENT.PELLE_STRIKE_UNLOCKED,
-    progress: () => Achievement(184).isUnlocked ? DC.D1 : (!Pelle.isDoomed ? DC.DM1 : Decimal.clamp(Currency.infinityPoints.value.add(1).log10().div(Decimal.log10(DC.NUMMAX), 0, 1))
+    progress: () => Achievement(184).isUnlocked ? DC.D1 : (!Pelle.isDoomed ? DC.DM1 : Decimal.clamp(Currency.infinityPoints.value.add(1).log10().div(Decimal.log10(DC.NUMMAX)), 0, 1))
   },
   {
     id: 185,

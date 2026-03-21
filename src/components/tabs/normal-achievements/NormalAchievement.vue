@@ -108,7 +108,7 @@ export default {
     },
     achieveProgress() {
       if (this.achievementProgress.lt(0)) return "Progress: Failed";
-      return `Progress: ${formatPercents(this.achievementProgress, 2, 2)}`;
+      return `Progress: ${formatDecimalPercents(this.achievementProgress, 2, 2)}`;
     }
   },
   beforeDestroy() {

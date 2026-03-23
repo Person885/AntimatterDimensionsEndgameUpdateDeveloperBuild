@@ -972,7 +972,7 @@ export const normalAchievements = [
       return `The multiplier from Dimension Boosts to Antimatter Dimensions is ${formatPercents(0.01)} higher.`;
     },
     effect: () => player.disablePostReality ? 1 : 1.01,
-    progress: () => Achievement(117).isUnlocked ? DC.D1 : Decimal.clamp(DimBoost.maxBuyableDimBoosts.div(750), 0, 1);
+    progress: () => Achievement(117).isUnlocked ? DC.D1 : Decimal.clamp(DimBoost.maxBuyableDimBoosts.div(750), 0, 1)
   },
   {
     id: 118,

@@ -95,7 +95,7 @@ export const normalAchievements = [
     get description() { return `Encounter ${formatInt(50)} different news messages.`; },
     checkRequirement: () => NewsHandler.uniqueTickersSeen >= 50,
     checkEvent: GAME_EVENT.REALITY_RESET_AFTER,
-    progress: () => Achievement(22).isUnlocked ? DC.D1 : Decimal.clamp(NewsHandler.uniqueTickersSeen.div(50), 0, 1)
+    progress: () => Achievement(22).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(NewsHandler.uniqueTickersSeen).div(50), 0, 1)
   },
   {
     id: 23,
@@ -1302,7 +1302,7 @@ export const normalAchievements = [
     get description() { return `Have ${formatInt(100)} Glyphs in your inventory.`; },
     checkRequirement: () => Glyphs.inventoryList.length >= 100,
     checkEvent: GAME_EVENT.GLYPHS_CHANGED,
-    progress: () => Achievement(152).isUnlocked ? DC.D1 : Decimal.clamp(Glyphs.inventoryList.length.div(100), 0, 1)
+    progress: () => Achievement(152).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(Glyphs.inventoryList.length).div(100), 0, 1)
   },
   {
     id: 153,

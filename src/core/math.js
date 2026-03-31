@@ -793,7 +793,7 @@ window.getInverseHybridCostScaling = function getInverseHybridCostScaling(
   	estimation = logScale.add(logScaleGrowth.div(2)).neg().add(Decimal.sqrt(Decimal.sqr(logScale.add(logScaleGrowth.div(2))).add(
       logScaleGrowth.times(logMoneyAfterInfinity).times(2)))).div(logScaleGrowth).add(purchasesAtInfinity);
   }
-  if (amountOfMoney.gte(getHybridCostScaling(estimation.sub(1), linCostScalingStart, linInitialCost, linCostMult,
+  if (amountOfMoney.gte(getHybridCostScaling(estimation.sub(1).toNumber(), linCostScalingStart, linInitialCost, linCostMult,
     linCostMultGrowth, expInitialCost, expCostMult, expCostMultGrowth))) return estimation;
   return estimation.sub(1);
 };

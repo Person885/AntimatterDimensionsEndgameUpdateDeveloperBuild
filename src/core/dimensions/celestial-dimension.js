@@ -933,7 +933,7 @@ class RebuyableCelestialBreakInfinityUpgradeState extends RebuyableMechanicState
   }
 
   get isCapped() {
-    return this.boughtAmount === this.config.maxUpgrades();
+    return this.boughtAmount === this.config.maxUpgrades;
   }
 
   onPurchased() {

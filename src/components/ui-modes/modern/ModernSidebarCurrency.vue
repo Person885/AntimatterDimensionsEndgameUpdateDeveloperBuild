@@ -193,4 +193,11 @@ export default {
 .o-sidebar-currency--ethereal {
   color: #0000ff;
 }
+
+.o-sidebar-currency--celestial-infinity {
+  background: linear-gradient(var(--color-infinity), var(--color-celestials));
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
 </style>

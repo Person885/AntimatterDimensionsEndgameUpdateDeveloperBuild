@@ -1517,6 +1517,10 @@ export const Player = {
     return GameCache.bestRunIPPM.value;
   },
 
+  get bestRunCIPPM() {
+    return GameCache.bestRunCIPPM.value;
+  },
+
   get averageRealTimePerEternity() {
     return GameCache.averageRealTimePerEternity.value;
   },

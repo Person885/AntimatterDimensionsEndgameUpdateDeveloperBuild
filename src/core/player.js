@@ -1290,6 +1290,7 @@ window.player = {
       cipMultUpgrades: DC.D0,
       partCelestialInfinityPoint: DC.D0,
       isBroken: false,
+      celestialInfinityRebuyables: [0, 0, 0, 0, 0, 0],
     },
   },
   endgameMasteries: {

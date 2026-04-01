@@ -925,11 +925,11 @@ class RebuyableCelestialBreakInfinityUpgradeState extends RebuyableMechanicState
   }
 
   get boughtAmount() {
-    return player.celestialInfinityRebuyables[this.id];
+    return player.endgame.celDimExpansion.celestialInfinityRebuyables[this.id];
   }
 
   set boughtAmount(value) {
-    player.celestialInfinityRebuyables[this.id] = value;
+    player.endgame.celDimExpansion.celestialInfinityRebuyables[this.id] = value;
   }
 
   get isCapped() {

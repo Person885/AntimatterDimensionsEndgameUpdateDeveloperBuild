@@ -210,7 +210,8 @@ export const CelestialDimensions = {
   all: CelestialDimension.index.compact(),
   HARDCAP_PURCHASES: DC.C2P1024,
   get SOFTCAP() {
-    return DC.E100.timesEffectsOf(EndgameMastery(94), EndgameUpgrade(5)).times(Ethereal.sectorBoost).pow(CelestialDimensions.alphaDecayRemnant);
+    const base = DC.E100.timesEffectsOf(EndgameMastery(94), EndgameUpgrade(5)).times(Ethereal.sectorBoost).pow(CelestialDimensions.alphaDecayRemnant);
+    return Decimal.min(base, DC.NUMMAX).times(Decimal.pow(base.div(DC.NUMMAX).max(1), 1 / CelestialDimensions.OVERFLOW_MAG));
   },
 
   get OVERFLOW_MAG() {

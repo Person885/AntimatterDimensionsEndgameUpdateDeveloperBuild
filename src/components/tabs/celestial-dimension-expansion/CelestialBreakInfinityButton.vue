@@ -29,8 +29,8 @@ export default {
       this.isUnlocked = player.endgame.celDimExpansion.isBreakUnlocked;
     },
     clicked() {
-      if (!this.isUnlocked && player.endgame.celestialPoints.gte(10000)) {
-        Currency.celestialPoints.purchase(10000);
+      if (!this.isUnlocked && player.endgame.celDimExpansion.celestialInfinityPoints.gte(10000)) {
+        Currency.celestialInfinityPoints.purchase(10000);
         player.endgame.celDimExpansion.isBreakUnlocked = true;
       }
       if (!this.isBroken && this.isUnlocked) Modal.breakCelestialInfinity.show();

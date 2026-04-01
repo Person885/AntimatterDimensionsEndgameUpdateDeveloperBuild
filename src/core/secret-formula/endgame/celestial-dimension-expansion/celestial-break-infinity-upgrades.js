@@ -4,14 +4,14 @@ function rebuyable(config) {
   return {
     rebuyable: true,
     id,
-    cost: () => config.initialCost() * Math.pow(config.costIncrease, player.endgame.celDimExpansion.celestialInfinityRebuyables[config.id]),
+    cost: () => config.initialCost * Math.pow(config.costIncrease, player.endgame.celDimExpansion.celestialInfinityRebuyables[config.id]),
     maxUpgrades,
     description,
     effect: () => effectFunction(player.endgame.celDimExpansion.celestialInfinityRebuyables[config.id]),
     isDisabled,
     formatEffect: config.formatEffect ||
       (value => {
-        return (value === config.maxUpgrades()
+        return (value === config.maxUpgrades
           ? `Currently: ${formatX(10 - value)}`
           : `Currently: ${formatX(10 - value)} | Next: ${formatX(10 - value - 1)}`);
       }),

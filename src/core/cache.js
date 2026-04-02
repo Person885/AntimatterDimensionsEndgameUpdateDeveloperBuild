@@ -89,6 +89,14 @@ export const GameCache = {
     AlphaUnlocks.breakUpgrades.effects.buffB
   ))),
 
+  celestialTickSpeedMultDecrease: new Lazy(() => Effects.sum(
+    CelestialBreakInfinityUpgrade.celTickspeedCostMult
+  )),
+
+  celestialDimensionMultDecrease: new Lazy(() => Effects.sum(
+    CelestialBreakInfinityUpgrade.celDimCostMult
+  )),
+
   timeStudies: new Lazy(() => NormalTimeStudyState.studies
     .map(s => player.timestudy.studies.includes(s.id))),
 

@@ -406,10 +406,10 @@ export const glyphEffects = {
     singleDesc: "Dimension Boost multiplier ×{value}",
     genericDesc: "Dimension Boost multiplier",
     shortDesc: "Dimboost mult. ×{value}",
-    effect: (level, strength) => Math.clampMin(Math.pow(level * strength, 0.5) *
-      Math.pow(1 + GlyphAlteration.sacrificeBoost("power"), 3), 1),
+    effect: (level, strength) => Decimal.clampMin(Decimal.pow(level * strength, 0.5).times(
+      Decimal.pow(1 + GlyphAlteration.sacrificeBoost("power"), 3)), 1),
     formatEffect: x => format(x, 2, 2),
-    combine: GlyphCombiner.multiply,
+    combine: GlyphCombiner.multiplyDecimal,
     alteredColor: () => GlyphAlteration.getBoostColor("power"),
     alterationType: ALTERATION_TYPE.BOOST,
     enabledInDoomed: true,

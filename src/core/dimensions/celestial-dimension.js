@@ -150,7 +150,6 @@ class CelestialDimensionState extends DimensionState {
   }
 
   fullReset() {
-    this.cost = new Decimal(this.baseCost);
     this.amount = DC.D0;
     this.bought = DC.D0;
     this.baseAmount = DC.D0;
@@ -170,11 +169,11 @@ class CelestialDimensionState extends DimensionState {
 
   // Only ever called from manual actions
   buySingle() {
+    const dimension = CelestialDimension(this.tier);
     if (!this.isUnlocked) return this.unlock();
     if (!this.isAvailableForPurchase) return false;
 
     Currency.celestialPoints.purchase(this.cost);
-    this.cost = Decimal.round(this.cost.times(this.costMultiplier));
     this.amount = this.amount.plus(1);
     this.baseAmount = this.baseAmount.plus(1);
 
@@ -183,6 +182,7 @@ class CelestialDimensionState extends DimensionState {
 
   buyMax() {
     const dimension = CelestialDimension(this.tier);
+    if (!this.isUnlocked) return this.unlock();
     if (!this.isAvailableForPurchase) return false;
 
     let purchasesUntilHardcap = this.purchaseCap.sub(this.purchases);

@@ -328,7 +328,7 @@ export const glyphEffects = {
       : "IP ×{value}"),
     effect: (level, strength) => Decimal.clampMin(Decimal.pow(level * (strength + 1), 6).times(10000), 1),
     formatEffect: x => format(x, 2, 3),
-    combine: effects => {
+    combine: (effects) => {
       let sum = effects.reduce(Decimal.prodReducer, DC.D1);
       return Effarig.eternityCap !== undefined && sum.gt(Effarig.eternityCap)
         ? { value: Decimal.min(sum, Effarig.eternityCap), capped: true }

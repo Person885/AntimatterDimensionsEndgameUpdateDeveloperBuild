@@ -772,8 +772,8 @@ window.getInverseHybridCostScaling = function getInverseHybridCostScaling(
 ) {
   if (amountOfMoney.lt(linInitialCost)) return DC.D0;
   let estimation = DC.D0;
-  const firstPurchOverScale = Decimal.floor(Decimal.log10(linCostScalingStart / linInitialCost).div(Decimal.log10(linCostMult)));
-  const firstCostOverScale = Decimal.pow(linCostMult, firstPurchOverScale).times(linInitialCost);
+  const firstPurchOverScale = Decimal.floor(Decimal.log10(linCostScalingStart / linInitialCost).div(Decimal.log10(linCostMult))).add(1);
+  const firstCostOverScale = Decimal.pow(linCostMult, firstPurchOverScale.sub(1)).times(linInitialCost);
   if (amountOfMoney.lt(firstCostOverScale)) {
     const pastStart = amountOfMoney.div(linInitialCost);
 	  estimation = Decimal.floor(Decimal.log10(pastStart).div(Decimal.log10(linCostMult))).add(1);
@@ -781,12 +781,12 @@ window.getInverseHybridCostScaling = function getInverseHybridCostScaling(
   if (amountOfMoney.gte(firstCostOverScale) && amountOfMoney.lt(DC.NUMMAX)) {
 	  const afterScale = new LinearMultiplierScaling(linCostMult, linCostMultGrowth).purchasesForLogTotalMultiplier(
       Decimal.ln(amountOfMoney.div(firstCostOverScale)).toNumber());
-	  estimation = Decimal.floor(firstPurchOverScale.add(afterScale)).add(1);
+	  estimation = Decimal.floor(firstPurchOverScale.add(afterScale));
   }
   if (amountOfMoney.gte(DC.NUMMAX)) {
   	const purchasesAtInfinity = Decimal.floor(new LinearMultiplierScaling(linCostMult, linCostMultGrowth).purchasesForLogTotalMultiplier(
-      Decimal.ln(DC.NUMMAX.div(firstCostOverScale)).toNumber()) + firstPurchOverScale.toNumber()).add(1);
-  	if (amountOfMoney.lt(expInitialCost)) return purchasesAtInfinity;
+      Decimal.ln(DC.NUMMAX.div(firstCostOverScale)).toNumber()) + firstPurchOverScale.toNumber());
+  	if (amountOfMoney.lt(expInitialCost)) estimation = purchasesAtInfinity;
   	const logMoneyAfterInfinity = Decimal.log10(amountOfMoney).sub(Decimal.log10(expInitialCost));
   	const logScale = Decimal.log10(expCostMult);
   	const logScaleGrowth = Decimal.log10(expCostMultGrowth);

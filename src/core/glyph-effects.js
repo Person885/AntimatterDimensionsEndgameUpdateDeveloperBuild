@@ -159,10 +159,6 @@ class GlyphEffectConfig {
       if (emptyCombine.value === undefined || emptyCombine.capped === undefined) {
         throw new Error(`The combine function for Glyph effect "${setup.id}" has invalid return type`);
       }
-      if (setup.softcap) {
-        throw new Error(`The combine function for Glyph effect "${setup.id}" gives capped information, ` +
-          `but there's also a softcap method`);
-      }
     }
   }
 

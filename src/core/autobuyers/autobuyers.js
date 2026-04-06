@@ -4,6 +4,7 @@ import { BigCrunchAutobuyerState } from "./big-crunch-autobuyer";
 import { BlackHolePowerAutobuyerState } from "./black-hole-power-autobuyer";
 import { BulkSingularityAutobuyerState } from "./bulk-singularity-autobuyer";
 import { CelestialDimensionAutobuyerState } from "./celestial-dimension-autobuyer";
+import { CelestialTickspeedAutobuyerState } from "./celestial-tickspeed-autobuyer";
 import { DarkMatterDimensionAscensionAutobuyerState } from "./dark-matter-dimension-ascension-autobuyer";
 import { DarkMatterDimensionAutobuyerState } from "./dark-matter-dimension-autobuyer";
 import { DilationUpgradeAutobuyerState } from "./dilation-upgrade-autobuyer";
@@ -36,6 +37,7 @@ export const Autobuyer = {
   blackHolePower: BlackHolePowerAutobuyerState.createAccessor(),
   bulkSingularity: new BulkSingularityAutobuyerState(),
   celestialDimension: CelestialDimensionAutobuyerState.createAccessor(),
+  celestialTickspeed: new CelestialTickspeedAutobuyerState(),
   darkMatterDimsAscension: new DarkMatterDimensionAscensionAutobuyerState(),
   darkMatterDims: new DarkMatterDimensionAutobuyerState(),
   dilationUpgrade: DilationUpgradeAutobuyerState.createAccessor(),
@@ -96,7 +98,8 @@ export const Autobuyers = (function() {
     Autobuyer.tickspeed,
     Autobuyer.galaxy,
     Autobuyer.dimboost,
-    Autobuyer.bulkSingularity
+    Autobuyer.bulkSingularity,
+    Autobuyer.celestialTickspeed
   ].concat(single);
 
   const arrays = [

@@ -13,6 +13,13 @@ export function toggleCelestialMatter() {
   player.endgame.celestialMatterMultiplier.isActive = !isEnabled;
 }
 
+export function toggleAllCelDims() {
+  const areEnabled = Autobuyer.celestialDimension(1).isActive;
+  for (let i = 1; i < 9; i++) {
+    Autobuyer.celestialDimension(i).isActive = !areEnabled;
+  }
+}
+
 class CelestialDimensionState extends DimensionState {
   constructor(tier) {
     super(() => player.dimensions.celestial, tier);

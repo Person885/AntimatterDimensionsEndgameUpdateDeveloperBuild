@@ -52,7 +52,7 @@ export default {
     :show-interval="!isBuyMaxUnlocked"
   >
     <template
-      v-else-if="isBuyMaxUnlocked"
+      v-if="isBuyMaxUnlocked"
       #intervalSlot
     >
       <div class="c-autobuyer-box__small-text">

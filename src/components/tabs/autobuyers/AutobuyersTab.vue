@@ -2,6 +2,7 @@
 import AutobuyerToggles from "./AutobuyerToggles";
 import BigCrunchAutobuyerBox from "./BigCrunchAutobuyerBox";
 import BulkSingularityAutobuyerBox from "./BulkSingularityAutobuyerBox";
+import CelestialTickspeedAutobuyerBox from "./CelestialTickspeedAutobuyerBox";
 import DimensionAutobuyerBox from "./DimensionAutobuyerBox";
 import DimensionBoostAutobuyerBox from "./DimensionBoostAutobuyerBox";
 import EndgameAutobuyerBox from "./EndgameAutobuyerBox";
@@ -24,6 +25,7 @@ export default {
     GalaxyAutobuyerBox,
     DimensionBoostAutobuyerBox,
     BulkSingularityAutobuyerBox,
+    CelestialTickspeedAutobuyerBox,
     TickspeedAutobuyerBox,
     DimensionAutobuyerBox,
     SimpleAutobuyersMultiBox
@@ -94,6 +96,7 @@ export default {
     <GalaxyAutobuyerBox />
     <DimensionBoostAutobuyerBox />
     <BulkSingularityAutobuyerBox />
+    <CelestialTickspeedAutobuyerBox />
     <TickspeedAutobuyerBox v-if="!hasContinuum" />
     <template v-if="displayADAutobuyersIndividually">
       <DimensionAutobuyerBox

@@ -10,6 +10,14 @@ export default {
     HeaderEternityContainer,
     HeaderInfinityContainer,
   },
+  computed: {
+    classObject() {
+      return {
+        "c-prestige-info-blocks": true,
+        "c-prestige-info-blocks--tall": Alpha.isDestroyed
+      };
+    }
+  }
 };
 </script>
 
@@ -28,6 +36,10 @@ export default {
   height: 14rem;
   width: 100%;
   color: var(--color-text);
+}
+
+.c-prestige-info-blocks--tall {
+  height: 24rem;
 }
 
 .l-game-header__eternity {

@@ -142,10 +142,18 @@ window.player = {
       lastTick: 0
     },
     celestialDimBoost: {
-      limitDimBoosts: false,
-      maxDimBoosts: 1,
-      limitUntilGalaxies: false,
-      galaxies: 10,
+      limitCelDimBoosts: false,
+      maxCelDimBoosts: 1,
+      limitUntilCelGalaxies: false,
+      celGalaxies: 10,
+      buyMaxInterval: 0,
+      isActive: true,
+      lastTick: 0
+    },
+    celestialGalaxy: {
+      limitCelGalaxies: false,
+      maxCelGalaxies: 1,
+      buyMax: false,
       buyMaxInterval: 0,
       isActive: true,
       lastTick: 0

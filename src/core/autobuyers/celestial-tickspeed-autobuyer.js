@@ -10,7 +10,7 @@ export class CelestialTickspeedAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get isUnlocked() {
-    return CelestialBreakInfinityUpgrade.autoCDPlus;
+    return CelestialBreakInfinityUpgrade.autoCDPlus.isBought;
   }
 
   get interval() {

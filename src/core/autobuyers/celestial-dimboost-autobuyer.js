@@ -1,6 +1,6 @@
 import { IntervaledAutobuyerState } from "./autobuyer";
 
-export class DimBoostAutobuyerState extends IntervaledAutobuyerState {
+export class CelestialDimBoostAutobuyerState extends IntervaledAutobuyerState {
   get data() {
     return player.auto.celDimBoost;
   }

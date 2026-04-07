@@ -125,7 +125,12 @@ class CelQuotes extends BitUpgradeState {
     return player.celestials[this._celestial] ? player.celestials[this._celestial].quoteBits : player.expanse.elemental.quoteBits;
   }
   set bits(value) {
-    (player.celestials[this._celestial] ? player.celestials[this._celestial].quoteBits : player.expanse.elemental.quoteBits) = value;
+    if (player.celestials[this._celestial]) {
+      player.celestials[this._celestial].quoteBits = value;
+    }
+    else {
+      player.expanse.elemental.quoteBits = value;
+    }
   }
 
   get isUnlocked() {

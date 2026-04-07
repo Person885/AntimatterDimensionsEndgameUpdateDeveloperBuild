@@ -185,6 +185,10 @@ body.t-s12 {
   border-left-color: var(--color-endgame);
 }
 
+.o-tab-btn--cd-expansion::after {
+  border-left-color: var(--color-alpha--base);
+}
+
 .tab-button.shop {
   background-color: #d9bb26;
 }

@@ -349,6 +349,16 @@ body.t-s12 {
   border-top-color: var(--color-endgame);
 }
 
+.o-tab-btn--cd-expansion .o-subtab__tooltip {
+  color: var(--color-alpha--base);
+  background-color: var(--color-prestige--accent);
+  border-color: var(--color-alpha--base);
+}
+
+.o-tab-btn--cd-expansion .o-subtab__tooltip::after {
+  border-top-color: var(--color-alpha--base);
+}
+
 .active {
   background-color: #2c2933;
 }

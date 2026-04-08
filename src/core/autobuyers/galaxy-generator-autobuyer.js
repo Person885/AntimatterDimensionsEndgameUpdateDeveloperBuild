@@ -41,7 +41,7 @@ export class GalaxyGeneratorAutobuyerState extends IntervaledAutobuyerState {
     }
   }
 
-  static get entryCount() { return DivinityMilestone.firstDivine.isReached ? 7 : 6; }
+  static get entryCount() { return 7; }
   static get autobuyerGroupName() { return "Galaxy Generator Upgrade"; }
   static get isActive() { return player.auto.galaxyGenerator.isActive; }
   static set isActive(value) { player.auto.galaxyGenerator.isActive = value; }

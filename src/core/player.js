@@ -941,6 +941,7 @@ window.player = {
         galaxyGeneratorIPMult: 0,
         galaxyGeneratorEPMult: 0,
         galaxyGeneratorRSMult: 0,
+        galaxyGeneratorDTMult: 0,
       },
       rifts: {
         vacuum: {

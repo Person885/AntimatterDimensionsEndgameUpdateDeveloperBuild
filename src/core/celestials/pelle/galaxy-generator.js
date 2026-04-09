@@ -48,7 +48,7 @@ export const GalaxyGenerator = {
   },
 
   get harshInstabilityStart() {
-    return 1e60;
+    return new Decimal(1e60);
   },
 
   harshGalGenInstabilityByGalaxies(currGalaxies) {
@@ -63,8 +63,8 @@ export const GalaxyGenerator = {
   },
 
   get instabilityStart() {
-    const delay = GalacticPowers.galGenInstability1.isUnlocked ? GalacticPowers.galGenInstability1.reward : 1;
-    return 1e10 * delay;
+    const delay = GalacticPowers.galGenInstability1.isUnlocked ? GalacticPowers.galGenInstability1.reward : DC.D1;
+    return delay.times(1e10);
   },
 
   gainPerSecondPostCapByGalaxies(currGalaxies) {

@@ -69,7 +69,7 @@ export const Hexeracts = {
 
   get canBuyHexeract() {
     return DualityUpgrade(25).isBought && player.celestials.laitela.hadronizes >= 40 &&
-      Currency.darkMatter.gte(Hexeracts.nextCost) && !player.disablePostReality && Pelle.isDoomed;
+      Currency.darkMatter.gte(Hexeracts.nextCost) && !player.disablePostReality && !Pelle.isDoomed;
   },
 
   softcapReduction(count = this.bought, extra = this.extra) {
@@ -112,7 +112,7 @@ export const Hepteracts = {
 
   get canBuyHepteract() {
     return DualityUpgrade(25).isBought && false &&
-      Currency.celestialPoints.gte(Hepteracts.nextCost) && !player.disablePostReality && Pelle.isDoomed;
+      Currency.celestialPoints.gte(Hepteracts.nextCost) && !player.disablePostReality && !Pelle.isDoomed;
   },
 
   softcapReduction(count = this.bought, extra = this.extra) {
@@ -155,7 +155,7 @@ export const Octeracts = {
 
   get canBuyOcteract() {
     return DualityUpgrade(25).isBought && false &&
-      DC.D0.gte(Octeracts.nextCost) && !player.disablePostReality && Pelle.isDoomed;
+      DC.D0.gte(Octeracts.nextCost) && !player.disablePostReality && !Pelle.isDoomed;
   },
 
   cubeBoost(count = this.bought, extra = this.extra) {

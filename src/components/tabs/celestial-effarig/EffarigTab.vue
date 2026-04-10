@@ -164,9 +164,9 @@ export default {
         />
         <EffarigUnlockButton
           v-if="hasSecondShop"
-          v-for="(unlock, i) in secondShopUnlocks"
-          :key="i"
-          :unlock="unlock"
+          v-for="(secondUnlock, k) in secondShopUnlocks"
+          :key="k"
+          :unlock="secondUnlock"
         />
         <button
           v-if="vIsFlipped"
@@ -200,9 +200,9 @@ export default {
           {{ runDescription }}
         </div>
         <EffarigRunUnlockReward
-          v-for="(secondUnlock, j) in runUnlocks"
+          v-for="(runRewardUnlock, j) in runUnlocks"
           :key="j"
-          :unlock="secondUnlock"
+          :unlock="runRewardUnlock"
         />
       </div>
     </div>

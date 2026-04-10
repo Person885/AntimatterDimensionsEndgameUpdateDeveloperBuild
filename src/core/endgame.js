@@ -165,6 +165,10 @@ export const Endgame = {
       for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.endgameGlyph(type));
       for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.endgameGlyph(type));
     }
+    if (Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME && !EffarigUnlock.endgame.isUnlocked) {
+      player.disablePostReality = false;
+      EffarigUnlock.endgame.unlock();
+    }
     EventHub.dispatch(GAME_EVENT.ENDGAME_RESET_AFTER);
 
     // The ending animation ends at 12.5, although the value continues to increase after that. We set it to a bit above

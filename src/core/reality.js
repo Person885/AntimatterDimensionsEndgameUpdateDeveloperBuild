@@ -615,7 +615,9 @@ export function finishProcessReality(realityProps) {
   }
 
   let celestialRunState;
-  if (!Alpha.isRunning || Alpha.currentStage !== 27) celestialRunState = clearCelestialRuns();
+  if (!(Alpha.isRunning && Alpha.currentStage === 27 || Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME)) {
+    celestialRunState = clearCelestialRuns();
+  }
   recalculateAllGlyphs();
   Glyphs.updateMaxGlyphCount(true);
 

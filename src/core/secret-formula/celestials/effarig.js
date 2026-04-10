@@ -90,5 +90,12 @@ export const effarigUnlocks = {
     id: 11,
     description: "Unlock Effarig’s Endgame",
     cost: new Decimal("1e5000")
-  }
+  },
+  endgame: {
+    id: 12,
+    label: "Endgame",
+    get description() {
+      return "TBD";
+    },
+  },
 };

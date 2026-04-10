@@ -43,11 +43,15 @@ export default {
       EffarigUnlock.extendRun
     ],
     runUnlock: () => EffarigUnlock.run,
-    runUnlocks: () => [
-      EffarigUnlock.infinity,
-      EffarigUnlock.eternity,
-      EffarigUnlock.reality
-    ],
+    runUnlocks: () => {
+      let r = [
+        EffarigUnlock.infinity,
+        EffarigUnlock.eternity,
+        EffarigUnlock.reality,
+      ];
+      if (EffarigUnlock.extendRun.isUnlocked) r.push(EffarigUnlock.endgame);
+      return r;
+    },
     symbol: () => GLYPH_SYMBOLS.effarig,
     runButtonOuterClass() {
       return {

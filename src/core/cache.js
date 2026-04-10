@@ -65,7 +65,7 @@ export const GameCache = {
 
   bestRunCIPPM: new Lazy(() =>
     player.records.recentCelestialInfinities
-      .map(run => ratePerMinute(run[2], run[0]))
+      .map(run => ratePerMinute(run[2], run[1]))
       .reduce(Decimal.maxReducer)
   ),
 

@@ -1224,7 +1224,7 @@ function updateTachyonGalaxies() {
   const tachyonGalaxyThreshold = Alpha.isDestroyed ? Infinity : 1000;
   const galaxiesPerOoM = decimalInfinitesimalLogarithmSolution(getBaseTachyonGalaxyMult());
   player.dilation.baseTachyonGalaxies = Decimal.max(player.dilation.baseTachyonGalaxies,
-    Decimal.floor(Currency.dilatedTime.value.dividedBy(1000).log10().div(galaxiesPerOoM).times(getTachyonGalaxyPowers())).add(1));
+    Decimal.floor(Currency.dilatedTime.value.dividedBy(1000).log10().times(galaxiesPerOoM).div(getTachyonGalaxyPowers())).add(1));
   player.dilation.nextThreshold = new Decimal(getTachyonGalaxyMultForDisplay()).eq(1)
     ? Currency.dilatedTime.value : DC.E3.times(new Decimal(getTachyonGalaxyMultForDisplay()).pow(player.dilation.baseTachyonGalaxies));
   player.dilation.totalTachyonGalaxies =

@@ -7,7 +7,8 @@ export const EFFARIG_STAGES = {
   INFINITY: 1,
   ETERNITY: 2,
   REALITY: 3,
-  COMPLETED: 4
+  ENDGAME: 4,
+  COMPLETED: 5
 };
 
 export const Effarig = {
@@ -32,6 +33,9 @@ export const Effarig = {
     if (!EffarigUnlock.reality.isUnlocked) {
       return EFFARIG_STAGES.REALITY;
     }
+    if (!EffarigUnlock.endgame.isUnlocked && EffarigUnlock.extendRun.isUnlocked) {
+      return EFFARIG_STAGES.ENDGAME;
+    }
     return EFFARIG_STAGES.COMPLETED;
   },
   get currentStageName() {
@@ -41,8 +45,11 @@ export const Effarig = {
       case EFFARIG_STAGES.ETERNITY:
         return "Eternity";
       case EFFARIG_STAGES.REALITY:
-      default:
         return "Reality";
+      case EFFARIG_STAGES.ENDGAME:
+        return "Endgame";
+      default:
+        return EffarigUnlock.extendRun.isUnlocked ? "Endgame" : "Reality";
     }
   },
   get eternityCap() {
@@ -55,8 +62,11 @@ export const Effarig = {
       case EFFARIG_STAGES.ETERNITY:
         return 1500;
       case EFFARIG_STAGES.REALITY:
-      default:
         return 2000;
+      case EFFARIG_STAGES.ENDGAME:
+        return 1000000;
+      default:
+        return EffarigUnlock.extendRun.isUnlocked ? 1000000 : 2000;
     }
   },
   get glyphEffectAmount() {
@@ -92,8 +102,13 @@ export const Effarig = {
         c = 29.29;
         break;
       case EFFARIG_STAGES.REALITY:
-      default:
         c = 25;
+        break;
+      case EFFARIG_STAGES.ENDGAME:
+        c = 0;
+        break;
+      default:
+        c = EffarigUnlock.extendRun.isUnlocked ? 0 : 25;
         break;
     }
     return (DC.D1.sub(new Decimal(c).div(Decimal.sqrt(power.add(1).pLog10()).add(c)))).times(3).toNumber();

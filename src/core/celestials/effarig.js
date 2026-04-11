@@ -21,6 +21,10 @@ export const Effarig = {
       disChargeAllPerkUpgrades();
       disChargeAll();
       AutomatorBackend.stop();
+      clearCelestialRuns();
+      player.celestials.effarig.run = true;
+      recalculateAllGlyphs();
+      Tab.reality.glyphs.show(false);
       for (x = 0; x < Glyphs.activeSlotCount; x++) {
         for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.omniGlyph(type));
       }

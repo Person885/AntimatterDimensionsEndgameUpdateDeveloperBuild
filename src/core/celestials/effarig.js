@@ -17,7 +17,7 @@ export const Effarig = {
   initializeRun() {
     if (this.currentStage === EFFARIG_STAGES.ENDGAME) {
       player.disablePostReality = true;
-      Endgame.resetNoReward();
+      Endgame.resetGetGlyphs();
       disChargeAllPerkUpgrades();
       disChargeAll();
       AutomatorBackend.stop();

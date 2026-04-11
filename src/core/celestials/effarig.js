@@ -19,7 +19,10 @@ export const Effarig = {
     player.celestials.effarig.run = true;
     recalculateAllGlyphs();
     Tab.reality.glyphs.show(false);
-    if (this.currentStage === EFFARIG_STAGES.ENDGAME) player.disablePostReality = true;
+    if (this.currentStage === EFFARIG_STAGES.ENDGAME) {
+      player.disablePostReality = true;
+      Endgame.resetNoReward();
+    }
   },
   get isRunning() {
     return player.celestials.effarig.run;

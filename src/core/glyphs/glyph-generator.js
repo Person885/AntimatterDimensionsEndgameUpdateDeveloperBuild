@@ -195,6 +195,24 @@ export const GlyphGenerator = {
     };
   },
 
+  omniGlyph(type) {
+    const effectList = GlyphEffects.all.filter(e => e.id.startsWith(type));
+    effectList.push(GlyphEffects.timespeed);
+    let bitmask = 0;
+    for (const effect of effectList) bitmask |= 1 << effect.bitmaskIndex;
+    const glyphLevel = 1000000;
+    const rarity = EffarigUnlock.glyphGenerationBoost.isUnlocked ? rarityToStrength(100 + Ra.unlocks.rarityBuff.effectOrDefault(0) + Effarig.rarityCapIncrease) : 3.5;
+    return {
+      id: undefined,
+      idx: null,
+      type,
+      strength: rarity,
+      level: glyphLevel,
+      rawLevel: glyphLevel,
+      effects: bitmask,
+    };
+  },
+
   companionGlyph(eternityPoints) {
     // Store the pre-Reality EP value in the glyph's rarity
     const str = rarityToStrength(eternityPoints.log10().div(1e6).toNumber());

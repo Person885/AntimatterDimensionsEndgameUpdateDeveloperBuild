@@ -112,7 +112,7 @@ export const Effarig = {
         c = EffarigUnlock.extendRun.isUnlocked ? 0 : 25;
         break;
     }
-    return (DC.D1.sub(new Decimal(c).div(Decimal.sqrt(power.add(1).pLog10()).add(c)))).times(3).toNumber();
+    return (DC.D1.sub(new Decimal(c).div(Decimal.sqrt(power.add(1).pLog10().max(1)).add(c)))).times(3).toNumber();
   },
   get tickDilation() {
     return 0.7 + 0.1 * this.nerfFactor(Currency.timeShards.value);

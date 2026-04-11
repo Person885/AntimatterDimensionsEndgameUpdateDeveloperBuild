@@ -15,14 +15,14 @@ export const Effarig = {
   displayName: "Effarig",
   possessiveName: "Effarig's",
   initializeRun() {
-    clearCelestialRuns();
-    player.celestials.effarig.run = true;
-    recalculateAllGlyphs();
-    Tab.reality.glyphs.show(false);
     if (this.currentStage === EFFARIG_STAGES.ENDGAME) {
       player.disablePostReality = true;
       Endgame.resetNoReward();
     }
+    clearCelestialRuns();
+    player.celestials.effarig.run = true;
+    recalculateAllGlyphs();
+    Tab.reality.glyphs.show(false);
   },
   get isRunning() {
     return player.celestials.effarig.run;

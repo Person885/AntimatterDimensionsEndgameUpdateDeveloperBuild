@@ -15,16 +15,12 @@ export const Effarig = {
   displayName: "Effarig",
   possessiveName: "Effarig's",
   initializeRun() {
-    if (this.currentStage === EFFARIG_STAGES.ENDGAME) {
+    if (!EffarigUnlock.endgame.isUnlocked && EffarigUnlock.extendRun.isUnlocked) {
       player.disablePostReality = true;
       Endgame.resetGetGlyphs();
       disChargeAllPerkUpgrades();
       disChargeAll();
       AutomatorBackend.stop();
-      clearCelestialRuns();
-      player.celestials.effarig.run = true;
-      recalculateAllGlyphs();
-      Tab.reality.glyphs.show(false);
     }
     clearCelestialRuns();
     player.celestials.effarig.run = true;

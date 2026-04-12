@@ -51,7 +51,7 @@ export const Endgame = {
   },
   resetGetGlyphs() {
     this.resetNoReward();
-    for (slots = 0; slots < Glyphs.activeSlotCount; slots++) {
+    for (let slots = 0; slots < Glyphs.activeSlotCount; slots++) {
       for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.omniGlyph(type));
     }
   },
@@ -100,7 +100,7 @@ export const Endgame = {
 
     // Add Glyphs after other Glyphs are purged
     if (EndgameMastery(71).isBought) {
-      for (slotNum = 0; slotNum < Glyphs.activeSlotCount; slotNum++) {
+      for (let slotNum = 0; slotNum < Glyphs.activeSlotCount; slotNum++) {
         for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.endgameGlyph(type));
       }
     }
@@ -163,7 +163,7 @@ export const Endgame = {
 
     // Add Glyphs after other Glyphs are purged
     if (EndgameMastery(71).isBought) {
-      for (slotNo = 0; slotNo < Glyphs.activeSlotCount; slotNo++) {
+      for (let slotNo = 0; slotNo < Glyphs.activeSlotCount; slotNo++) {
         for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.endgameGlyph(type));
       }
     }

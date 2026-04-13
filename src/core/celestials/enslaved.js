@@ -294,7 +294,7 @@ export const Tesseracts = {
   },
 
   get extra() {
-    return Math.max(Math.max((this.rawExtra - this.freeSoftcapStart) * (1 / (1 + ((this.rawExtra - this.freeSoftcapStart) / this.freeSoftcapStart))), 0) + Math.min(this.rawExtra, this.freeSoftcapStart), Alpha.isDestroyed ? (Math.min(this.rawExtra, this.freeSoftcapStart) * (Math.log10(Math.max(this.rawExtra - this.freeSoftcapStart, 0)) + 1)) : 0);
+    return Math.max(Math.max((this.rawExtra - this.freeSoftcapStart) * (1 / (1 + ((this.rawExtra - this.freeSoftcapStart) / this.freeSoftcapStart))), 0) + Math.min(this.rawExtra, this.freeSoftcapStart), Alpha.isDestroyed ? (Math.min(this.rawExtra, this.freeSoftcapStart) * (Math.log10(Math.max(this.rawExtra - this.freeSoftcapStart, 1)) + 1)) : 0);
   },
 
   get totalMult() {

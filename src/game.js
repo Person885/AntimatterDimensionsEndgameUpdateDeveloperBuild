@@ -114,21 +114,21 @@ export function gainedInfinityPoints() {
     let ip = Decimal.pow10(player.records.thisInfinity.maxAM.add(1).log10().div(div).sub(0.75))
       .timesEffectsOf(PelleRifts.vacuum)
       .times(Pelle.specialGlyphEffect.infinity);
-    if (PelleDestructionUpgrade.timestudy41.isBought) ip = ip.timesEffectOf(TimeStudy(41));
-    if (PelleDestructionUpgrade.timestudy51.isBought) ip = ip.timesEffectOf(TimeStudy(51));
-    if (PelleDestructionUpgrade.timestudy141.isBought) ip = ip.timesEffectOf(TimeStudy(141));
-    if (PelleDestructionUpgrade.timestudy142.isBought) ip = ip.timesEffectOf(TimeStudy(142));
-    if (PelleDestructionUpgrade.timestudy143.isBought) ip = ip.timesEffectOf(TimeStudy(143));
-    if (PelleAchievementUpgrade.achievement85.isBought) ip = ip.timesEffectOf(Achievement(85));
-    if (PelleAchievementUpgrade.achievement93.isBought) ip = ip.timesEffectOf(Achievement(93));
-    if (PelleAchievementUpgrade.achievement116.isBought) ip = ip.timesEffectOf(Achievement(116));
-    if (PelleAchievementUpgrade.achievement125.isBought) ip = ip.timesEffectOf(Achievement(125));
-    if (PelleAchievementUpgrade.achievement141.isBought) ip = ip.timesEffectOf(Achievement(141).effects.ipGain);
-    if (PelleDestructionUpgrade.x2IPUpgrade.isBought) ip = ip.timesEffectOf(InfinityUpgrade.ipMult);
-    if (PelleDestructionUpgrade.reenableIPDilationUpgrade.isBought) ip = ip.timesEffectOf(DilationUpgrade.ipMultDT);
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) ip = ip.times(getAdjustedGlyphEffect("infinityIP"));
-    if (PelleAlchemyUpgrade.alchemyExponential.isBought && Replicanti.areUnlocked) ip = ip.times(Replicanti.amount.powEffectOf(AlchemyResource.exponential));
-    if (PelleCelestialUpgrade.raTeresa3.isBought) ip = ip.pow(getSecondaryGlyphEffect("infinityIP"));
+    if (PelleDestructionUpgrade.timestudy41.canBeApplied) ip = ip.timesEffectOf(TimeStudy(41));
+    if (PelleDestructionUpgrade.timestudy51.canBeApplied) ip = ip.timesEffectOf(TimeStudy(51));
+    if (PelleDestructionUpgrade.timestudy141.canBeApplied) ip = ip.timesEffectOf(TimeStudy(141));
+    if (PelleDestructionUpgrade.timestudy142.canBeApplied) ip = ip.timesEffectOf(TimeStudy(142));
+    if (PelleDestructionUpgrade.timestudy143.canBeApplied) ip = ip.timesEffectOf(TimeStudy(143));
+    if (PelleAchievementUpgrade.achievement85.canBeApplied) ip = ip.timesEffectOf(Achievement(85));
+    if (PelleAchievementUpgrade.achievement93.canBeApplied) ip = ip.timesEffectOf(Achievement(93));
+    if (PelleAchievementUpgrade.achievement116.canBeApplied) ip = ip.timesEffectOf(Achievement(116));
+    if (PelleAchievementUpgrade.achievement125.canBeApplied) ip = ip.timesEffectOf(Achievement(125));
+    if (PelleAchievementUpgrade.achievement141.canBeApplied) ip = ip.timesEffectOf(Achievement(141).effects.ipGain);
+    if (PelleDestructionUpgrade.x2IPUpgrade.canBeApplied) ip = ip.timesEffectOf(InfinityUpgrade.ipMult);
+    if (PelleDestructionUpgrade.reenableIPDilationUpgrade.canBeApplied) ip = ip.timesEffectOf(DilationUpgrade.ipMultDT);
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied) ip = ip.times(getAdjustedGlyphEffect("infinityIP"));
+    if (PelleAlchemyUpgrade.alchemyExponential.canBeApplied && Replicanti.areUnlocked) ip = ip.times(Replicanti.amount.powEffectOf(AlchemyResource.exponential));
+    if (PelleCelestialUpgrade.raTeresa3.canBeApplied) ip = ip.pow(getSecondaryGlyphEffect("infinityIP"));
     if (EndgameMastery(141).isBought) ip = ip.powEffectsOf(EndgameMastery(141));
     if (!player.disablePostReality) ip = ip.pow(AlphaUnlocks.infinity.effects.buff.effectOrDefault(1));
     return ip.floor();
@@ -177,13 +177,13 @@ export function gainedInfinityPoints() {
 function totalEPMult() {
   if (Pelle.isDisabled("EPMults")) {
     let ep = Pelle.specialGlyphEffect.time.timesEffectOf(PelleRifts.vacuum.milestones[2]);
-    if (PelleDestructionUpgrade.x5EPUpgrade.isBought) ep = ep.timesEffectOf(EternityUpgrade.epMult);
-    if (PelleDestructionUpgrade.timestudy61.isBought) ep = ep.timesEffectOf(TimeStudy(61));
-    if (PelleDestructionUpgrade.timestudy122.isBought) ep = ep.timesEffectOf(TimeStudy(122));
-    if (PelleDestructionUpgrade.timestudy121.isBought) ep = ep.timesEffectOf(TimeStudy(121));
-    if (PelleDestructionUpgrade.timestudy123.isBought) ep = ep.timesEffectOf(TimeStudy(123));
-    if (PelleRealityUpgrade.knowingExistence.isBought) ep = ep.timesEffectOf(RealityUpgrade(12));
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) ep = ep.times(getAdjustedGlyphEffect("timeEP"));
+    if (PelleDestructionUpgrade.x5EPUpgrade.canBeApplied) ep = ep.timesEffectOf(EternityUpgrade.epMult);
+    if (PelleDestructionUpgrade.timestudy61.canBeApplied) ep = ep.timesEffectOf(TimeStudy(61));
+    if (PelleDestructionUpgrade.timestudy122.canBeApplied) ep = ep.timesEffectOf(TimeStudy(122));
+    if (PelleDestructionUpgrade.timestudy121.canBeApplied) ep = ep.timesEffectOf(TimeStudy(121));
+    if (PelleDestructionUpgrade.timestudy123.canBeApplied) ep = ep.timesEffectOf(TimeStudy(123));
+    if (PelleRealityUpgrade.knowingExistence.canBeApplied) ep = ep.timesEffectOf(RealityUpgrade(12));
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied) ep = ep.times(getAdjustedGlyphEffect("timeEP"));
     if (!player.disablePostReality) ep = ep.times(AlphaUnlocks.timestudy61.effects.buff.effectOrDefault(1));
     return ep;
   }
@@ -358,16 +358,16 @@ export function gainedInfinities() {
   }
   if (Pelle.isDoomed) {
     let pelleInfs = new Decimal(1);
-    if (PelleAchievementUpgrade.achievement87.isBought) pelleInfs = new Decimal(Effects.max(1, Achievement(87)));
-    if (PelleDestructionUpgrade.timestudy32.isBought) pelleInfs = pelleInfs.timesEffectsOf(TimeStudy(32));
-    if (PelleRealityUpgrade.boundlessAmplifier.isBought) pelleInfs = pelleInfs.timesEffectsOf(RealityUpgrade(5));
-    if (PelleRealityUpgrade.innumerablyConstruct.isBought) pelleInfs = pelleInfs.timesEffectsOf(RealityUpgrade(7));
-    if (PelleAchievementUpgrade.achievement131.isBought) pelleInfs = pelleInfs.timesEffectsOf(Achievement(131).effects.infinitiesGain);
-    if (PelleDestructionUpgrade.timestudy191.isBought) pelleInfs = pelleInfs.timesEffectsOf(TimeStudy(191).effects.infinitiesGain);
-    if (PelleAchievementUpgrade.achievement164.isBought) pelleInfs = pelleInfs.timesEffectsOf(Achievement(164));
-    if (PelleCelestialUpgrade.raV3.isBought) pelleInfs = pelleInfs.timesEffectsOf(Ra.unlocks.continuousTTBoost.effects.infinity);
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleInfs = pelleInfs.times(getAdjustedGlyphEffect("infinityinfmult"));
-    if (PelleDestructionUpgrade.singularityMilestones.isBought) pelleInfs = pelleInfs.powEffectOf(SingularityMilestone.infinitiedPow);
+    if (PelleAchievementUpgrade.achievement87.canBeApplied) pelleInfs = new Decimal(Effects.max(1, Achievement(87)));
+    if (PelleDestructionUpgrade.timestudy32.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(TimeStudy(32));
+    if (PelleRealityUpgrade.boundlessAmplifier.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(RealityUpgrade(5));
+    if (PelleRealityUpgrade.innumerablyConstruct.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(RealityUpgrade(7));
+    if (PelleAchievementUpgrade.achievement131.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(Achievement(131).effects.infinitiesGain);
+    if (PelleDestructionUpgrade.timestudy191.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(TimeStudy(191).effects.infinitiesGain);
+    if (PelleAchievementUpgrade.achievement164.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(Achievement(164));
+    if (PelleCelestialUpgrade.raV3.canBeApplied) pelleInfs = pelleInfs.timesEffectsOf(Ra.unlocks.continuousTTBoost.effects.infinity);
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied) pelleInfs = pelleInfs.times(getAdjustedGlyphEffect("infinityinfmult"));
+    if (PelleDestructionUpgrade.singularityMilestones.canBeApplied) pelleInfs = pelleInfs.powEffectOf(SingularityMilestone.infinitiedPow);
     if (!player.disablePostReality) pelleInfs = pelleInfs.pow(AlphaUnlocks.eternityChallenge10.effects.buff.effectOrDefault(1));
     return pelleInfs;
   }
@@ -462,7 +462,7 @@ export function getGameSpeedupFactor(effectsToConsider, _applyMaxThisEndgame, bl
         if (!isActive) break;
         factor = factor.times(Decimal.pow(blackHole.power, BlackHoles.unpauseAccelerationFactor));
         factor = factor.times(VUnlocks.achievementBH.effectOrDefault(1));
-        if (Pelle.isDoomed && PelleCelestialUpgrade.vMilestones3.isBought) factor = factor.times(VUnlocks.achievementBH.effectValue);
+        if (Pelle.isDoomed && PelleCelestialUpgrade.vMilestones3.canBeApplied) factor = factor.times(VUnlocks.achievementBH.effectValue);
       }
     }
   }
@@ -529,7 +529,7 @@ export function getGameSpeedupForDisplay() {
     Enslaved.isAutoReleasing &&
     Enslaved.canRelease(true) &&
     !BlackHoles.areNegative &&
-    (!Pelle.isDisabled("blackhole") || PelleDestructionUpgrade.blackHole.isBought)
+    (!Pelle.isDisabled("blackhole") || PelleDestructionUpgrade.blackHole.canBeApplied)
   ) {
     return Decimal.max(Enslaved.autoReleaseSpeed, speedFactor);
   }
@@ -1048,7 +1048,7 @@ function globalPassivePrestigeGen(realDiff) {
 
 function passivePrestigeGen(realDiff) {
   let eternitiedGain = DC.D0;
-  if (RealityUpgrade(14).isBought && (!Pelle.isDoomed || PelleRealityUpgrade.eternalFlow.isBought) && !player.disablePostReality) {
+  if (RealityUpgrade(14).isBought && (!Pelle.isDoomed || PelleRealityUpgrade.eternalFlow.canBeApplied) && !player.disablePostReality) {
     eternitiedGain = DC.D1.timesEffectsOf(
       Achievement(113),
       RealityUpgrade(3),
@@ -1064,7 +1064,7 @@ function passivePrestigeGen(realDiff) {
 
   if (!EternityChallenge(4).isRunning) {
     let infGen = DC.D0;
-    if (BreakInfinityUpgrade.infinitiedGen.isBought && (!Pelle.isDoomed || PelleDestructionUpgrade.passiveInfGen.isBought)) {
+    if (BreakInfinityUpgrade.infinitiedGen.isBought && (!Pelle.isDoomed || PelleDestructionUpgrade.passiveInfGen.canBeApplied)) {
       // Multipliers are done this way to explicitly exclude ach87 and TS32
       if (Alpha.isRunning) infGen = infGen.plus(new Decimal(0.5).times(Time.unscaledDeltaTime.totalMilliseconds).div(
         Alpha.isDestroyed ? player.records.bestInfinity.time : Decimal.clampMin(50, player.records.bestInfinity.time)));
@@ -1077,10 +1077,10 @@ function passivePrestigeGen(realDiff) {
       );
       infGen = infGen.times(getAdjustedGlyphEffect("infinityinfmult"));
     }
-    if (RealityUpgrade(11).isBought && (!Pelle.isDoomed || PelleRealityUpgrade.boundlessFlow.isBought) && !player.disablePostReality) {
+    if (RealityUpgrade(11).isBought && (!Pelle.isDoomed || PelleRealityUpgrade.boundlessFlow.canBeApplied) && !player.disablePostReality) {
       infGen = infGen.plus(RealityUpgrade(11).effectValue.times(Time.deltaTime));
     }
-    if (EffarigUnlock.eternity.isUnlocked && (!Pelle.isDoomed || PelleCelestialUpgrade.effarigRewards.isBought)) {
+    if (EffarigUnlock.eternity.isUnlocked && (!Pelle.isDoomed || PelleCelestialUpgrade.effarigRewards.canBeApplied)) {
       // We consider half of the eternities we gained above this tick
       // to have been gained before the infinities, and thus not to
       // count here. This gives us the desirable behavior that
@@ -1249,14 +1249,14 @@ export function getTTPerSecond() {
   if (GlyphAlteration.isAdded("dilation")) ttMult = ttMult.times(getSecondaryGlyphEffect("dilationTTgen"));
 
   let pelleTTMult = DC.D1;
-  if (PelleCelestialUpgrade.raV3.isBought) pelleTTMult = pelleTTMult.times(Effects.product(Ra.unlocks.continuousTTBoost.effects.ttGen));
-  if (PelleCelestialUpgrade.raV4.isBought) pelleTTMult = pelleTTMult.timesEffectOf(Ra.unlocks.achievementTTMult);
-  if (PelleAchievementUpgrade.achievement137.isBought) pelleTTMult = pelleTTMult.times(Effects.product(Achievement(137)));
-  if (PelleAchievementUpgrade.achievement156.isBought) pelleTTMult = pelleTTMult.times(Effects.product(Achievement(156)));
-  if (PelleCelestialUpgrade.raTeresa3.isBought) pelleTTMult = pelleTTMult.times(getSecondaryGlyphEffect("dilationTTgen"));
+  if (PelleCelestialUpgrade.raV3.canBeApplied) pelleTTMult = pelleTTMult.times(Effects.product(Ra.unlocks.continuousTTBoost.effects.ttGen));
+  if (PelleCelestialUpgrade.raV4.canBeApplied) pelleTTMult = pelleTTMult.timesEffectOf(Ra.unlocks.achievementTTMult);
+  if (PelleAchievementUpgrade.achievement137.canBeApplied) pelleTTMult = pelleTTMult.times(Effects.product(Achievement(137)));
+  if (PelleAchievementUpgrade.achievement156.canBeApplied) pelleTTMult = pelleTTMult.times(Effects.product(Achievement(156)));
+  if (PelleCelestialUpgrade.raTeresa3.canBeApplied) pelleTTMult = pelleTTMult.times(getSecondaryGlyphEffect("dilationTTgen"));
 
   // Glyph TT generation
-  const glyphTT = Teresa.isRunning || Enslaved.isRunning || (Pelle.isDoomed && !PelleDestructionUpgrade.destroyedGlyphEffects.isBought)
+  const glyphTT = Teresa.isRunning || Enslaved.isRunning || (Pelle.isDoomed && !PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied)
     ? DC.D0
     : new Decimal(getAdjustedGlyphEffect("dilationTTgen")).times(Pelle.isDoomed ? pelleTTMult : ttMult);
 
@@ -1268,7 +1268,7 @@ export function getTTPerSecond() {
   // Lai'tela TT power
   let finalTT = dilationTT.add(glyphTT);
   if (finalTT.gt(1)) {
-    if (!Pelle.isDoomed || PelleDestructionUpgrade.singularityMilestones.isBought) {
+    if (!Pelle.isDoomed || PelleDestructionUpgrade.singularityMilestones.canBeApplied) {
       finalTT = finalTT.pow(SingularityMilestone.theoremPowerFromSingularities.effectOrDefault(1));
     }
     finalTT = finalTT.pow(player.disablePostReality ? 1 : AlphaUnlocks.timeTheoremGeneration.effects.buff.effectOrDefault(1));

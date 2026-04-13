@@ -577,7 +577,9 @@ export const Pelle = {
   },
   
   get endTabNames() {
-    if (Alpha.isDestroyed) {
+    if (Effarig.isRunning) {
+      return "Congratulations You Have Beaten A Dual Celestial Reality Ω Pelle Is Impressed".split(" ");
+    } else if (Alpha.isDestroyed) {
       return "Why Still Here All Is Destroyed Nothing Remains Except Generator Filament Stars".split(" ");
     } else if (Achievement(191).isUnlocked) {
       return "Destruction Has Come A New Beginning Has Arrived Ω We'll Meet Again".split(" ");

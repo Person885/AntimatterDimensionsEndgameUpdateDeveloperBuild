@@ -30,6 +30,7 @@ export const Effarig = {
       for (let slots = 0; slots < Glyphs.activeSlotCount; slots++) {
         for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.omniGlyph(type));
       }
+      player.reality.imaginaryUpgradeBits -= Math.pow(2, 25);
     }
   },
   get isRunning() {

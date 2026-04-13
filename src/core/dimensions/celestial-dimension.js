@@ -238,7 +238,7 @@ export const CelestialDimensions = {
 
   get softcapPow() {
     const reduction = Effects.product(EndgameMastery(84), Achievement(225));
-    const extraReduction = DivinityMilestone.firstDivine.isReached ? 0.9 : 1;
+    const extraReduction = DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 0.9 : 1;
     return Decimal.pow(10 * reduction * extraReduction, Hepteracts.softcapReduction()).toNumber();
   },
 

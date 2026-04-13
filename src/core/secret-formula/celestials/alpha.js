@@ -6,7 +6,7 @@ export const alphaUnlocks = {
     buffDescription: "Square the Dimension Boost Multiplier",
     effects: {
       nerf: 0.5,
-      buff: 2
+      buff: () => player.disablePostReality ? 1 : 2
     }
   },
   fifthDimboost: {
@@ -16,7 +16,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Decrease the base Dimension Boost Scaling Threshold by ${formatInt(2)}`,
     effects: {
       nerf: 2,
-      buff: 2
+      buff: () => player.disablePostReality ? 1 : 2
     }
   },
   firstGalaxy: {
@@ -35,7 +35,7 @@ export const alphaUnlocks = {
     buffDescription: () => `IP Gain is raised ${formatPow(Math.min(1 + (Tesseracts.effectiveCount / 1000), 2.25), 2, 3)} (based on Tesseracts)`,
     effects: {
       nerf: 2,
-      buff: () => Math.min(1 + (Tesseracts.effectiveCount / 1000), 2.25)
+      buff: () => player.disablePostReality ? 1 : Math.min(1 + (Tesseracts.effectiveCount / 1000), 2.25)
     }
   },
   autoCrunchChallenge: {
@@ -45,7 +45,7 @@ export const alphaUnlocks = {
     buffDescription: "Charged Infinity Upgrades act as if your Teresa Level was twice as high",
     effects: {
       nerf: 3,
-      buff: 2
+      buff: () => player.disablePostReality ? 1 : 2
     }
   },
   breakInfinity: {
@@ -57,8 +57,8 @@ export const alphaUnlocks = {
       nerfA: 1000,
       nerfB: 20,
       nerfC: () => Decimal.max(DC.D8.div(Decimal.log10(Decimal.log10(Currency.infinityPoints.value.add(1)).add(1)).pow(2).clampMin(0.001)), 1).toNumber(),
-      buffA: 0.15,
-      buffB: 0.25
+      buffA: () => player.disablePostReality ? 0 : 0.15,
+      buffB: () => player.disablePostReality ? 0 : 0.25
     }
   },
   powerGalaxies: {
@@ -68,7 +68,7 @@ export const alphaUnlocks = {
     buffDescription: "Galaxy scalings for Distant/Remote Antimatter Galaxies are doubled",
     effects: {
       nerf: 1,
-      buff: 2
+      buff: () => player.disablePostReality ? 1 : 2
     }
   },
   breakUpgrades: {
@@ -78,8 +78,8 @@ export const alphaUnlocks = {
     buffDescription: () => `Reduce Post-Break Tickspeed cost scaling by ${format(0.15, 2, 2)} and Post-Break Dimension cost scaling by ${format(0.25, 2, 2)}`,
     effects: {
       nerf: () => player.records.thisReality.galaxies.toNumber() * (EternityChallenge(1).isRunning ? 2 : 1),
-      buffA: 0.15,
-      buffB: 0.25
+      buffA: () => player.disablePostReality ? 0 : 0.15,
+      buffB: () => player.disablePostReality ? 0 : 0.25
     }
   },
   infinityChallenges: {
@@ -89,7 +89,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Reduce Infinity Dimension Compression by ${formatPercents(0.25, 2)} and convert Infinity Dimensions to Continuum`,
     effects: {
       nerf: 150,
-      buff: 0.75
+      buff: () => player.disablePostReality ? 1 : 0.75
     }
   },
   replicanti: {
@@ -99,7 +99,7 @@ export const alphaUnlocks = {
     buffDescription: "Replicanti Interval is square-rooted",
     effects: {
       nerf: 2,
-      buff: 0.5
+      buff: () => player.disablePostReality ? 1 : 0.5
     }
   },
   infinityDimensions: {
@@ -109,7 +109,7 @@ export const alphaUnlocks = {
     buffDescription: () => `The ${formatInt(8)}th Infinity Dimension is powered ${formatInt(100)}`,
     effects: {
       nerf: () => Math.clamp(1 - Decimal.log10(player.records.thisInfinity.maxAM.add(1)).sub(72500).div(218750).toNumber(), 0, 1),
-      buff: 100
+      buff: () => player.disablePostReality ? 1 : 100
     }
   },
   eternity: {
@@ -128,7 +128,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Eternity Point gain is multiplied by ${formatX(Decimal.pow10(Decimal.log10(Currency.infinityPoints.value.add(1)).div(1000)), 2, 2)} (based on IP)`,
     effects: {
       nerf: 1.5,
-      buff: () => Decimal.pow10(Decimal.log10(Currency.infinityPoints.value.add(1)).div(1000))
+      buff: () => player.disablePostReality ? DC.D1 : Decimal.pow10(Decimal.log10(Currency.infinityPoints.value.add(1)).div(1000))
     }
   },
   timeDimension4: {
@@ -137,7 +137,7 @@ export const alphaUnlocks = {
     nerfDescription: () => `The multiplier of your highest Time Dimension is always ${formatX(1)}`,
     buffDescription: () => `The Time Dimension Per-Purchase Multiplier is increased to ${formatX(10)}`,
     effects: {
-      buff: 10
+      buff: () => player.disablePostReality ? 4 : 10
     }
   },
   eternityUpgrades: {
@@ -147,7 +147,7 @@ export const alphaUnlocks = {
     buffDescription: () => `The ${formatInt(1)}st Infinity Dimension is powered ${formatInt(100)}`,
     effects: {
       nerf: 0.9,
-      buff: 100
+      buff: () => player.disablePostReality ? 1 : 100
     }
   },
   eternityChallengeUnlock: {
@@ -166,7 +166,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Reduce Time Dimension Compression by ${formatPercents(0.25, 2)} and convert Time Dimensions to Continuum`,
     effects: {
       nerf: 0.65,
-      buff: 0.75
+      buff: () => player.disablePostReality ? 1 : 0.75
     }
   },
   ecCompletion5: {
@@ -176,7 +176,7 @@ export const alphaUnlocks = {
     buffDescription: () => `All Time Dimension Multipliers are raised ${formatPow(5)}`,
     effects: {
       nerf: 0.55,
-      buff: 5
+      buff: () => player.disablePostReality ? 1 : 5
     }
   },
   timestudy181: {
@@ -186,7 +186,7 @@ export const alphaUnlocks = {
     buffDescription: () => `All Antimatter Dimension Multipliers are raised ${formatPow(5)}`,
     effects: {
       nerf: 0.9,
-      buff: 5
+      buff: () => player.disablePostReality ? 1 : 5
     }
   },
   eternityChallenge10: {
@@ -196,7 +196,7 @@ export const alphaUnlocks = {
     buffDescription: "Infinity gain is squared",
     effects: {
       nerf: 0.9,
-      buff: 2
+      buff: () => player.disablePostReality ? 1 : 2
     }
   },
   timestudy192: {
@@ -206,7 +206,7 @@ export const alphaUnlocks = {
     buffDescription: "Replicanti boosts Dark Energy gain at a reduced rate",
     effects: {
       nerf: 1.5,
-      buff: () => Decimal.pow(Decimal.log2(player.replicanti.amount.add(1)), 10).add(1)
+      buff: () => player.disablePostReality ? DC.D1 : Decimal.pow(Decimal.log2(player.replicanti.amount.add(1)), 10).add(1)
     }
   },
   eternityChallenge11: {
@@ -215,7 +215,7 @@ export const alphaUnlocks = {
     nerfDescription: () => `Eternity Challenge ${formatInt(11)} must have a ${formatX(5)} Bulk Completion`,
     buffDescription: () => `Reduce Post-Break Tickspeed cost scale by ${format(0.075, 3, 3)}`,
     effects: {
-      buff: 0.075
+      buff: () => player.disablePostReality ? 0 : 0.075
     }
   },
   ec11Bulk: {
@@ -226,7 +226,7 @@ export const alphaUnlocks = {
     effects: {
       nerfA: 10000,
       nerfB: 1.2,
-      buff: 0.075
+      buff: () => player.disablePostReality ? 0 : 0.075
     }
   },
   unlockDilation: {
@@ -236,7 +236,7 @@ export const alphaUnlocks = {
     buffDescription: () => `The base Dilation penalty is reduced to ${formatPow(0.8, 2, 3)}`,
     effects: {
       nerf: 0.5,
-      buff: 0.8
+      buff: () => player.disablePostReality ? 1 : 0.8
     }
   },
   dilatedEternity: {
@@ -246,7 +246,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Tachyon Particle gain is raised ${formatPow(1.4, 2, 3)}`,
     effects: {
       nerf: 0.42,
-      buff: 1.4
+      buff: () => player.disablePostReality ? 1 : 1.4
     }
   },
   timeTheoremGeneration: {
@@ -256,7 +256,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Time Theorem Generation is raised ${formatPow(10)}`,
     effects: {
       nerf: () => Math.clamp(Decimal.log10(Currency.dilatedTime.value.add(1)).div(100).toNumber(), 0, 1),
-      buff: 10
+      buff: () => player.disablePostReality ? 1 : 10
     }
   },
   timeDimension8: {
@@ -266,7 +266,7 @@ export const alphaUnlocks = {
     buffDescription: () => `The ${formatInt(8)}th Time Dimension is powered ${formatInt(1000)}`,
     effects: {
       nerf: () => Math.clamp(1 - Decimal.log10(player.records.thisEternity.maxIP.add(1)).sub(1.5e6).div(1.875e7).max(0).pow(0.375).toNumber(), 0, 1),
-      buff: 1000
+      buff: () => player.disablePostReality ? 1 : 1000
     }
   },
   reality: {

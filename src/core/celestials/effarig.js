@@ -79,9 +79,9 @@ export const Effarig = {
       case EFFARIG_STAGES.REALITY:
         return 2000;
       case EFFARIG_STAGES.ENDGAME:
-        return 1000000;
+        return Math.floor(Time.thisEndgameRealTime.totalSeconds.toNumber());
       default:
-        return EffarigUnlock.extendRun.isUnlocked ? 1000000 : 2000;
+        return EffarigUnlock.extendRun.isUnlocked ? Math.floor(Time.thisEndgameRealTime.totalSeconds.toNumber()) : 2000;
     }
   },
   get glyphEffectAmount() {

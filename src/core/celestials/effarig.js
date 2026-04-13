@@ -17,7 +17,7 @@ export const Effarig = {
   initializeRun() {
     if (!EffarigUnlock.endgame.isUnlocked && EffarigUnlock.extendRun.isUnlocked) {
       player.disablePostReality = true;
-      Endgame.resetGetGlyphs();
+      Endgame.resetNoReward();
       disChargeAllPerkUpgrades();
       disChargeAll();
       AutomatorBackend.stop();
@@ -26,6 +26,11 @@ export const Effarig = {
     player.celestials.effarig.run = true;
     recalculateAllGlyphs();
     Tab.reality.glyphs.show(false);
+    if (!EffarigUnlock.endgame.isUnlocked && EffarigUnlock.extendRun.isUnlocked) {
+      for (let slots = 0; slots < Glyphs.activeSlotCount; slots++) {
+        for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.omniGlyph(type));
+      }
+    }
   },
   get isRunning() {
     return player.celestials.effarig.run;

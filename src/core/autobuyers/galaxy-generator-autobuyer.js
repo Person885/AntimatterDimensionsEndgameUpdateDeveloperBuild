@@ -18,7 +18,7 @@ export class GalaxyGeneratorAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get isUnlocked() {
-    if (this.id === 7) return DivinityMilestone.firstDivine.isReached;
+    if (this.id === 7) return DivinityMilestone.firstDivine.isReached && !player.disablePostReality;
     return ExpansionPack.pellePack.isBought && !player.disablePostReality;
   }
 

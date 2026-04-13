@@ -49,12 +49,6 @@ export const Endgame = {
     this.newEndgame();
     return true;
   },
-  resetGetGlyphs() {
-    this.resetNoReward();
-    for (let slots = 0; slots < Glyphs.activeSlotCount; slots++) {
-      for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.omniGlyph(type));
-    }
-  },
   resetNoReward() {
     GameEnd.creditsClosed = false;
     GameEnd.creditsEverClosed = false;

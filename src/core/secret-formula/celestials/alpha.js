@@ -6,7 +6,7 @@ export const alphaUnlocks = {
     buffDescription: "Square the Dimension Boost Multiplier",
     effects: {
       nerf: 0.5,
-      buff: () => 2
+      buff: 2
     }
   },
   fifthDimboost: {
@@ -16,7 +16,7 @@ export const alphaUnlocks = {
     buffDescription: () => `Decrease the base Dimension Boost Scaling Threshold by ${formatInt(2)}`,
     effects: {
       nerf: 2,
-      buff: () => 2
+      buff: 2
     }
   },
   firstGalaxy: {
@@ -35,7 +35,7 @@ export const alphaUnlocks = {
     buffDescription: () => `IP Gain is raised ${formatPow(Math.min(1 + (Tesseracts.effectiveCount / 1000), 2.25), 2, 3)} (based on Tesseracts)`,
     effects: {
       nerf: 2,
-      buff: Math.min(1 + (Tesseracts.effectiveCount / 1000), 2.25)
+      buff: () => Math.min(1 + (Tesseracts.effectiveCount / 1000), 2.25)
     }
   },
   autoCrunchChallenge: {

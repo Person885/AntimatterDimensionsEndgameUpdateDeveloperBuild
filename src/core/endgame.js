@@ -90,7 +90,7 @@ export const Endgame = {
       disChargeAllPerkUpgrades();
       player.celestials.teresa.disCharge = false;
     }
-    if (Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME && !EffarigUnlock.endgame.isUnlocked) {
+    if (Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME) {
       player.disablePostReality = false;
     }
     this.resetStuff();
@@ -156,9 +156,11 @@ export const Endgame = {
       disChargeAllPerkUpgrades();
       player.celestials.teresa.disCharge = false;
     }
-    if (Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME && !EffarigUnlock.endgame.isUnlocked) {
+    if (Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME) {
       player.disablePostReality = false;
-      EffarigUnlock.endgame.unlock();
+      if (!EffarigUnlock.endgame.isUnlocked) {
+        EffarigUnlock.endgame.unlock();
+      }
     }
     this.resetStuff();
 

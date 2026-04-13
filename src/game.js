@@ -1279,7 +1279,7 @@ export function gainedCelestialPoints() {
   if (Achievement(207).isUnlocked && !player.disablePostReality) {
     cp = cp.times(Decimal.max(9e15 * (1e100 ** (0.5 ** player.celestials.pelle.divinities)), player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10()).div(9e15 * (1e100 ** (0.5 ** player.celestials.pelle.divinities))));
   }
-  cp = Alpha.isDestroyed ? cp : Decimal.min(cp, DC.NUMMAX.sub(player.endgame.celestialPoints));
+  cp = Alpha.isDestroyed ? cp : Decimal.max(Decimal.min(cp, DC.NUMMAX.sub(player.endgame.celestialPoints)), 0);
   cp = Decimal.pow(cp, Decimal.pow(2, player.celestials.pelle.divinities));
   return cp.floor();
 }
@@ -1288,7 +1288,7 @@ export function gainedDoomedParticles() {
   if (!player.break2) return DC.D1;
   let dp = Alpha.isDestroyed
     ? player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10().div(9e15)
-    : Decimal.min(player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10().div(9e15), new Decimal(1e100 - player.endgame.doomedParticles.toNumber()));
+    : Decimal.max(Decimal.min(player.celestials.pelle.records.totalEndgameAntimatter.add(1).log10().div(9e15), new Decimal(1e100 - player.endgame.doomedParticles.toNumber())), 0);
   dp = Decimal.pow(dp, Decimal.pow(2, player.celestials.pelle.divinities));
   return dp.floor();
 }

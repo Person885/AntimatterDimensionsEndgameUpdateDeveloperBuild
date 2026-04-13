@@ -12,6 +12,9 @@ export const Alpha = {
   get isDestroyed() {
     return this.currentStage >= 28 && !player.disablePostReality;
   },
+  get isDestroyedForDisplay() {
+    return this.currentStage >= 28;
+  },
   initializeRun() {
     player.disablePostReality = true;
     Endgame.resetNoReward();

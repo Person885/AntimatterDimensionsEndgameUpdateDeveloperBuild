@@ -134,7 +134,7 @@ export const MachineHandler = {
       1.75).times(12).min(0.6).add(1), 1).add(Decimal.clampMin(Decimal.log10(Decimal.log10(Decimal.log10(
       this.uncappedRM.add(1)).add(1)).add(1)).sub(1.8).times(4).min(0.6), 0)).add(Decimal.clampMin(
       Decimal.log10(Decimal.log10(Decimal.log10(this.uncappedRM.add(1)).add(1)).add(1)).sub(1.95).times(2), 0))).times(
-      DivinityMilestone.firstDivine.isReached ? 1.1 : 1));
+      DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 1.1 : 1));
   },
 
   get currentDMCap() {

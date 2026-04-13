@@ -103,10 +103,7 @@ export const Endgame = {
     }
     EventHub.dispatch(GAME_EVENT.ENDGAME_RESET_AFTER);
 
-    // The ending animation ends at 12.5, although the value continues to increase after that. We set it to a bit above
-    // 12.5 when we start the rollback animation to hide some of the unavoidable lag from all the reset functions
     GameEnd.removeAdditionalEnd = true;
-    GameEnd.additionalEnd = 15;
     // Without the delay, this causes the saving (and its notification) to occur during the credits rollback
     setTimeout(() => GameStorage.save(), 10000);
   },

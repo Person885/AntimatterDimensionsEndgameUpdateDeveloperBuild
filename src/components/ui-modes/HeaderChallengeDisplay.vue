@@ -139,7 +139,9 @@ export default {
         };
       } else {
         names = { chall: this.activeChallengeNames[0], normal: "Reality" };
-        clickFn = () => Alpha.isRunning ? Alpha.escapeTheMatrix() : beginProcessReality(getRealityProps(true));
+        clickFn = () => Alpha.isRunning ? Alpha.escapeTheMatrix() :
+          ((Effarig.isRunning && Effarig.currentStage === EFFARIG_STAGES.ENDGAME) ? Endgame.resetNoReward() :
+          beginProcessReality(getRealityProps(true)));
       }
 
       if (player.options.confirmations.exitChallenge) {

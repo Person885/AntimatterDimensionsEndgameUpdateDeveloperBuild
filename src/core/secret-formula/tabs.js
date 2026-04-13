@@ -643,7 +643,7 @@ export const tabs = [
     hideAt: 2.4,
     UIClass: "o-tab-btn--cd-expansion",
     id: 12,
-    condition: () => Alpha.isDestroyed,
+    condition: () => Alpha.isDestroyedForDisplay,
     hidable: true,
     subtabs: [
       {

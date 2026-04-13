@@ -149,16 +149,16 @@ export function getTachyonGalaxyPowers() {
 export function getDilationGainPerSecond() {
   if (Pelle.isDoomed) {
     let pelleExtraDT = new Decimal(1);
-    if (PelleAchievementUpgrade.achievement132.isBought) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(132));
-    if (PelleAchievementUpgrade.achievement137.isBought) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(137));
-    if (PelleRealityUpgrade.temporalAmplifier.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(RealityUpgrade(1));
-    if (PelleAlchemyUpgrade.alchemyDilation.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(AlchemyResource.dilation);
-    if (PelleCelestialUpgrade.raV3.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(Ra.unlocks.continuousTTBoost.effects.dilatedTime);
-    if (PelleCelestialUpgrade.raNameless4.isBought) pelleExtraDT = pelleExtraDT.timesEffectOf(Ra.unlocks.peakGamespeedDT);
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleExtraDT = pelleExtraDT.times(getAdjustedGlyphEffect("dilationDT"));
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleExtraDT = pelleExtraDT.times(
+    if (PelleAchievementUpgrade.achievement132.canBeApplied) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(132));
+    if (PelleAchievementUpgrade.achievement137.canBeApplied) pelleExtraDT = pelleExtraDT.timesEffectsOf(Achievement(137));
+    if (PelleRealityUpgrade.temporalAmplifier.canBeApplied) pelleExtraDT = pelleExtraDT.timesEffectOf(RealityUpgrade(1));
+    if (PelleAlchemyUpgrade.alchemyDilation.canBeApplied) pelleExtraDT = pelleExtraDT.timesEffectOf(AlchemyResource.dilation);
+    if (PelleCelestialUpgrade.raV3.canBeApplied) pelleExtraDT = pelleExtraDT.timesEffectOf(Ra.unlocks.continuousTTBoost.effects.dilatedTime);
+    if (PelleCelestialUpgrade.raNameless4.canBeApplied) pelleExtraDT = pelleExtraDT.timesEffectOf(Ra.unlocks.peakGamespeedDT);
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied) pelleExtraDT = pelleExtraDT.times(getAdjustedGlyphEffect("dilationDT"));
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied) pelleExtraDT = pelleExtraDT.times(
       Decimal.clampMin(Decimal.log10(Replicanti.amount.add(1)).times(getAdjustedGlyphEffect("replicationdtgain")), 1));
-    if (!PelleDestructionUpgrade.disableDTNerf.isBought) pelleExtraDT = pelleExtraDT.div(1e5);
+    if (!PelleDestructionUpgrade.disableDTNerf.canBeApplied) pelleExtraDT = pelleExtraDT.div(1e5);
     if (EndgameMilestone.realityShardDTBoost.isReached && !player.disablePostReality) pelleExtraDT = pelleExtraDT.times(Currency.realityShards.value.plus(1));
     const tachyonEffect = Currency.tachyonParticles.value.pow(PelleRifts.paradox.milestones[1].effectOrDefault(1));
     let dtRate = new Decimal(tachyonEffect)

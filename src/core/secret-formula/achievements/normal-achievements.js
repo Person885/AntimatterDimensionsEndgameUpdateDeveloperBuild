@@ -1644,12 +1644,12 @@ export const normalAchievements = [
     id: 196,
     name: "At Long Last",
     description: "Regain all Achievements in Pelle.",
-    checkRequirement: () => PelleAchievementUpgrade.all.filter(u => u.isBought).length >= 33,
+    checkRequirement: () => PelleAchievementUpgrade.all.filter(u => u.canBeApplied).length >= 33,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
       return `You can equip up to ${formatInt(2)} Effarig and Reality Glyphs each.`;
     },
-    progress: () => Achievement(196).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleAchievementUpgrade.all.filter(u => u.isBought).length).div(33), 0, 1)
+    progress: () => Achievement(196).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleAchievementUpgrade.all.filter(u => u.canBeApplied).length).div(33), 0, 1)
   },
   {
     id: 197,
@@ -1695,18 +1695,18 @@ export const normalAchievements = [
     id: 204,
     name: "Hard Reset",
     description: "Disable all Pelle Nerfs.",
-    checkRequirement: () => PelleAchievementUpgrade.all.filter(u => u.isBought).length >= 33 &&
-      PelleDestructionUpgrade.all.filter(u => u.isBought).length >= 50 &&
-      PelleRealityUpgrade.all.filter(u => u.isBought).length >= 20 &&
-      PelleImaginaryUpgrade.all.filter(u => u.isBought).length >= 19 &&
-      PelleCelestialUpgrade.all.filter(u => u.isBought).length >= 21 &&
-      PellePerkUpgrade.all.filter(u => u.isBought).length >= 29 &&
-      PelleAlchemyUpgrade.all.filter(u => u.isBought).length >= 21,
+    checkRequirement: () => PelleAchievementUpgrade.all.filter(u => u.canBeApplied).length >= 33 &&
+      PelleDestructionUpgrade.all.filter(u => u.canBeApplied).length >= 50 &&
+      PelleRealityUpgrade.all.filter(u => u.canBeApplied).length >= 20 &&
+      PelleImaginaryUpgrade.all.filter(u => u.canBeApplied).length >= 19 &&
+      PelleCelestialUpgrade.all.filter(u => u.canBeApplied).length >= 21 &&
+      PellePerkUpgrade.all.filter(u => u.canBeApplied).length >= 29 &&
+      PelleAlchemyUpgrade.all.filter(u => u.canBeApplied).length >= 21,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
       return `Unlock Strike Disabling.`;
     },
-    progress: () => Achievement(204).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleAchievementUpgrade.all.filter(u => u.isBought).length).div(231).min(1/7).add(new Decimal(PelleDestructionUpgrade.all.filter(u => u.isBought).length).div(350).min(1/7)).add(new Decimal(PelleRealityUpgrade.all.filter(u => u.isBought).length).div(140).min(1/7)).add(new Decimal(PelleImaginaryUpgrade.all.filter(u => u.isBought).length).div(133).min(1/7)).add(new Decimal(PelleCelestialUpgrade.all.filter(u => u.isBought).length).div(147).min(1/7)).add(new Decimal(PellePerkUpgrade.all.filter(u => u.isBought).length).div(203).min(1/7)).add(new Decimal(PelleAlchemyUpgrade.all.filter(u => u.isBought).length).div(147).min(1/7)), 0, 1)
+    progress: () => Achievement(204).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleAchievementUpgrade.all.filter(u => u.canBeApplied).length).div(231).min(1/7).add(new Decimal(PelleDestructionUpgrade.all.filter(u => u.canBeApplied).length).div(350).min(1/7)).add(new Decimal(PelleRealityUpgrade.all.filter(u => u.canBeApplied).length).div(140).min(1/7)).add(new Decimal(PelleImaginaryUpgrade.all.filter(u => u.canBeApplied).length).div(133).min(1/7)).add(new Decimal(PelleCelestialUpgrade.all.filter(u => u.canBeApplied).length).div(147).min(1/7)).add(new Decimal(PellePerkUpgrade.all.filter(u => u.canBeApplied).length).div(203).min(1/7)).add(new Decimal(PelleAlchemyUpgrade.all.filter(u => u.canBeApplied).length).div(147).min(1/7)), 0, 1)
   },
   {
     id: 205,
@@ -1732,12 +1732,12 @@ export const normalAchievements = [
     id: 207,
     name: "Gone...",
     description: "Destroy Pelle.",
-    checkRequirement: () => PelleStrikeUpgrade.all.filter(u => u.isBought).length >= 5,
+    checkRequirement: () => PelleStrikeUpgrade.all.filter(u => u.canBeApplied).length >= 5,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
       return `Boost Celestial Point Gain.`;
     },
-    progress: () => Achievement(207).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleStrikeUpgrade.all.filter(u => u.isBought).length).div(5), 0, 1)
+    progress: () => Achievement(207).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleStrikeUpgrade.all.filter(u => u.canBeApplied).length).div(5), 0, 1)
   },
   {
     id: 208,
@@ -1758,7 +1758,7 @@ export const normalAchievements = [
     get description() { return `Enter Alpha's Reality.` },
     checkRequirement: () => Alpha.isRunning,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    progress: () => Achievement(211).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleStrikeUpgrade.all.filter(u => u.isBought).length).div(10).min(0.5).add(Currency.imaginaryMachines.value.add(1).log10().div(Decimal.log10(DC.NUMMAX).times(2)).min(0.5)), 0, 1)
+    progress: () => Achievement(211).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(PelleStrikeUpgrade.all.filter(u => u.canBeApplied).length).div(10).min(0.5).add(Currency.imaginaryMachines.value.add(1).log10().div(Decimal.log10(DC.NUMMAX).times(2)).min(0.5)), 0, 1)
   },
   {
     id: 212,

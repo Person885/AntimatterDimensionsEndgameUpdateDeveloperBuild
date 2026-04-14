@@ -641,7 +641,7 @@ export function finishProcessReality(realityProps) {
   player.galaxies = DC.D0;
   player.partInfinityPoint = DC.D0;
   player.partInfinitied = 0;
-  if (!Pelle.isDoomed || !PelleRealityUpgrade.existentiallyProlong.isBought) player.break = false;
+  if (!Pelle.isDoomed || !PelleRealityUpgrade.existentiallyProlong.canBeApplied) player.break = false;
   player.IPMultPurchases = DC.D0;
   Currency.infinityPower.reset();
   Currency.timeShards.reset();

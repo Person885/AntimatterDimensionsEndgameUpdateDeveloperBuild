@@ -19,7 +19,7 @@ export class PelleAchievementUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -47,7 +47,7 @@ export class PelleDestructionUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -75,7 +75,7 @@ export class PelleRealityUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -103,7 +103,7 @@ export class PelleImaginaryUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -131,7 +131,7 @@ export class PelleCelestialUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -159,7 +159,7 @@ export class PellePerkUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -187,7 +187,7 @@ export class PelleAlchemyUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 
@@ -219,7 +219,7 @@ export class PelleStrikeUpgradeState extends SetPurchasableMechanicState {
   }
 
   get canBeApplied() {
-    return !player.disablePostReality;
+    return this.isBought && !player.disablePostReality;
   }
 }
 

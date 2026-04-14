@@ -208,7 +208,7 @@ export function initializeChallengeCompletions(isReality) {
   if (!isReality && EternityMilestone.keepAutobuyers.isReached || Pelle.isDoomed) {
     NormalChallenges.completeAll();
   }
-  if (Achievement(133).isUnlocked && !player.disablePostReality && (!Pelle.isDoomed || PelleAchievementUpgrade.achievement133.isBought)) InfinityChallenges.completeAll();
+  if (Achievement(133).isUnlocked && !player.disablePostReality && (!Pelle.isDoomed || PelleAchievementUpgrade.achievement133.canBeApplied)) InfinityChallenges.completeAll();
   player.challenge.normal.current = 0;
   player.challenge.infinity.current = 0;
 }
@@ -268,11 +268,11 @@ function askEternityConfirmation() {
 export function gainedEternities() {
   if (Pelle.isDoomed) {
     let pelleEternities = new Decimal(1);
-    if (PelleAchievementUpgrade.achievement102.isBought) pelleEternities = pelleEternities.timesEffectsOf(Achievement(102));
-    if (PelleAchievementUpgrade.achievement113.isBought) pelleEternities = pelleEternities.timesEffectsOf(Achievement(113));
-    if (PelleRealityUpgrade.eternalAmplifier.isBought) pelleEternities = pelleEternities.timesEffectsOf(RealityUpgrade(3));
-    if (PelleDestructionUpgrade.destroyedGlyphEffects.isBought) pelleEternities = pelleEternities.times(getAdjustedGlyphEffect("timeetermult"));
-    if (PelleAlchemyUpgrade.alchemyEternity.isBought) pelleEternities = pelleEternities.pow(AlchemyResource.eternity.effectValue);
+    if (PelleAchievementUpgrade.achievement102.canBeApplied) pelleEternities = pelleEternities.timesEffectsOf(Achievement(102));
+    if (PelleAchievementUpgrade.achievement113.canBeApplied) pelleEternities = pelleEternities.timesEffectsOf(Achievement(113));
+    if (PelleRealityUpgrade.eternalAmplifier.canBeApplied) pelleEternities = pelleEternities.timesEffectsOf(RealityUpgrade(3));
+    if (PelleDestructionUpgrade.destroyedGlyphEffects.canBeApplied) pelleEternities = pelleEternities.times(getAdjustedGlyphEffect("timeetermult"));
+    if (PelleAlchemyUpgrade.alchemyEternity.canBeApplied) pelleEternities = pelleEternities.pow(AlchemyResource.eternity.effectValue);
     return pelleEternities;
   }
   return new Decimal(getAdjustedGlyphEffect("timeetermult"))
@@ -329,7 +329,7 @@ class EPMultiplierState extends GameMechanicState {
   }
 
   get isAffordable() {
-    return (!Pelle.isDoomed || PelleDestructionUpgrade.x5EPUpgrade.isBought) && Currency.eternityPoints.gte(this.cost);
+    return (!Pelle.isDoomed || PelleDestructionUpgrade.x5EPUpgrade.canBeApplied) && Currency.eternityPoints.gte(this.cost);
   }
 
   get cost() {

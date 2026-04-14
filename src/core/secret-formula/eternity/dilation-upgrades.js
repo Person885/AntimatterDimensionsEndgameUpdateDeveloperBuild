@@ -56,7 +56,7 @@ export const dilationUpgrades = {
     increment: 100,
     capIncreaseAt: () => Decimal.floor((Decimal.log10(DilationUpgradeScaling.PRIMARY_SCALING).div(2)).sub(2)).toNumber(),
     description: () =>
-      ((Perk.bypassTGReset.isBought && !player.disablePostReality) && (!Pelle.isDoomed || PellePerkUpgrade.perkTGR.isBought)
+      ((Perk.bypassTGReset.isBought && !player.disablePostReality) && (!Pelle.isDoomed || PellePerkUpgrade.perkTGR.canBeApplied)
         ? "Reset Tachyon Galaxies, but lower their threshold"
         : "Reset Dilated Time and Tachyon Galaxies, but lower their threshold"),
     // The 38th purchase is at 1e80, and is the last purchase.
@@ -76,13 +76,13 @@ export const dilationUpgrades = {
     increment: 20,
     capIncreaseAt: () => Decimal.floor((Decimal.log10(DilationUpgradeScaling.PRIMARY_SCALING).div(Math.log10(20))).sub(Math.log10(5e5) / Math.log10(20))).toNumber(),
     description: () => {
-      if (Pelle.isDoomed && !PelleDestructionUpgrade.x3TPUpgrade) return `Multiply the amount of Tachyon Particles gained by ${formatInt(1)}`;
+      if (Pelle.isDoomed && !PelleDestructionUpgrade.x3TPUpgrade.canBeApplied) return `Multiply the amount of Tachyon Particles gained by ${formatInt(1)}`;
       if (Enslaved.isRunning) return `Multiply the amount of Tachyon Particles gained
       by ${Math.pow(3, Enslaved.tachyonNerf).toFixed(2)}`;
       return "Triple the amount of Tachyon Particles gained";
     },
     effect: bought => {
-      if (Pelle.isDoomed && !PelleDestructionUpgrade.x3TPUpgrade) return DC.D1.pow(bought);
+      if (Pelle.isDoomed && !PelleDestructionUpgrade.x3TPUpgrade.canBeApplied) return DC.D1.pow(bought);
       return DC.D3.pow(bought);
     },
     formatEffect: value => formatX(value, 2),

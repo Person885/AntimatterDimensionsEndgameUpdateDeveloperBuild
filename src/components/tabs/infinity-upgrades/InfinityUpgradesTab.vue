@@ -85,7 +85,7 @@ export default {
   methods: {
     update() {
       this.isDoomed = Pelle.isDoomed;
-      this.isUseless = Pelle.isDoomed && !PelleCelestialUpgrade.raTeresa2.isBought;
+      this.isUseless = Pelle.isDoomed && !PelleCelestialUpgrade.raTeresa2.canBeApplied;
       this.alwaysRecpec = this.isDoomed && Pelle.isAlwaysDischargeCIU;
       this.chargeUnlocked = Ra.unlocks.chargedInfinityUpgrades.canBeApplied && !this.isUseless && !player.disablePostReality;
       this.totalCharges = Ra.totalCharges;

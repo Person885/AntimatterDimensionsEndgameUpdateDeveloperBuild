@@ -46,7 +46,7 @@ export function antimatterDimensionCommonMultiplier() {
   multiplier = multiplier.times(getAdjustedGlyphEffect("powermult"));
   multiplier = multiplier.times(Currency.realityMachines.value.powEffectOf(AlchemyResource.force));
 
-  if (Pelle.isDoomed && !PelleDestructionUpgrade.disableADNerf.isBought) multiplier = multiplier.dividedBy(Currency.antimatter.value.add(1).log10().times(50).max(1));
+  if (Pelle.isDoomed && !PelleDestructionUpgrade.disableADNerf.canBeApplied) multiplier = multiplier.dividedBy(Currency.antimatter.value.add(1).log10().times(50).max(1));
   if (Alpha.isRunning) multiplier = multiplier.div(Currency.antimatter.value.add(1).log10().times(125).max(1));
 
   return multiplier;
@@ -190,7 +190,7 @@ function applyNDPowers(mult, tier) {
 
   multiplier = multiplier.pow(VUnlocks.adPow.effectOrDefault(1));
 
-  if (Pelle.isDoomed && PelleCelestialUpgrade.vMilestones1.isBought) multiplier = multiplier.pow(VUnlocks.adPow.effectValue);
+  if (Pelle.isDoomed && PelleCelestialUpgrade.vMilestones1.canBeApplied) multiplier = multiplier.pow(VUnlocks.adPow.effectValue);
 
   if (PelleStrikes.infinity.hasStrike && !PelleStrikes.infinity.isDestroyed()) {
     multiplier = multiplier.pow(0.5);

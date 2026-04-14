@@ -86,7 +86,7 @@ export function buyDilationUpgrade(id, bulk = 1) {
     Currency.dilatedTime.subtract(cost);
     player.dilation.rebuyables[id] += buying;
     if (id === 2) {
-      if (!Perk.bypassTGReset.isBought || (Pelle.isDoomed && !PellePerkUpgrade.perkTGR.isBought) || player.disablePostReality) Currency.dilatedTime.reset();
+      if (!Perk.bypassTGReset.isBought || (Pelle.isDoomed && !PellePerkUpgrade.perkTGR.canBeApplied) || player.disablePostReality) Currency.dilatedTime.reset();
       player.dilation.nextThreshold = DC.E3;
       player.dilation.baseTachyonGalaxies = DC.D0;
       player.dilation.totalTachyonGalaxies = DC.D0;
@@ -94,10 +94,10 @@ export function buyDilationUpgrade(id, bulk = 1) {
 
     if (id === 3 && Pelle.isDoomed && !player.disablePostReality) {
       let PelleRetroTP = 1;
-      if (PellePerkUpgrade.perkTP1.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP1);
-      if (PellePerkUpgrade.perkTP2.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP2);
-      if (PellePerkUpgrade.perkTP3.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP3);
-      if (PellePerkUpgrade.perkTP4.isBought) PelleRetroTP = Effects.max(1, Perk.retroactiveTP4);
+      if (PellePerkUpgrade.perkTP1.canBeApplied) PelleRetroTP = Effects.max(1, Perk.retroactiveTP1);
+      if (PellePerkUpgrade.perkTP2.canBeApplied) PelleRetroTP = Effects.max(1, Perk.retroactiveTP2);
+      if (PellePerkUpgrade.perkTP3.canBeApplied) PelleRetroTP = Effects.max(1, Perk.retroactiveTP3);
+      if (PellePerkUpgrade.perkTP4.canBeApplied) PelleRetroTP = Effects.max(1, Perk.retroactiveTP4);
       Currency.tachyonParticles.multiply(Decimal.pow(PelleRetroTP, buying));
     }
 
@@ -199,12 +199,12 @@ export function getDilationGainPerSecond() {
 export function tachyonGainMultiplier() {
   if (Pelle.isDisabled("tpMults")) {
     let pelleTP = new Decimal(1);
-    if (PelleDestructionUpgrade.x3TPUpgrade.isBought) pelleTP = pelleTP.timesEffectOf(DilationUpgrade.tachyonGain);
-    if (PelleRealityUpgrade.scourToEmpower.isBought) pelleTP = pelleTP.timesEffectOf(GlyphSacrifice.dilation);
-    if (PelleAchievementUpgrade.achievement132.isBought) pelleTP = pelleTP.timesEffectOf(Achievement(132));
-    if (PelleRealityUpgrade.superluminalAmplifier.isBought) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(4));
-    if (PelleRealityUpgrade.paradoxicallyAttain.isBought) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(8));
-    if (PelleRealityUpgrade.paradoxicalForever.isBought) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(15));
+    if (PelleDestructionUpgrade.x3TPUpgrade.canBeApplied) pelleTP = pelleTP.timesEffectOf(DilationUpgrade.tachyonGain);
+    if (PelleRealityUpgrade.scourToEmpower.canBeApplied) pelleTP = pelleTP.timesEffectOf(GlyphSacrifice.dilation);
+    if (PelleAchievementUpgrade.achievement132.canBeApplied) pelleTP = pelleTP.timesEffectOf(Achievement(132));
+    if (PelleRealityUpgrade.superluminalAmplifier.canBeApplied) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(4));
+    if (PelleRealityUpgrade.paradoxicallyAttain.canBeApplied) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(8));
+    if (PelleRealityUpgrade.paradoxicalForever.canBeApplied) pelleTP = pelleTP.timesEffectOf(RealityUpgrade(15));
     pelleTP = pelleTP.timesEffectOf(Ra.unlocks.gameSpeedTachyonMult);
     return pelleTP;
   }

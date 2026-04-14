@@ -181,7 +181,7 @@ export function timeDimensionCommonMultiplier() {
       EternityUpgrade.tdMultTheorems,
       EternityUpgrade.tdMultRealTime,
       Replicanti.areUnlocked && Replicanti.amount.gt(1) ? DilationUpgrade.tdMultReplicanti : null,
-      Pelle.isDoomed && !PelleRealityUpgrade.temporalTranscendence.isBought ? null : RealityUpgrade(22),
+      Pelle.isDoomed && !PelleRealityUpgrade.temporalTranscendence.canBeApplied ? null : RealityUpgrade(22),
       AlchemyResource.dimensionality,
       PelleRifts.chaos
     );

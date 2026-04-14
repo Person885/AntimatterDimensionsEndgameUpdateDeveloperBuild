@@ -32,7 +32,7 @@ export const Penteracts = {
   softcapReduction(count = this.bought, extra = this.extra) {
     const totalCount = count + extra;
     const base = Decimal.pow(Decimal.pow(1.05, Octeracts.cubeBoost()), totalCount);
-    return DC.D1.div(base);
+    return player.disablePostReality ? DC.D1 : DC.D1.div(base);
   },
 
   get eachPenteractReduction() {
@@ -75,7 +75,7 @@ export const Hexeracts = {
   softcapReduction(count = this.bought, extra = this.extra) {
     const totalCount = count + extra;
     const base = Decimal.pow(Decimal.pow(1.02, Octeracts.cubeBoost()), totalCount);
-    return DC.D1.div(base);
+    return player.disablePostReality ? DC.D1 : DC.D1.div(base);
   },
 
   get eachHexeractReduction() {
@@ -118,7 +118,7 @@ export const Hepteracts = {
   softcapReduction(count = this.bought, extra = this.extra) {
     const totalCount = count + extra;
     const base = Decimal.pow(Decimal.pow(1.01, Octeracts.cubeBoost()), totalCount);
-    return DC.D1.div(base);
+    return player.disablePostReality ? DC.D1 : DC.D1.div(base);
   },
 
   get eachHepteractReduction() {
@@ -161,7 +161,7 @@ export const Octeracts = {
   cubeBoost(count = this.bought, extra = this.extra) {
     const totalCount = count + extra;
     const base = Decimal.pow(1.1, totalCount);
-    return base;
+    return player.disablePostReality ? DC.D1 : base;
   },
 
   get eachOcteractBoost() {

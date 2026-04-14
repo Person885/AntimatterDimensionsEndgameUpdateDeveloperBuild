@@ -48,7 +48,7 @@ export const ra = {
       pet: "teresa",
       level: 1,
       displayIcon: `<span class="fas fa-atom"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raTeresa1.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raTeresa1.canBeApplied
     },
     chargedInfinityUpgrades: {
       id: 1,
@@ -58,7 +58,7 @@ export const ra = {
       pet: "teresa",
       level: 2,
       displayIcon: `<span class="fas fa-infinity"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raTeresa2.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raTeresa2.canBeApplied
     },
     teresaXP: {
       id: 2,
@@ -74,7 +74,7 @@ export const ra = {
       pet: "teresa",
       level: 10,
       displayIcon: `<span class="fas fa-bolt"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raTeresa3.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raTeresa3.canBeApplied
     },
     effarigUnlock: {
       id: 4,
@@ -161,7 +161,7 @@ export const ra = {
       pet: "enslaved",
       level: 1,
       displayIcon: `<span class="fas fa-circle"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raNameless1.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raNameless1.canBeApplied
     },
     improvedStoredTime: {
       id: 15,
@@ -173,7 +173,7 @@ export const ra = {
       pet: "enslaved",
       level: 2,
       displayIcon: `<span class="fas fa-history"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raNameless2.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raNameless2.canBeApplied
     },
     enslavedXP: {
       id: 16,
@@ -190,7 +190,7 @@ export const ra = {
       pet: "enslaved",
       level: 10,
       displayIcon: `<span class="fas fa-expand-arrows-alt"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raNameless3.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raNameless3.canBeApplied
     },
     vUnlock: {
       id: 18,
@@ -206,7 +206,7 @@ export const ra = {
       pet: "enslaved",
       level: 15,
       displayIcon: `<span class="fas fa-tachometer-alt"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raNameless4.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raNameless4.canBeApplied
     },
     allGamespeedGlyphs: {
       id: 20,
@@ -228,7 +228,7 @@ export const ra = {
       pet: "v",
       level: 1,
       displayIcon: `<span class="fas fa-sync-alt"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raV1.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raV1.canBeApplied
     },
     autoUnlockDilation: {
       id: 22,
@@ -254,7 +254,7 @@ export const ra = {
       pet: "v",
       level: 6,
       displayIcon: `<span class="fas fa-trophy"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raV2.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raV2.canBeApplied
     },
     continuousTTBoost: {
       id: 25,
@@ -272,7 +272,7 @@ export const ra = {
       pet: "v",
       level: 10,
       displayIcon: `<span class="fas fa-university"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raV3.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raV3.canBeApplied
     },
     achievementTTMult: {
       id: 26,
@@ -281,7 +281,7 @@ export const ra = {
       pet: "v",
       level: 15,
       displayIcon: `<span class="fas fa-graduation-cap"></span>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raV4.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raV4.canBeApplied
     },
     achievementPower: {
       id: 27,
@@ -290,7 +290,7 @@ export const ra = {
       pet: "v",
       level: 25,
       displayIcon: `<i class="fab fa-buffer"></i>`,
-      disabledByPelle: () => !PelleCelestialUpgrade.raV5.isBought
+      disabledByPelle: () => !PelleCelestialUpgrade.raV5.canBeApplied
     },
     eternityPointPower: {
       id: 28,

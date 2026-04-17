@@ -29,6 +29,7 @@ export const Effarig = {
     if (!EffarigUnlock.endgame.isUnlocked && EffarigUnlock.extendRun.isUnlocked) {
       for (let slots = 0; slots < Glyphs.activeSlotCount; slots++) {
         for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.omniGlyph(type));
+        Glyphs.addToInventory(GlyphGenerator.omniGlyph("effarig"));
       }
       if (ImaginaryUpgrade(25).isBought) {
         player.reality.imaginaryUpgradeBits -= Math.pow(2, 25);
@@ -79,9 +80,11 @@ export const Effarig = {
       case EFFARIG_STAGES.REALITY:
         return 2000;
       case EFFARIG_STAGES.ENDGAME:
-        return Math.floor(Time.thisEndgameRealTime.totalSeconds.toNumber());
+        return Math.floor(Time.thisEndgameRealTime.totalMilliseconds.toNumber()) * Math.pow(2, Time.thisEndgameRealTime.totalHours.toNumber());
       default:
-        return EffarigUnlock.extendRun.isUnlocked ? Math.floor(Time.thisEndgameRealTime.totalSeconds.toNumber()) : 2000;
+        return EffarigUnlock.extendRun.isUnlocked
+          ? Math.floor(Time.thisEndgameRealTime.totalMilliseconds.toNumber()) * Math.pow(2, Time.thisEndgameRealTime.totalHours.toNumber())
+          : 2000;
     }
   },
   get glyphEffectAmount() {

@@ -607,7 +607,7 @@ export const glyphEffects = {
     genericDesc: "Antimatter production exponent power",
     shortDesc: "AM production exponent ^{value}",
     effect: (level, strength) => (EffarigUnlock.endgame.canBeApplied
-      ? 1 + Math.pow(level, 0.27) * Math.pow(strength, 0.45) / 4800
+      ? 1 + Math.pow(level, 0.26) * Math.pow(strength, 0.45) / 4800
       : 1 + Math.pow(level, 0.25) * Math.pow(strength, 0.4) / 5000),
     formatEffect: x => format(x, 4, 4),
     combine: GlyphCombiner.multiply,

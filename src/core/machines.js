@@ -5,6 +5,7 @@ export const MachineHandler = {
     let effectMultipliers = DC.D1;
     if (ExpansionPack.teresaPack.isBought && !player.disablePostReality) effectMultipliers = effectMultipliers.timesEffectsOf(PerkShopUpgrade.rmMult);
     if (ExpansionPack.teresaPack.isBought && !player.disablePostReality && !Alpha.isDestroyed) effectMultipliers = effectMultipliers.times(Teresa.rmMultiplier);
+    if (EffarigUnlock.endgame.canBeApplied) effectMultipliers = effectMultipliers.times(getAdjustedGlyphEffect("effarigrm"));
     const smallBoost = DC.D1.timesEffectsOf(EndgameMastery(153));
     const largeBoost = DC.D1.timesEffectsOf(SingularityMilestone.rmCap, Ra.unlocks.realityMachineCap);
     return Decimal.pow(this.baseRMCap.times(effectMultipliers).times(

@@ -379,7 +379,7 @@ class EPMultiplierState extends GameMechanicState {
     if (cur.gt(this.costIncreaseThresholds[4]) && (EndgameMastery(152).isBought && !player.disablePostReality)) {
       bulk = Decimal.floor(this.costIncreaseThresholds[4].div(500).log(1000));
       tempVal = DC.E30.pow(bulk).times(500);
-      cur = cur.div(tempVal.max(1 / 1e30));
+      cur = cur.div(tempVal).max(1);
       return Decimal.floor(bulk.add(cur.log(1e30)).add(1));
     }
     if (cur.gt(this.costIncreaseThresholds[3]) && (!EndgameMastery(152).isBought || player.disablePostReality)) {
@@ -390,28 +390,28 @@ class EPMultiplierState extends GameMechanicState {
     if (cur.gt(this.costIncreaseThresholds[3]) && (EndgameMastery(152).isBought && !player.disablePostReality)) {
       bulk = Decimal.floor(this.costIncreaseThresholds[3].div(500).log(1000));
       tempVal = DC.E3.pow(bulk).times(500);
-      cur = cur.div(tempVal.max(1 / 1e3));
+      cur = cur.div(tempVal).max(1);
       return Decimal.floor(bulk.add(cur.log(1e3)).add(1));
     }
     if (cur.gt(this.costIncreaseThresholds[2])) {
       bulk = Decimal.floor(this.costIncreaseThresholds[2].div(500).log(500));
       tempVal = DC.E3.pow(bulk).times(500);
-      cur = cur.div(tempVal.max(1 / 1e3));
+      cur = cur.div(tempVal).max(1);
       return Decimal.floor(bulk.add(cur.log(1e3)).add(1));
     }
     if (cur.gt(this.costIncreaseThresholds[1])) {
       bulk = Decimal.floor(this.costIncreaseThresholds[1].div(500).log(100));
       tempVal = (DC.E2.times(5)).pow(bulk).times(500);
-      cur = cur.div(tempVal.max(1 / 500));
+      cur = cur.div(tempVal).max(1);
       return Decimal.floor(bulk.add(cur.log(500)).add(1));
     }
     if (cur.gt(this.costIncreaseThresholds[0])) {
       bulk = Decimal.floor(this.costIncreaseThresholds[0].div(500).log(50));
       tempVal = DC.E2.pow(bulk).times(500);
-      cur = cur.div(tempVal.max(1 / 100));
+      cur = cur.div(tempVal).max(1);
       return Decimal.floor(bulk.add(cur.log(100)).add(1));
     }
-    return Decimal.floor(cur.div(500).max(1 / 50).log(50).add(1));
+    return Decimal.floor(cur.div(500).max(1).log(50).add(1));
   }
 
   buyMax(auto) {

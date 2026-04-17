@@ -22,6 +22,11 @@ export const GlyphCombiner = Object.freeze({
    * @param {Decimal[]} x
    * @returns {Decimal}
    */
+  addDecimal: x => x.reduce(Decimal.sumReducer, DC.D0),
+  /**
+   * @param {Decimal[]} x
+   * @returns {Decimal}
+   */
   multiplyDecimal: x => x.reduce(Decimal.prodReducer, DC.D1)
 });
 
@@ -174,14 +179,14 @@ export const glyphEffects = {
       ? "{value} TT/hr and TTgen ×{value2}"
       : "{value} TT/hr"),
     effect: (level, strength) => (EffarigUnlock.endgame.canBeApplied
-      ? Math.pow(level * strength, 0.6) / 1000
-      : Math.pow(level * strength, 0.5) / 10000),
+      ? Decimal.pow(level * strength, 0.6).div(1000)
+      : Decimal.pow(level * strength, 0.5).div(10000)),
     /** @type {function(number): string} */
     formatEffect: x => format(3600 * x, 2, 2),
-    combine: GlyphCombiner.add,
+    combine: GlyphCombiner.addDecimal,
     conversion: x => (EffarigUnlock.endgame.canBeApplied
       ? Decimal.clampMin(Decimal.pow10(10000 * x), 1)
-      : Math.clampMin(Math.pow(10000 * x, 1.6), 1)),
+      : Decimal.clampMin(Math.pow(10000 * x, 1.6), 1)),
     formatSecondaryEffect: x => format(x, 2, 2),
     alteredColor: () => GlyphAlteration.getAdditionColor("dilation"),
     alterationType: ALTERATION_TYPE.ADDITION,
@@ -488,10 +493,10 @@ export const glyphEffects = {
     effect: (level, strength) => EffarigUnlock.endgame.canBeApplied
       ? Decimal.pow10(Math.pow(level, 0.6) * strength)
       : (GlyphAlteration.isEmpowered("effarig")
-         ? Math.pow(level, 1.5)
-         : Math.pow(level, 0.6) * strength),
+         ? Decimal.pow(level, 1.5)
+         : Decimal.pow(level, 0.6).times(strength)),
     formatEffect: x => format(x, 2, 2),
-    combine: GlyphCombiner.multiply,
+    combine: GlyphCombiner.multiplyDecimal,
     alteredColor: () => GlyphAlteration.getEmpowermentColor("effarig"),
     alterationType: ALTERATION_TYPE.EMPOWER,
     enabledInDoomed: () => !Pelle.isGlyphTypeDisabled("effarig")

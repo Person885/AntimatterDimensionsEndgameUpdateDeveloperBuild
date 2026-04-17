@@ -160,7 +160,9 @@ class EffarigUnlockState extends BitUpgradeState {
   }
 
   get isEffectActive() {
-    return !Pelle.isDisabled("effarig") && !player.disablePostReality;
+    const hasAllEffarigRewards = (PelleCelestialUpgrade.replicantiCapIncrease.canBeApplied &&
+      PelleCelestialUpgrade.maxRGIncrease.canBeApplied && PelleCelestialUpgrade.effarigRewards.canBeApplied);
+    return (!Pelle.isDisabled("effarig") || hasAllEffarigRewards) && !player.disablePostReality;
   }
 
   purchase() {

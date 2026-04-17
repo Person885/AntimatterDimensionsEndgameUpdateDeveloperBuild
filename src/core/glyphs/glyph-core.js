@@ -673,10 +673,12 @@ export const Glyphs = {
     return 3000 + this.instabilityThreshold;
   },
   get extremeInstabilityThreshold() {
-    return 75000 + Ra.unlocks.instabilityDelay.effectOrDefault(0) + DualityUpgrade(7).effectOrDefault(0);
+    return 75000 + Ra.unlocks.instabilityDelay.effectOrDefault(0) + DualityUpgrade(7).effectOrDefault(0) +
+      (EffarigUnlock.endgame.canBeApplied ? getAdjustedGlyphEffect("effarigglyph") : 0);
   },
   get immenseInstabilityThreshold() {
-    return 200000 + DualityUpgrade(7).effectOrDefault(0);
+    return 200000 + DualityUpgrade(7).effectOrDefault(0) +
+      (EffarigUnlock.endgame.canBeApplied ? getAdjustedGlyphEffect("effarigglyph") : 0);
   },
   get extensiveInstabilityThreshold() {
     return 1000000;

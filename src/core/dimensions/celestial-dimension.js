@@ -124,7 +124,8 @@ class CelestialDimensionState extends DimensionState {
   }
 
   get powerMultiplier() {
-    return new Decimal(CelestialInfinityUpgrade.celDimPurchaseBoost.effectOrDefault(this._powerMultiplier)).pow(SingularityMilestone.perPurchaseDimMult.effectOrDefault(1));
+    return new Decimal(CelestialInfinityUpgrade.celDimPurchaseBoost.effectOrDefault(this._powerMultiplier)).timesEffectOf(
+      CelestialBreakInfinityUpgrade.celDimPurchaseBuff).pow(SingularityMilestone.perPurchaseDimMult.effectOrDefault(1));
   }
 
   get purchases() {
@@ -317,7 +318,8 @@ export const CelestialDimensions = {
 
 export function getCelestialTickSpeedMultiplier() {
   const base = new Decimal(1.05);
-  const eachGalaxy = new Decimal(CelestialInfinityUpgrade.celGalaxyBuff.effectOrDefault(1.02));
+  const eachGalaxy = new Decimal(CelestialInfinityUpgrade.celGalaxyBuff.effectOrDefault(1.02)).sub(1).timesEffectOf(
+    CelestialBreakInfinityUpgrade.celGalaxyBuff).add(1);
   const galaxies = player.endgame.celDimExpansion.galaxies;
   return base.times(eachGalaxy.pow(galaxies));
 }
@@ -406,7 +408,8 @@ class CelestialDimBoostRequirement {
 
 export class CelestialDimBoost {
   static get power() {
-    return new Decimal(CelestialInfinityUpgrade.celDimBoostBuff.effectOrDefault(10));
+    return new Decimal(CelestialInfinityUpgrade.celDimBoostBuff.effectOrDefault(10)).timesEffectOf(
+      CelestialBreakInfinityUpgrade.celDimboostBuff);
   }
 
   static multiplierToCDTier() {

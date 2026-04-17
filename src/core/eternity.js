@@ -369,6 +369,19 @@ class EPMultiplierState extends GameMechanicState {
     let tempVal = DC.D0;
     let bulk = DC.D1;
     let cur = Currency.eternityPoints.value.max(1);
+    if (cur.gt(this.costIncreaseThresholds[4]) && (!EndgameMastery(152).isBought || player.disablePostReality)) {
+      bulk = Decimal.max(Decimal.floor(Decimal.pow(Decimal.log(this.costIncreaseThresholds[4].div(500), 1e3).sub(1332).add(Decimal.pow(1332, 1.2)), 1 / 1.2)), 1332);
+      tempVal = DC.E3.pow(Decimal.pow(count, 1.2).sub(Decimal.pow(1332, 1.2)).add(1332)).times(500);
+      cur = Decimal.log(tempVal.div(500), 1e30).sub(bulk).max(0);
+      return Decimal.floor(Decimal.pow(cur.add(bulk).add(Decimal.pow(1332, 1.2)), 1 / 1.2));
+      // eslint-disable-next-line no-else-return
+    }
+    if (cur.gt(this.costIncreaseThresholds[4]) && (EndgameMastery(152).isBought && !player.disablePostReality)) {
+      bulk = Decimal.floor(this.costIncreaseThresholds[4].div(500).log(1000));
+      tempVal = DC.E30.pow(bulk).times(500);
+      cur = cur.div(tempVal.max(1 / 1e30));
+      return Decimal.floor(bulk.add(cur.log(1e30)).add(1));
+    }
     if (cur.gt(this.costIncreaseThresholds[3]) && (!EndgameMastery(152).isBought || player.disablePostReality)) {
       cur = Decimal.log(cur.div(500), 1e3).sub(1332);
       return Decimal.max(Decimal.floor(Decimal.pow(cur.add(Decimal.pow(1332, 1.2)), 1 / 1.2)), 1332);
@@ -433,19 +446,22 @@ class EPMultiplierState extends GameMechanicState {
       DC.E100.powEffectsOf(BreakEternityUpgrade.epMultiplierDelay),
       DC.NUMMAX.powEffectsOf(BreakEternityUpgrade.epMultiplierDelay),
       DC.E1300.powEffectsOf(BreakEternityUpgrade.epMultiplierDelay),
-      DC.E4000.powEffectsOf(BreakEternityUpgrade.epMultiplierDelay)
+      DC.E4000.powEffectsOf(BreakEternityUpgrade.epMultiplierDelay),
+      Decimal.pow10(1e125)
     ];
   }
 
   costAfterCount(count) {
     const costThresholds = EternityUpgrade.epMult.costIncreaseThresholds;
     const multPerUpgrade = [50, 100, 500, 1000];
-    for (let i = 0; i < costThresholds.length; i++) {
+    for (let i = 0; i < costThresholds.length - 1; i++) {
       const cost = Decimal.pow(multPerUpgrade[i], count).times(500);
       if (cost.lt(costThresholds[i])) return cost;
     }
     const purchaseScale = (EndgameMastery(152).isBought && !player.disablePostReality) ? count : Decimal.pow(count, 1.2).sub(Decimal.pow(1332, 1.2)).add(1332);
-    return DC.E3.pow(purchaseScale).times(500);
+    const tempCost = DC.E3.pow(purchaseScale).times(500);
+    if (tempCost.gte("e1e125")) return DC.E30.pow(purchaseScale).times(500);
+    return tempCost;
   }
 }
 

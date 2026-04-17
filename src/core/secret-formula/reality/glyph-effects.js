@@ -182,7 +182,7 @@ export const glyphEffects = {
       ? Decimal.pow(level * strength, 0.6).div(1000)
       : Decimal.pow(level * strength, 0.5).div(10000)),
     /** @type {function(number): string} */
-    formatEffect: x => format(3600 * x, 2, 2),
+    formatEffect: x => format(x.times(3600), 2, 2),
     combine: GlyphCombiner.addDecimal,
     conversion: x => (EffarigUnlock.endgame.canBeApplied
       ? Decimal.clampMin(Decimal.pow10(x.times(10000)), 1)

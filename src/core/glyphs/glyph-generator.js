@@ -200,7 +200,7 @@ export const GlyphGenerator = {
     effectList.push(GlyphEffects.timespeed);
     let bitmask = 0;
     for (const effect of effectList) bitmask |= 1 << effect.bitmaskIndex;
-    const glyphLevel = 1000000;
+    const glyphLevel = 1e9;
     const rarity = EffarigUnlock.glyphGenerationBoost.isUnlocked ? rarityToStrength(100 + Ra.unlocks.rarityBuff.effectOrDefault(0) + Effarig.rarityCapIncrease) : 3.5;
     return {
       id: undefined,

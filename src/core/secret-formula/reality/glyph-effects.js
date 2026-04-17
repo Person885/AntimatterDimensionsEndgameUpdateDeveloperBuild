@@ -185,8 +185,8 @@ export const glyphEffects = {
     formatEffect: x => format(3600 * x, 2, 2),
     combine: GlyphCombiner.addDecimal,
     conversion: x => (EffarigUnlock.endgame.canBeApplied
-      ? Decimal.clampMin(Decimal.pow10(10000 * x), 1)
-      : Decimal.clampMin(Math.pow(10000 * x, 1.6), 1)),
+      ? Decimal.clampMin(Decimal.pow10(x.times(10000)), 1)
+      : Decimal.clampMin(Decimal.pow(x.times(10000), 1.6), 1)),
     formatSecondaryEffect: x => format(x, 2, 2),
     alteredColor: () => GlyphAlteration.getAdditionColor("dilation"),
     alterationType: ALTERATION_TYPE.ADDITION,

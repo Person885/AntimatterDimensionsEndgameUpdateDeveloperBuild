@@ -77,11 +77,14 @@ export const glyphSacrifice = {
       if (Pelle.isDisabled("glyphsac") && !PelleRealityUpgrade.scourToEmpower.canBeApplied) return new Decimal(0);
       const sac = player.disablePostReality ? DC.D0 : player.reality.glyphs.sac.effarig.add(added ?? 0);
       // This doesn't use the GlyphSacrificeHandler cap because it hits its cap (+100%) earlier
-      const capped = Decimal.clampMax(sac, 1e70);
+      const capped = EffarigUnlock.endgame.canBeApplied
+        ? Decimal.clampMax(sac, 1e70).times(
+          Decimal.clampMax(sac, GlyphSacrificeHandler.maxSacrificeForEffects).div(1e70).max(1).log10().div(10000).pow(5).add(1))
+        : Decimal.clampMax(sac, 1e70);
       return new Decimal(Decimal.log10(capped.div(1e20).add(1))).times(2);
     },
     description: amount => `+${formatDecimalPercents(amount.div(100), 2)} additional Glyph rarity`,
-    cap: () => new Decimal(1e70)
+    cap: () => EffarigUnlock.endgame.canBeApplied ? GlyphSacrificeHandler.maxSacrificeForEffects : new Decimal(1e70)
   },
   "reality": {
     id: "reality",

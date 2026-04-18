@@ -1044,6 +1044,15 @@ function globalPassivePrestigeGen(realDiff) {
     Currency.endgames.add(Math.floor(player.endgame.partEndgamed));
     player.endgame.partEndgamed = (player.endgame.partEndgamed - Math.floor(player.endgame.partEndgamed));
   }
+
+  let celInfGen = DC.D0;
+  if (CelestialBreakInfinityUpgrade.celInfGen.isBought) {
+    celInfGen = celInfGen.plus(new Decimal(0.5).times(Time.unscaledDeltaTime.totalMilliseconds).div(
+      player.records.bestCelestialInfinity.realTime));
+  }
+  celInfGen = celInfGen.plus(player.endgame.celDimExpansion.partCelestialInfinitied);
+  Currency.celestialInfinities.add(celInfGen.floor());
+  player.endgame.celDimExpansion.partCelestialInfinitied = celInfGen.minus(celInfGen.floor()).toNumber();
 }
 
 function passivePrestigeGen(realDiff) {

@@ -40,7 +40,8 @@ export const celestialBreakInfinityUpgrades = {
   betterAuto: {
     id: "betterAuto",
     cost: 1e9,
-    description: () => `All Celestial Dimension-related Automation is ${formatX(3)} faster`
+    description: () => `All Celestial Dimension-related Automation is ${formatX(3)} faster`,
+    effect: 3
   },
   bulkCelDimBoosts: {
     id: "bulkCelDimBoosts",

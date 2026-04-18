@@ -126,7 +126,7 @@ export default {
           <br>
           You have
           <span :class="instabilityClassObject()">{{ format(celestialMatter, 2, 1) }}</span>
-          <span v-if="unstable">Unstable</span> <span v-if="isOverflowing">Overflowing</span> Celestial Matter,
+          <span v-if="unstable"> Unstable</span> <span v-if="isOverflowing">Overflowing</span> Celestial Matter,
           <br>
           <span>
             increased by

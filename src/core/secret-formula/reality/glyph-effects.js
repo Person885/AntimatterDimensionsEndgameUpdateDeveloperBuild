@@ -265,16 +265,16 @@ export const glyphEffects = {
       ? `×DT and repl. by +{value} per ${format(DC.E10000)} replicanti`
       : `×DT by +{value} per ${format(DC.E10000)} replicanti`),
     effect: (level, strength) => (EffarigUnlock.endgame.canBeApplied
-      ? Math.pow(level, strength) * 0.0005
-      : 0.0003 * Math.pow(level, 0.3) * Math.pow(strength, 0.65)),
-    formatEffect: x => format(10000 * x, 2, 2),
-    formatSingleEffect: x => format(10000 * x, 2, 2),
+      ? Decimal.pow(level, strength).times(0.0005)
+      : Decimal.pow(level, 0.3).times(Decimal.pow(strength, 0.65)).times(0.0003)),
+    formatEffect: x => format(x.times(10000), 2, 2),
+    formatSingleEffect: x => format(x.times(10000), 2, 2),
     // It's bad to stack this one additively (N glyphs acts as a DT mult of N) or multiplicatively (the raw number is
     // less than 1), so instead we do a multiplicative stacking relative to the "base" effect of a level 1, 0% glyph.
     // We also introduce a 3x mult per glyph after the first, so that stacking level 1, 0% glyphs still has an effect.
     // This is still just a flat DT mult when stacking multiple glyphs, but at least it's bigger than 2 or 3.
     combine: effects => ({
-      value: effects.length === 0 ? 0 : effects.reduce(Number.prodReducer, Math.pow(0.0001, 1 - effects.length)),
+      value: effects.length === 0 ? DC.D0 : effects.reduce(Decimal.prodReducer, Decimal.pow(0.0001, 1 - effects.length)),
       capped: false
     }),
     conversion: x => x,

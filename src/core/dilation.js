@@ -122,22 +122,22 @@ export function getTachyonGalaxyMultForDisplay(thresholdUpgrade) {
   // This specifically needs to be an undefined check because sometimes thresholdUpgrade is zero
   const upgrade = thresholdUpgrade === undefined ? DilationUpgrade.galaxyThreshold.effectValue : thresholdUpgrade;
   const thresholdMult = (BreakEternityUpgrade.tgThresholdUncap.isBought && !player.disablePostReality)
-    ? 3.65 * upgrade + (0.35 * (upgrade ** 0.001)) : 3.65 * upgrade + 0.35;
+    ? upgrade.times(3.65).add(Decimal.pow(upgrade, 0.001).times(0.35)) : upgrade.times(3.65).add(0.35);
   const glyphEffect = getAdjustedGlyphEffect("dilationgalaxyThreshold");
   const glyphReduction = glyphEffect === 0 ? 1 : glyphEffect;
   const pelleExclusivePower = DilationUpgrade.galaxyThresholdPelle.canBeApplied ? DilationUpgrade.galaxyThresholdPelle.effectValue : 1;
   const extraPower = GalacticPowers.tachyonGalaxies.isUnlocked ? 1 / GalacticPowers.tachyonGalaxies.reward : 1;
   const power = pelleExclusivePower * EndgameUpgrade(22).effectOrDefault(1) * extraPower;
-  return (1 + thresholdMult * glyphReduction) ** power;
+  return Decimal.pow(thresholdMult.times(glyphReduction).add(1), power);
 }
 
 export function getBaseTachyonGalaxyMult() {
   const thresholdMult = (BreakEternityUpgrade.tgThresholdUncap.isBought && !player.disablePostReality)
-    ? 3.65 * DilationUpgrade.galaxyThreshold.effectValue + (0.35 * (DilationUpgrade.galaxyThreshold.effectValue ** 0.001))
-    : 3.65 * DilationUpgrade.galaxyThreshold.effectValue + 0.35;
+    ? DilationUpgrade.galaxyThreshold.effectValue.times(3.65).add(Decimal.pow(DilationUpgrade.galaxyThreshold.effectValue, 0.001).times(0.35))
+    : DilationUpgrade.galaxyThreshold.effectValue.times(3.65).add(0.35);
   const glyphEffect = getAdjustedGlyphEffect("dilationgalaxyThreshold");
   const glyphReduction = glyphEffect === 0 ? 1 : glyphEffect;
-  return thresholdMult * glyphReduction;
+  return thresholdMult.times(glyphReduction);
 }
 
 export function getTachyonGalaxyPowers() {

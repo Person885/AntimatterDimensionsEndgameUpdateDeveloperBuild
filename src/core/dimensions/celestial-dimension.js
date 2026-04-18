@@ -506,7 +506,7 @@ export function manualRequestCelestialDimensionBoost(bulk) {
 export function requestCelestialDimensionBoost(bulk) {
   if ((Currency.celestialMatter.value.gt(DC.NUMMAX) && !player.endgame.celDimExpansion.isBroken) || !CelestialDimBoost.requirement.isSatisfied) return;
   if (!CelestialDimBoost.canBeBought) return;
-  if (false && bulk) maxBuyCelestialDimBoosts();
+  if (CelestialBreakInfinityUpgrade.bulkCelDimBoosts.isBought && bulk) maxBuyCelestialDimBoosts();
   else softCelestialReset(1);
 }
 

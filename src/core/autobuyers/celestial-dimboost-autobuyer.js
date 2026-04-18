@@ -66,7 +66,7 @@ export class CelestialDimBoostAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get isBuyMaxUnlocked() {
-    return false;
+    return CelestialBreakInfinityUpgrade.bulkCelDimBoosts.isBought;
   }
 
   get canTick() {

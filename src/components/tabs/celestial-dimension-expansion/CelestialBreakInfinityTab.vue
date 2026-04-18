@@ -22,6 +22,11 @@ export default {
           CelestialBreakInfinityUpgrade.autoCDPlus,
         ],
         [
+          CelestialBreakInfinityUpgrade.betterAuto,
+          CelestialBreakInfinityUpgrade.bulkCelDimBoosts,
+          CelestialBreakInfinityUpgrade.celInfGen,
+        ],
+        [
           CelestialBreakInfinityUpgrade.celTickspeedCostMult,
           CelestialBreakInfinityUpgrade.celDimCostMult,
           CelestialBreakInfinityUpgrade.cipGen

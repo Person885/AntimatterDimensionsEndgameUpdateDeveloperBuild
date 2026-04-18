@@ -37,6 +37,21 @@ export const celestialBreakInfinityUpgrades = {
     cost: 1e6,
     description: "Unlock Autobuyers for Celestial Tickspeed, Celestial Dimension Boosts, Celestial Galaxies and Celestial Crunches"
   },
+  betterAuto: {
+    id: "betterAuto",
+    cost: 1e9,
+    description: () => `All Celestial Dimension-related Automation is ${formatX(3)} faster`
+  },
+  bulkCelDimBoosts: {
+    id: "bulkCelDimBoosts",
+    cost: 1e15,
+    description: "Unlock the buy max Celestial Dimension Boost Autobuyer mode"
+  },
+  celInfGen: {
+    id: "celInfGen",
+    cost: 1e24,
+    description: () => `Generate Celestial Infinities at ${formatPercents(0.5)} of your fastest`
+  },
   celTickspeedCostMult: rebuyable({
     id: 0,
     initialCost: 1e5,

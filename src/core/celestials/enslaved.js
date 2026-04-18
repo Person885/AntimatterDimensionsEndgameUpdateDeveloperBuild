@@ -290,7 +290,7 @@ export const Tesseracts = {
   },
 
   get freeSoftcapStart() {
-    return (50 * EndgameUpgrade(23).effectOrDefault(1)) + Ra.unlocks.freeTesseractIncrease.effectOrDefault(0);
+    return (50 * EndgameUpgrade(23).effectOrDefault(1)) * Ra.unlocks.freeTesseractIncrease.effectOrDefault(1);
   },
 
   get extra() {

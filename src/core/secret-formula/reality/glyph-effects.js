@@ -57,12 +57,12 @@ export const glyphEffects = {
     genericDesc: "Game speed multiplier",
     shortDesc: "Game speed ×{value}",
     effect: (level, strength) => (EffarigUnlock.endgame.canBeApplied
-      ? 1 + Math.pow(level, strength)
+      ? Decimal.pow(level, strength).add(1)
       : (GlyphAlteration.isEmpowered("time")
-         ? 1 + Math.pow(level, 0.35)
-         : 1 + Math.pow(level, 0.3) * Math.pow(strength, 0.65) / 20)),
+         ? Decimal.pow(level, 0.35).add(1)
+         : Decimal.pow(level, 0.3).times(Decimal.pow(strength, 0.65)).div(20).add(1))),
     formatEffect: x => format(x, 3, 3),
-    combine: GlyphCombiner.multiply,
+    combine: GlyphCombiner.multiplyDecimal,
     alteredColor: () => GlyphAlteration.getEmpowermentColor("time"),
     alterationType: ALTERATION_TYPE.EMPOWER,
     enabledInDoomed: true,

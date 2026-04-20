@@ -317,6 +317,8 @@ class TimeDimensionState extends DimensionState {
       mult = mult.pow(AlphaUnlocks.timeDimension8.effects.buff.effectOrDefault(1));
     }
 
+    mult = dilateMultiplier(mult, EtherealStars.purple.reward);
+
     if (mult.gte(TimeDimensions.OVERFLOW)) mult = Decimal.pow(10, Decimal.pow(mult.log10().div(Decimal.log10(TimeDimensions.OVERFLOW)), 1 / TimeDimensions.compressionMagnitude).times(Decimal.log10(TimeDimensions.OVERFLOW)));
 
     return mult;

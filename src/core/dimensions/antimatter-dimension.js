@@ -95,6 +95,8 @@ export function getDimensionFinalMultiplierUncached(tier) {
 
   multiplier = dilateMultiplier(multiplier, Achievement(231).effectOrDefault(1));
 
+  multiplier = dilateMultiplier(multiplier, EtherealStars.red.reward);
+
   return multiplier;
 }
 

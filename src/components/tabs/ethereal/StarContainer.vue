@@ -16,16 +16,19 @@ export default {
     star() {
       return this.getStar();
     },
+    config() {
+      return this.star.config;
+    },
     reward() {
       return this.star.reward;
     },
     description() {
-      return this.star.config.description(this.reward);
+      return this.config.description(this.reward);
     },
     rewardClassObject() {
       return {
         "o-star__container": true,
-        [`o-star__container--${star.config.name}`]: true,
+        [`o-star__container--${config.name}`]: true,
       };
     },
   },

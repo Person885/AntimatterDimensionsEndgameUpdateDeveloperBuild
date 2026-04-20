@@ -28,7 +28,7 @@ export default {
     rewardClassObject() {
       return {
         "o-star__container": true,
-        [`o-star__container--${config.name}`]: true,
+        [`o-star__container--${this.config.name}`]: true,
       };
     },
   },

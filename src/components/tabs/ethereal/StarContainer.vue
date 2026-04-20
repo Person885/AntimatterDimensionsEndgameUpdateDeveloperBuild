@@ -73,6 +73,7 @@ export default {
         Effect: {{ description }}
       </span>
       <br>
+      <br>
       <PrimaryButton
         @click="starReset"
       >
@@ -83,5 +84,8 @@ export default {
 </template>
 
 <style scoped>
-
+.o-reset-btn {
+  width: 32rem;
+  font-size: 1rem;
+}
 </style>

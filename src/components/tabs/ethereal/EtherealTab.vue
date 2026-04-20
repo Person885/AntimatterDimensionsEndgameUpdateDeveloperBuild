@@ -1,6 +1,11 @@
 <script>
+import StarContainer from "./StarContainer";
+
 export default {
   name: "EtherealTab",
+  components: {
+    StarContainer
+  },
   data() {
     return {
       etherealPower: new Decimal(),
@@ -30,6 +35,14 @@ export default {
         "o-ethereal-button--available": true
       };
     },
+    stars() {
+      return Object.values(GameDatabase.endgame.stars)
+        .sort((a, b) => a.dmReq - b.dmReq)
+        .map(config => new EtherealStarState(config));
+    },
+    rows() {
+      return Math.ceil(this.stars.length / 3);
+    }
   },
   methods: {
     update() {
@@ -44,6 +57,9 @@ export default {
     },
     extendEthereal() {
       return player.endgame.ethereal.isExtended = true;
+    },
+    getStar(row, column) {
+      return () => this.stars[(row - 1) * 3 + column - 1];
     }
   }
 };
@@ -97,6 +113,23 @@ export default {
         >
           Extend the Ethereal
         </button>
+      </div>
+    </div>
+    <div
+      v-if="isExtended"
+      class="l-star-grid"
+    >
+      <div
+        v-for="row in rows"
+        :key="row"
+        class="l-star-grid__row"
+      >
+        <StarContainer
+          v-for="column in 3"
+          :key="row * 3 + column"
+          :get-star="getStar(row, column)"
+          class="l-star-grid__cell"
+        />
       </div>
     </div>
   </div>

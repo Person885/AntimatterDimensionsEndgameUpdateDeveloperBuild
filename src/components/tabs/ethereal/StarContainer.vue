@@ -10,6 +10,8 @@ export default {
   data() {
     return {
       isUnlocked: false,
+      amount: new Decimal(0),
+      reward: new Decimal(0)
     };
   },
   computed: {
@@ -18,9 +20,6 @@ export default {
     },
     config() {
       return this.star.config;
-    },
-    reward() {
-      return this.star.reward;
     },
     description() {
       return this.config.description(this.reward);
@@ -35,6 +34,8 @@ export default {
   methods: {
     update() {
       this.isUnlocked = this.star.isUnlocked;
+      this.amount.copyFrom(player.endgame.ethereal.stars[this.config.name]);
+      this.reward.copyFrom(this.star.reward);
     },
     starReset() {
       resetForStar(this.star.id);
@@ -51,6 +52,9 @@ export default {
     <button
       :class="rewardClassObject"
     >
+      <span>
+        You have {{ format
+      </span>
       <span>
         {{ description }}
       </span>

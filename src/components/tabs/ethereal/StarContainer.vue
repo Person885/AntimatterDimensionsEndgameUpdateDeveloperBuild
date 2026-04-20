@@ -33,8 +33,11 @@ export default {
     name() {
       return this.config.name.capitalize();
     },
+    canReset() {
+      return Currency.etherealPower.value.gte(this.config.resetReq);
+    },
     resetText() {
-      if (Currency.etherealPower.value.lt(this.config.resetReq)) return `Reach ${format(this.config.resetReq, 2, 2)} Ethereal Power`;
+      if (!this.canReset) return `Reach ${format(this.config.resetReq, 2, 2)} Ethereal Power`;
       return `Condense Ethereal Power for ${format(this.pending, 2, 2)} ${this.name} Stars`;
     },
     rewardClassObject() {
@@ -76,6 +79,7 @@ export default {
       <br>
       <br>
       <PrimaryButton
+        :enabled="canReset"
         class="o-reset-btn"
         @click="starReset"
       >

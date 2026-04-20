@@ -6139,6 +6139,73 @@ properly on certain themes. */
 
 /* #endregion Endgame Milestones */
 
+/* #region Stars */
+
+.l-star-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.o-star__container {
+  width: 31rem;
+  height: 10rem;
+  font-family: Typewriter, serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  background-color: dimgrey;
+  border: 0.1rem solid white;
+  border-radius: var(--var-border-radius, 0.4rem);
+  transition-duration: 0.2s;
+}
+
+.o-star__container--red {
+  color: red;
+  border: 0.1rem solid red;
+}
+
+.o-star__container--orange {
+  color: red;
+  border: 0.1rem solid orange;
+}
+
+.o-star__container--yellow {
+  color: red;
+  border: 0.1rem solid yellow;
+}
+
+.o-star__container--green {
+  color: red;
+  border: 0.1rem solid green;
+}
+
+.o-star__container--blue {
+  color: red;
+  border: 0.1rem solid blue;
+}
+
+.o-star__container--purple {
+  color: red;
+  border: 0.1rem solid purple;
+}
+
+.o-star__container--white {
+  color: red;
+  border: 0.1rem solid white;
+}
+
+.o-star__container--black {
+  color: red;
+  border: 0.1rem solid black;
+}
+
+.o-star__container--gray {
+  color: red;
+  border: 0.1rem solid gray;
+}
+
+/* #endregion Stars */
+
 /* #region Break Celestial Infinity */
 
 /* #region l-break-celestial-infinity-tab */

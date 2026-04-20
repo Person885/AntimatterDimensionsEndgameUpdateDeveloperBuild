@@ -75,6 +75,7 @@ export default {
       <br>
       <br>
       <PrimaryButton
+        class="o-reset-btn"
         @click="starReset"
       >
         {{ resetText }}

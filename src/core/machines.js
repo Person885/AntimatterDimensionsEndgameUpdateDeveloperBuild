@@ -57,7 +57,7 @@ export const MachineHandler = {
       Decimal.pow(Decimal.clampMin(new Decimal(this.uncappedRM.add(1).log10()).div(1000000000), 1),
       new Decimal(Decimal.log10(this.uncappedRM.add(1).log10())).div(7.5)))).pow(
       new Decimal(Effects.product(EndgameMastery(144), Ra.unlocks.imaginaryMachines, Ra.unlocks.imaginaryMachineEternityPower)).times(
-      Decimal.max(Decimal.log10(this.uncappedRM.add(1).log10()).sub(45), 0).div(10).add(1))), this.hardcapIM);
+      Decimal.max(Decimal.log10(this.uncappedRM.add(1).log10()).sub(45), 0).div(10).add(1)).times(EtherealStars.green.reward)), this.hardcapIM);
   },
 
   get baseIMHardcap() {
@@ -65,11 +65,11 @@ export const MachineHandler = {
   },
 
   get baseHardcapIM() {
-    return this.baseIMHardcap.times(DualityUpgrade(6).effectOrDefault(1));
+    return this.baseIMHardcap.times(DualityUpgrade(6).effectOrDefault(1)).pow(EtherealStars.green.reward);
   },
 
   get hardcapIM() {
-    return this.baseHardcapIM.pow(this.uncappedIM.div(this.baseHardcapIM).add(1).log10().add(1).log10().add(1).log10().add(1));
+    return Alpha.isDestroyed ? this.baseHardcapIM.pow(this.uncappedIM.div(this.baseHardcapIM).add(1).log10().add(1).log10().add(1).log10().add(1)) : this.baseHardcapIM;
   },
 
   get uncappedIM() {
@@ -80,7 +80,7 @@ export const MachineHandler = {
         Decimal.pow(Decimal.clampMin(new Decimal(this.uncappedRM.add(1).log10()).div(1000000000), 1),
         new Decimal(Decimal.log10(this.uncappedRM.add(1).log10())).div(7.5)))).pow(
         new Decimal(Effects.product(EndgameMastery(144), Ra.unlocks.imaginaryMachines, Ra.unlocks.imaginaryMachineEternityPower)).times(
-        Decimal.max(Decimal.log10(this.uncappedRM.add(1).log10()).sub(45), 0).div(10).add(1)));
+        Decimal.max(Decimal.log10(this.uncappedRM.add(1).log10()).sub(45), 0).div(10).add(1)).times(EtherealStars.green.reward));
   },
 
   get currentIMCap() {

@@ -45,7 +45,7 @@ export const stars = {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.5).div(40).add(1), boost.div(100).add(1));
     },
-    description: amount => `Raise Imaginary Machine Gain to ${formatPow(amount, 2, 3)}`
+    description: amount => `Raise Imaginary Machine Gain and Cap to ${formatPow(amount, 2, 3)}`
   },
   blue: {
     id: 4,

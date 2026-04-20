@@ -312,7 +312,7 @@ export const CelestialDimensions = {
     let exponent = 1;
     if (base > 1) exponent *= Effects.product(EndgameMastery(104), Ra.unlocks.celestialDimensionConversionPower);
     base *= Effects.product(Achievement(208), Achievement(224));
-    base *= EtherealStars.yellow.reward;
+    base *= EtherealStars.yellow.reward.toNumber();
     return Math.pow(base, exponent) * (Alpha.isRunning ? Alpha.celestialMatterConversionNerf : 1);
   }
 };

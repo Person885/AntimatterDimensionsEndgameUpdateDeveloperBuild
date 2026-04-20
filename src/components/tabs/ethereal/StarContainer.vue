@@ -52,7 +52,7 @@ export default {
       :class="rewardClassObject"
     >
       <span>
-        {{ reward }}
+        {{ description }}
       </span>
     </button>
   </div>

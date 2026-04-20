@@ -6141,6 +6141,21 @@ properly on certain themes. */
 
 /* #region Stars */
 
+.l-star-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.l-star-grid__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.l-star-grid__cell {
+  margin: 0.5rem 0.8rem;
+}
+
 .l-star-container {
   display: flex;
   flex-direction: column;

@@ -45,7 +45,7 @@ export default {
 
 <template>
   <div
-    v-if="config.isUnlocked"
+    v-if="star.isUnlocked"
     class="l-star-container"
   >
     <button

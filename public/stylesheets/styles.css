@@ -6168,7 +6168,7 @@ properly on certain themes. */
   font-size: 1.2rem;
   font-weight: bold;
   color: black;
-  background-color: dimgrey;
+  background-color: #000040;
   border: 0.1rem solid white;
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;

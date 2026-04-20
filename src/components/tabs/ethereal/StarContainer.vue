@@ -34,6 +34,7 @@ export default {
       return this.config.name.capitalize();
     },
     resetText() {
+      if (Currency.etherealPower.value.lt(this.config.resetReq)) return `Reach ${format(this.config.resetReq, 2, 2)} Ethereal Power`;
       return `Condense Ethereal Power for ${format(this.pending, 2, 2)} ${this.name} Stars`;
     },
     rewardClassObject() {

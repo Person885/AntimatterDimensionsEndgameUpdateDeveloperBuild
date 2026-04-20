@@ -1,6 +1,11 @@
 <script>
+import PrimaryButton from "@/components/PrimaryButton";
+
 export default {
   name: "StarContainer",
+  components: {
+    PrimaryButton
+  },
   props: {
     getStar: {
       type: Function,
@@ -11,7 +16,8 @@ export default {
     return {
       isUnlocked: false,
       amount: new Decimal(0),
-      reward: new Decimal(0)
+      reward: new Decimal(0),
+      pending: new Decimal(0)
     };
   },
   computed: {
@@ -27,6 +33,9 @@ export default {
     name() {
       return this.config.name.capitalize();
     },
+    resetText() {
+      return `Condense Ethereal Power for ${format(this.pending, 2, 2)} ${this.name} Stars`;
+    },
     rewardClassObject() {
       return {
         "o-star__container": true,
@@ -39,6 +48,7 @@ export default {
       this.isUnlocked = this.star.isUnlocked;
       this.amount.copyFrom(player.endgame.ethereal.stars[this.config.name]);
       this.reward.copyFrom(this.star.reward);
+      this.pending.copyFrom(Decimal.pow(Currency.etherealPower.value.div(this.config.resetReq), 0.5 - this.star.id / 20))
     },
     starReset() {
       resetForStar(this.star.id);
@@ -62,6 +72,12 @@ export default {
       <span>
         Effect: {{ description }}
       </span>
+      <br>
+      <PrimaryButton
+        @click="starReset"
+      >
+        {{ resetText }}
+      </PrimaryButton>
     </button>
   </div>
 </template>

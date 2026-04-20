@@ -9,7 +9,7 @@ export const stars = {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.4).div(200).add(1), boost.div(100).add(1));
     },
-    description: amount => `Raise the Exponents of all Antimatter Dimension Multipliers to ${formatPow(amount, 2, 3)}`
+    description: amount => `Raise the Exponents of all Antimatter Dimension Multipliers to ${formatPow(amount, 2, 4)}`
   },
   orange: {
     id: 1,
@@ -21,7 +21,7 @@ export const stars = {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.5).div(200).add(1), boost.div(100).add(1));
     },
-    description: amount => `Raise the Exponents of all Infinity Dimension Multipliers to ${formatPow(amount, 2, 3)}`
+    description: amount => `Raise the Exponents of all Infinity Dimension Multipliers to ${formatPow(amount, 2, 4)}`
   },
   yellow: {
     id: 2,
@@ -69,7 +69,7 @@ export const stars = {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.8).div(200).add(1), boost.div(100).add(1));
     },
-    description: amount => `Raise the Exponents of all Time Dimension Multipliers to ${formatPow(amount, 2, 3)}`
+    description: amount => `Raise the Exponents of all Time Dimension Multipliers to ${formatPow(amount, 2, 4)}`
   },
   white: {
     id: 6,
@@ -93,7 +93,7 @@ export const stars = {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.3).div(200).add(1), boost.div(100).add(1));
     },
-    description: amount => `Raise the Antimatter Exponent to ${formatPow(amount, 2, 3)}`
+    description: amount => `Raise the Antimatter Exponent to ${formatPow(amount, 2, 4)}`
   },
   gray: {
     id: 8,

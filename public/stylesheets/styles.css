@@ -6212,6 +6212,7 @@ properly on certain themes. */
 .o-star__container--black {
   color: black;
   border: 0.1rem solid black;
+  text-shadow: 0 0 0.5rem white;
 }
 
 .o-star__container--gray {

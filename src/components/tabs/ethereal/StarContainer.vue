@@ -24,6 +24,9 @@ export default {
     description() {
       return this.config.description(this.reward);
     },
+    name() {
+      return this.config.name.capitalize();
+    },
     rewardClassObject() {
       return {
         "o-star__container": true,
@@ -53,10 +56,11 @@ export default {
       :class="rewardClassObject"
     >
       <span>
-        You have {{ format
+        You have {{ format(amount, 2, 2) }} {{ name }} Stars
       </span>
+      <br>
       <span>
-        {{ description }}
+        Effect: {{ description }}
       </span>
     </button>
   </div>

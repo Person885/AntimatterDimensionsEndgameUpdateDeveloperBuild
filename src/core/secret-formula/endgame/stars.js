@@ -31,7 +31,7 @@ export const stars = {
     effect: () => {
       const amount = player.endgame.ethereal.stars.yellow;
       const boost = Ethereal.starBoost;
-      return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.2).div(20).add(1), boost.div(100).add(1));
+      return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.2).div(10).add(1), boost.div(100).add(1));
     },
     description: amount => `Multiply the Celestial Matter Conversion Exponent by ${formatX(amount, 2, 3)}`
   },

@@ -4,8 +4,7 @@ export const stars = {
     name: "red",
     dmReq: 1e20,
     resetReq: 1e25,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.red;
+    effect: (amount = player.endgame.ethereal.stars.red) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.4).div(200).add(1), boost.div(100).add(1));
     },
@@ -16,8 +15,7 @@ export const stars = {
     name: "orange",
     dmReq: 1e25,
     resetReq: 1e28,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.orange;
+    effect: (amount = player.endgame.ethereal.stars.orange) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.5).div(200).add(1), boost.div(100).add(1));
     },
@@ -28,8 +26,7 @@ export const stars = {
     name: "yellow",
     dmReq: 1e30,
     resetReq: 1e32,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.yellow;
+    effect: (amount = player.endgame.ethereal.stars.yellow) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.2).div(10).add(1), boost.div(100).add(1));
     },
@@ -40,8 +37,7 @@ export const stars = {
     name: "green",
     dmReq: 1e35,
     resetReq: 1e36,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.green;
+    effect: (amount = player.endgame.ethereal.stars.green) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.5).div(40).add(1), boost.div(100).add(1));
     },
@@ -52,8 +48,7 @@ export const stars = {
     name: "blue",
     dmReq: 1e40,
     resetReq: 1e40,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.blue;
+    effect: (amount = player.endgame.ethereal.stars.blue) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(amount.add(1), 0.8), boost.div(100).add(1));
     },
@@ -64,8 +59,7 @@ export const stars = {
     name: "purple",
     dmReq: 1e45,
     resetReq: 1e50,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.purple;
+    effect: (amount = player.endgame.ethereal.stars.purple) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.8).div(200).add(1), boost.div(100).add(1));
     },
@@ -76,8 +70,7 @@ export const stars = {
     name: "white",
     dmReq: 1e50,
     resetReq: 1e60,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.white;
+    effect: (amount = player.endgame.ethereal.stars.white) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow10(Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)).times(100), 1.8), boost.div(100).add(1)));
     },
@@ -88,8 +81,7 @@ export const stars = {
     name: "black",
     dmReq: 1e60,
     resetReq: 1e80,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.black;
+    effect: (amount = player.endgame.ethereal.stars.black) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.3).div(200).add(1), boost.div(100).add(1));
     },
@@ -100,8 +92,7 @@ export const stars = {
     name: "gray",
     dmReq: 1e75,
     resetReq: 1e100,
-    effect: () => {
-      const amount = player.endgame.ethereal.stars.gray;
+    effect: (amount = player.endgame.ethereal.stars.gray) => {
       return Decimal.log10(amount.add(1)).times(10);
     },
     description: amount => `Increase the effectiveness of all other stars by ${formatPercents(1 + amount.toNumber(), 2)}`

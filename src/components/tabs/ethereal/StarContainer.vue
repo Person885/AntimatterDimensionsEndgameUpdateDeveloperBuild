@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       isUnlocked: false,
+      isHovering: false,
       amount: new Decimal(0),
       reward: new Decimal(0),
       pending: new Decimal(0)
@@ -46,12 +47,21 @@ export default {
         [`o-star__container--${this.config.name}`]: true,
       };
     },
+    showPending() {
+      return this.isHovering && ui.view.shiftDown;
+    },
+    totalPending() {
+      return this.amount.add(this.pending);
+    },
+    displayedAmount() {
+      return this.showPending ? this.totalPending : this.amount;
+    }
   },
   methods: {
     update() {
       this.isUnlocked = this.star.isUnlocked;
       this.amount.copyFrom(player.endgame.ethereal.stars[this.config.name]);
-      this.reward.copyFrom(this.star.reward);
+      this.reward.copyFrom(this.star.rewardForDisplay(this.displayedAmount));
       this.pending.copyFrom(Decimal.pow(Currency.etherealPower.value.div(this.config.resetReq), 0.5 - this.star.id / 20))
     },
     starReset() {
@@ -68,13 +78,15 @@ export default {
   >
     <button
       :class="rewardClassObject"
+      @mouseover="isHovering = true"
+      @mouseleave="isHovering = false"
     >
       <span>
-        You have {{ format(amount, 2, 2) }} {{ name }} Stars
+        You have <span v-if="showPending && canReset">▲</span>{{ format(displayedAmount, 2, 2) }} {{ name }} Stars
       </span>
       <br>
       <span>
-        Effect: {{ description }}
+        Effect: <span v-if="showPending && canReset">▲</span>{{ description }}
       </span>
       <br>
       <br>

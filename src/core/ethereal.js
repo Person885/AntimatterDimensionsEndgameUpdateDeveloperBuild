@@ -40,6 +40,10 @@ export class EtherealStarState {
     return this.config.effect();
   }
 
+  get rewardForDisplay(amount) {
+    return this.config.effect(amount);
+  }
+
   get dmReq() {
     return this.config.dmReq;
   }

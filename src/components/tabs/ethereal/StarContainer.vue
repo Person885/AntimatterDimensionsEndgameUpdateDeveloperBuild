@@ -54,7 +54,7 @@ export default {
       return this.amount.add(this.pending);
     },
     displayedAmount() {
-      return this.showPending ? this.totalPending : this.amount;
+      return this.showPending && this.canReset ? this.totalPending : this.amount;
     }
   },
   methods: {

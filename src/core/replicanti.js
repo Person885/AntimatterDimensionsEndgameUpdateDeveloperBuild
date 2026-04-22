@@ -618,8 +618,8 @@ export const ReplicantiUpgrade = {
         return decimalCubicSolutionX(a, b, c, d).floor().add(1);
       }
 
-      const numDistant = contingentReplicatedGalaxyStart.sub(distantReplicatedGalaxyStart);
-      const numRemote = contingentReplicatedGalaxyStart.sub(remoteReplicatedGalaxyStart);
+      const numDistant = contingentReplicatedGalaxyStart.sub(distantReplicatedGalaxyStart).max(0);
+      const numRemote = contingentReplicatedGalaxyStart.sub(remoteReplicatedGalaxyStart).max(0);
       const logCostAtContingent = logBase.add(contingentReplicatedGalaxyStart.times(logBaseIncrease)).add(
         (contingentReplicatedGalaxyStart.times(contingentReplicatedGalaxyStart.sub(1)).div(2)).times(logCostScaling)).add(
         logDistantScaling.times(numDistant).times(numDistant.add(extraIncrements.times(2)).sub(1)).div(2)).add(

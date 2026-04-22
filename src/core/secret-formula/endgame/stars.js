@@ -95,6 +95,6 @@ export const stars = {
     effect: (amount = player.endgame.ethereal.stars.gray) => {
       return Decimal.log10(amount.add(1)).times(10);
     },
-    description: amount => `Increase the effectiveness of all other stars by ${formatPercents(1 + amount.toNumber(), 2)}`
+    description: amount => `Increase the effectiveness of all other stars by ${formatPercents(1 + amount.div(100).toNumber(), 2)}`
   },
 };

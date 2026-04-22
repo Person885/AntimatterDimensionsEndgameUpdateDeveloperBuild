@@ -142,7 +142,7 @@ class PerkShopUpgradeState extends RebuyableMechanicState {
     if (this.id === 5 && (!Pelle.isDoomed || PelleDestructionUpgrade.teresaShop.canBeApplied)) {
       const toCreate = GameCache.glyphInventorySpace.value;
       for (let count = 0; count < toCreate; count++) Glyphs.addToInventory(GlyphGenerator.musicGlyph());
-      GameUI.notify.success(`Created ${quantifyInt("Music Glyph", toCreate)}`);
+      if (!PerkShopUpgrade.musicGlyph.isCharged) GameUI.notify.success(`Created ${quantifyInt("Music Glyph", toCreate)}`);
     }
   }
 

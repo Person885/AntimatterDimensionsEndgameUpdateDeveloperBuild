@@ -45,7 +45,7 @@ export default {
       return Math.ceil(this.stars.length / 3);
     },
     nextStarText() {
-      if (!this.nextStarReq) return `All stars have been unlocked`;
+      if (this.nextStarReq === -Infinity) return `All stars have been unlocked`;
       return `The next star unlocks at ${format(nextStarReq, 2, 2)} Dual Machines`;
     },
   },
@@ -59,7 +59,7 @@ export default {
       this.isExtended = player.endgame.ethereal.isExtended;
       this.canExtend = this.etherealPower.gte(1e25);
       this.isBetter = Alpha.isDestroyed;
-      this.nextStarReq = Ethereal.nextStarDMReq;
+      this.nextStarReq = Ethereal.nextStarDMReq ? Ethereal.nextStarDMReq : -Infinity;
     },
     extendEthereal() {
       return player.endgame.ethereal.isExtended = true;

@@ -138,7 +138,9 @@ export default {
         />
       </div>
       <br>
-      {{ nextStarText }}
+      <span class="c-normal-ethereal-text">
+        {{ nextStarText }}
+      </span>
     </div>
   </div>
 </template>

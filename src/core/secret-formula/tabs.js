@@ -665,5 +665,24 @@ export const tabs = [
         hidable: true,
       },
     ],
+  },
+  {
+    key: "divinity",
+    name: "Divinity",
+    hideAt: 2.4,
+    UIClass: "o-tab-btn--divinity",
+    id: 13,
+    condition: () => player.celestials.pelle.divinities > 0,
+    hidable: true,
+    subtabs: [
+      {
+        key: "divinity-milestones",
+        name: "Divinity Milestones",
+        symbol: "<i class='fas fa-crown'></i>",
+        component: "DivinityMilestonesTab",
+        id: 0,
+        hidable: true,
+      },
+    ],
   }
 ];

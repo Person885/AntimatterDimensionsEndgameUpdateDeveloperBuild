@@ -6560,6 +6560,7 @@ properly on certain themes. */
 }
 
 .o-divinity-milestone__goal {
+  color: var(--color-pelle--base);
   text-align: left;
   font-size: 2rem;
 }
@@ -6571,6 +6572,7 @@ properly on certain themes. */
   font-size: 1.2rem;
   font-weight: bold;
   color: black;
+  text-shadow: 0 0 0.5rem var(--color-pelle--base);
   border: 0.1rem solid var(--color-pelle--base);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
@@ -6581,7 +6583,7 @@ properly on certain themes. */
 }
 
 .o-divinity-milestone__reward--reached {
-  background-color: var(--color-pelle--base);
+  background: linear-gradient(black, var(--color-pelle--base), black);
   border-color: black;
 }
 

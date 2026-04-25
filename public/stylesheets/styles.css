@@ -6566,7 +6566,7 @@ properly on certain themes. */
 
 .o-divinity-milestone__reward {
   width: 98rem;
-  height: 30rem;
+  padding: 2rem;
   font-family: Typewriter, serif;
   font-size: 1.2rem;
   font-weight: bold;
@@ -6583,10 +6583,6 @@ properly on certain themes. */
 .o-divinity-milestone__reward--reached {
   background-color: var(--color-pelle--base);
   border-color: black;
-}
-
-.o-divinity-milestone__reward--small-font {
-  font-size: 1.1rem;
 }
 
 .s-base--metro .o-divinity-milestone__reward--locked,

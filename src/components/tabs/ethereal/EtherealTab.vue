@@ -180,4 +180,8 @@ export default {
 
   -webkit-text-fill-color: transparent;
 }
+
+.c-really-cool-ethereal-text::before{
+  text-shadow: 0 0 white;
+}
 </style>

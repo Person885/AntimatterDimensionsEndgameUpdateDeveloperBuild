@@ -48,6 +48,10 @@ export default {
       if (!this.nextStarReq) return `All stars have been unlocked`;
       return `The next star unlocks at ${format(this.nextStarReq, 2, 2)} Dual Machines`;
     },
+    etherealPowerTimeEstimate() {
+      return TimeSpan.fromSeconds(Decimal.sub(this.nextSectorAt, this.etherealPower)
+        .div(this.etherealPowerPerSecond)).toTimeEstimate();
+    }
   },
   methods: {
     update() {
@@ -100,7 +104,10 @@ export default {
       </div>
       <div>
         <span class="c-normal-ethereal-text">You will ascend into the next Cosmic Sector at </span>
-        <span class="c-really-cool-ethereal-text">{{ formatHybridLarge(nextSectorAt, 3) }}</span>
+        <span
+          class="c-really-cool-ethereal-text"
+          :ach-tooltip="etherealPowerTimeEstimate"
+        >{{ formatHybridLarge(nextSectorAt, 3) }}</span>
         <span class="c-normal-ethereal-text"> Ethereal Power.</span>
       </div>
     </div>

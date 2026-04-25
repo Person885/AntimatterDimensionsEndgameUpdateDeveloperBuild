@@ -34,7 +34,7 @@ export default {
 
 <template>
   <div class="l-divinity-milestone-grid">
-    <div>You have {{ quantify("Divinity", divinityCount, 3) }}.</div>
+    <div class="o-divinity-amount">You have {{ quantify("Divinity", divinityCount, 3) }}.</div>
     <div
       v-for="row in rows"
       :key="row"
@@ -51,5 +51,7 @@ export default {
 </template>
 
 <style scoped>
-
+.o-divinity-amount {
+  color: var(--color-pelle--base);
+}
 </style>

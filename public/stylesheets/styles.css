@@ -1013,6 +1013,16 @@ button:focus {
   background: linear-gradient(var(--color-infinity), var(--color-eternity), var(--color-reality), var(--color-celestials));
 }
 
+.o-tab-btn--divinity {
+  color: var(--color-pelle--base);
+  background-color: var(--color-prestige--accent);
+  border-color: var(--color-pelle--base);
+}
+
+.o-tab-btn--divinity:hover {
+  background: var(--color-pelle--base);
+}
+
 /* #endregion tab buttons */
 
 #loading {

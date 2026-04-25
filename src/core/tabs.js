@@ -208,6 +208,7 @@ export const Tabs = (function() {
       Tab.celestials,
       Tab.endgame,
       Tab.cdexpansion,
+      Tab.divinity,
       Tab.shop
     ],
     newUI: [

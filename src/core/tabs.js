@@ -220,6 +220,7 @@ export const Tabs = (function() {
       Tab.celestials,
       Tab.endgame,
       Tab.cdexpansion,
+      Tab.divinity,
       Tab.achievements,
       Tab.statistics,
       Tab.options,

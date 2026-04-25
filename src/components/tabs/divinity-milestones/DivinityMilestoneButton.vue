@@ -33,8 +33,7 @@ export default {
       return {
         "o-divinity-milestone__reward": true,
         "o-divinity-milestone__reward--locked": !this.isReached,
-        "o-divinity-milestone__reward--reached": this.isReached,
-        "o-divinity-milestone__reward--small-font": this.reward.length > 80
+        "o-divinity-milestone__reward--reached": this.isReached
       };
     },
     activeCondition() {

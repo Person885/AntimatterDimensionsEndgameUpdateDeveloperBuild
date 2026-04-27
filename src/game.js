@@ -547,8 +547,10 @@ export function realTimeMechanics(realDiff) {
   }
 
   GameCache.celestialDimensionCommonMultiplier.invalidate();
+  GameCache.divineDimensionCommonMultiplier.invalidate();
 
   CelestialDimensions.tick(realDiff);
+  DivineDimensions.tick(realDiff);
   DarkMatterDimensions.tick(realDiff);
 
   // When storing real time, skip everything else having to do with production once stats are updated

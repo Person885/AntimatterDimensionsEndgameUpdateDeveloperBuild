@@ -71,6 +71,7 @@ export * from "./dimensions/antimatter-dimension";
 export * from "./dimensions/infinity-dimension";
 export * from "./dimensions/time-dimension";
 export * from "./dimensions/celestial-dimension";
+export * from "./dimensions/divine-dimension";
 
 export * from "./time-studies";
 export * from "./endgame-masteries";

@@ -41,6 +41,7 @@ export default {
       hasInfinities: false,
       infinityPoints: new Decimal(0),
       isAnyAutobuyerUnlocked: false,
+      timeToCap: 0
     };
   },
   methods: {
@@ -69,6 +70,7 @@ export default {
       this.hasInfinities = Currency.celestialInfinities.value.gt(0);
       this.infinityPoints.copyFrom(player.endgame.celDimExpansion.celestialInfinityPoints);
       this.isAnyAutobuyerUnlocked = Autobuyer.celestialDimension(1).isUnlocked;
+      this.timeToCap = 5 * (1 - DivineDimensions.conversionFormula3);
     },
     maxAll() {
       CelestialDimensions.buyMax();
@@ -166,7 +168,7 @@ export default {
       <div v-if="hasRemnant">
         Remnants of Alpha Decay are raising all Celestial Dimensions to the power of
         <span class="c-celestial-dim-description__accent-unstable">{{ format(alphaDecayRemnant, 2, 3) }}</span>,
-        which increases to a cap of {{ formatInt(1) }} over {{ formatInt(5) }} real-time hours this Celestial Infinity.
+        which increases to a cap of {{ formatInt(1) }} over {{ format(timeToCap, 2, 2) }} real-time hours this Celestial Infinity.
       </div>
       <div>
         All Celestial Dimensions can be purchased until {{ format(totalDimCap, 2, 2) }} Celestial Points.

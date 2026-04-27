@@ -1040,6 +1040,7 @@ function globalPassivePrestigeGen(realDiff) {
     : 1);
   endgameMult *= Math.pow(1.25, Alpha.currentStage);
   if (DivinityMilestone.firstDivine.isReached && !player.disablePostReality) endgameMult *= 10;
+  endgameMult *= DivineDimensions.conversionFormula1.toNumber();
   if (EndgameUpgrade(8).isBought) {
     endgamedGain = endgameMult * Time.unscaledDeltaTime.totalMilliseconds.div(Alpha.isDestroyed ? Decimal.clampMin(330, EndgameUpgrade(8).effectValue) : Decimal.clampMin(1000, EndgameUpgrade(8).effectValue)).toNumber();
     player.endgame.partEndgamed += endgamedGain;

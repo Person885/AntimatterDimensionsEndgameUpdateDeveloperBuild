@@ -35,6 +35,12 @@ window.player = {
       amount: DC.D0,
       cost: [DC.D1, DC.E1, DC.E2, DC.E4, DC.E10, DC.E30, DC.E100, DC.E300][tier],
       baseAmount: DC.D0,
+    })),
+    divine: Array.range(0, 8).map(tier => ({
+      bought: DC.D0,
+      amount: DC.D0,
+      cost: [DC.E1, DC.E3, DC.E6, DC.E10, DC.E15, DC.E21, DC.E28, DC.E36][tier],
+      baseAmount: DC.D0,
     }))
   },
   buyUntil10: true,
@@ -987,7 +993,10 @@ window.player = {
         galaxies: false
       },
       showBought: false,
-      divinities: 0
+      divinities: 0,
+      divinity: {
+        divineMatter: DC.E1
+      }
     },
     alpha: {
       unlockBits: 0,

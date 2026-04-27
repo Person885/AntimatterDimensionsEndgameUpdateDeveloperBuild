@@ -283,8 +283,8 @@ export const CelestialDimensions = {
   tick(realDiff) {
     for (let tier = 8; tier > 1; tier--) {
       CelestialDimension(tier).produceDimensions(CelestialDimension(tier - 1), realDiff / 10);
-      CelestialDimension(1).produceCurrency(Currency.unnerfedCelestialMatter, realDiff);
     }
+    CelestialDimension(1).produceCurrency(Currency.unnerfedCelestialMatter, realDiff);
   },
 
   // Called from "Max All" UI buttons and nowhere else

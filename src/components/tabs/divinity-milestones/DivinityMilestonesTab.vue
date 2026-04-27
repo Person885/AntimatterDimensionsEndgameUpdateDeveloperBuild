@@ -18,7 +18,7 @@ export default {
         .map(config => new DivinityMilestoneState(config));
     },
     rows() {
-      return Math.ceil(this.milestones.length / 3);
+      return Math.ceil(this.milestones.length);
     }
   },
   methods: {

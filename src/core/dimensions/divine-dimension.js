@@ -190,7 +190,7 @@ export const DivineDimensions = {
 
   get conversionFormula1() {
     let logD = Decimal.log10(Decimal.log10(Currency.divineMatter.value.max(10)));
-    return Decimal.pow(Decimal.pow(logD, 1.5), Decimal.pow(logD, 1.5));
+    return Decimal.pow(Decimal.pow(logD.add(1), 1.5), Decimal.pow(logD.add(1), 1.5));
   },
 
   get conversionFormula2() {

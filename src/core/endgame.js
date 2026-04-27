@@ -30,6 +30,7 @@ function giveEndgameRewards() {
     : 1);
   endgameMultiplier *= Math.pow(1.25, Alpha.currentStage);
   if (DivinityMilestone.firstDivine.isReached && !player.disablePostReality) endgameMultiplier *= 10;
+  endgameMultiplier *= DivineDimensions.conversionFormula1.toNumber();
   Currency.celestialPoints.add(gainedCelestialPoints());
   Currency.doomedParticles.add(gainedDoomedParticles());
   updateEndgameRecords();

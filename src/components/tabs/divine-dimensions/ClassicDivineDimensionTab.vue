@@ -53,17 +53,11 @@ export default {
         Divine Matter,
         <br>
         translated to a
-        <span class="c-divine-dim-description__accent">
-          {{ formatX(conversionFormula1, 2, 2) }}
-        </span>
+        <span class="c-divine-dim-description__accent">{{ formatX(conversionFormula1, 2, 2) }}</span>
         multiplier to Endgame and Ethereal Power gain, a
-        <span class="c-divine-dim-description__accent">
-          {{ formatPow(conversionFormula2, 2, 3) }}
-        </span>
+        <span class="c-divine-dim-description__accent">{{ formatPow(conversionFormula2, 2, 3) }}</span>
         to Antimatter Exponent while Doomed, and a
-        <span class="c-divine-dim-description__accent">
-          {{ formatPercents(conversionFormula3, 2, 2) }}
-        </span>
+        <span class="c-divine-dim-description__accent">{{ formatPercents(conversionFormula3, 2, 2) }}</span>
         reduction to Hadron and Remnants of Alpha Decay cap times.
       </p>
     </div>

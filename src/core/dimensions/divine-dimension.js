@@ -173,8 +173,8 @@ export const DivineDimensions = {
   tick(realDiff) {
     for (let tier = 8; tier > 1; tier--) {
       DivineDimension(tier).produceDimensions(DivineDimension(tier - 1), realDiff / 10);
-      DivineDimension(1).produceCurrency(Currency.divineMatter, realDiff);
     }
+    DivineDimension(1).produceCurrency(Currency.divineMatter, realDiff);
   },
 
   // Called from "Max All" UI buttons and nowhere else

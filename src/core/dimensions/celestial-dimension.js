@@ -302,7 +302,8 @@ export const CelestialDimensions = {
   },
 
   get alphaDecayRemnant() {
-    return Alpha.isDestroyed ? Time.thisCelestialInfinityRealTime.totalHours.plusEffectOf(CelestialInfinityUpgrade.alphaDecayStartBoost).min(5).div(5) : DC.D1;
+    return Alpha.isDestroyed ? Time.thisCelestialInfinityRealTime.totalHours.plusEffectOf(CelestialInfinityUpgrade.alphaDecayStartBoost).div(
+      1 - DivineDimensions.conversionFormula3).min(5).div(5) : DC.D1;
   },
 
   get conversionExponent() {

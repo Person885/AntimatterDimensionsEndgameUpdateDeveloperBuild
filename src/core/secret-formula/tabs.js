@@ -48,6 +48,16 @@ export const tabs = [
         id: 3,
         hidable: true,
       },
+      {
+        key: "divine",
+        name: "Divine Dimensions",
+        hideAt: 2.5,
+        symbol: "<i class='fas fa-crown'></i>",
+        component: "DivineDimensionsTab",
+        condition: () => DivinityMilestone.divineDimensions.isReached,
+        id: 4,
+        hidable: true,
+      },
     ]
   },
   {
@@ -678,7 +688,7 @@ export const tabs = [
       {
         key: "divinity-milestones",
         name: "Divinity Milestones",
-        symbol: "<i class='fas fa-crown'></i>",
+        symbol: "<i class='fas fa-star'></i>",
         component: "DivinityMilestonesTab",
         id: 0,
         hidable: true,

@@ -180,12 +180,12 @@ export const DivineDimensions = {
   // Called from "Max All" UI buttons and nowhere else
   buyMax() {
     // Try to buy single from the highest affordable new dimensions
-    unlockedDimensions.slice().reverse().forEach(dimension => {
+    this.all.slice().reverse().forEach(dimension => {
       if (dimension.purchases.eq(0)) dimension.buySingle();
     });
 
     // Try to buy max from the lowest dimension (since lower dimensions have bigger multiplier per purchase)
-    unlockedDimensions.forEach(dimension => dimension.buyMax(false));
+    this.all.forEach(dimension => dimension.buyMax(false));
   },
 
   get conversionFormula1() {

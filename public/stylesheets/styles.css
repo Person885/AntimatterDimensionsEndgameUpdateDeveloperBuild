@@ -3338,6 +3338,51 @@ br {
 
 /* #endregion Celestial Dimensions */
 
+/* #region Divine Dimensions */
+
+/* #region l-divine-dim-tab */
+
+.l-divine-dim-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+}
+
+/* #endregion l-divine-dim-tab */
+
+/* #region c-divine-dim-description__accent */
+
+.c-divine-dim-description__accent {
+  font-size: 3.5rem;
+  color: black;
+}
+
+.t-metro .c-divine-dim-description__accent,
+.t-s8 .c-divine-dim-description__accent {
+  text-shadow: 0 0 0.1rem rgba(0, 0, 0, 50%), -0.1rem 0.1rem 0.1rem black;
+}
+
+.t-dark .c-divine-dim-description__accent,
+.t-amoled .c-divine-dim-description__accent,
+.t-amoled-metro .c-divine-dim-description__accent,
+.t-s6 .c-divine-dim-description__accent,
+.t-s10 .c-divine-dim-description__accent,
+.t-s11 .c-divine-dim-description__accent {
+  color: var(--color-pelle--base);
+  text-shadow: 0 0 0.7rem var(--color-pelle--base);
+}
+
+.t-metro .c-divine-dim-description__accent,
+.t-dark-metro .c-divine-dim-description__accent,
+.t-s8 .c-divine-dim-description__accent {
+  color: var(--color-pelle--base);
+}
+
+/* #endregion c-divine-dim-description__accent */
+
+/* #endregion Divine Dimensions */
+
 /* #region Options */
 
 .l-options-tab {

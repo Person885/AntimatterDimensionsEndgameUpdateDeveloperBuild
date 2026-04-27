@@ -12,6 +12,7 @@ import CelestialDimensionsTab from "./celestial-dimensions/CelestialDimensionsTa
 import CelestialInfinityUpgradesTab from "./celestial-dimension-expansion/CelestialInfinityUpgradesTab";
 import CelestialNavigationTab from "./celestial-navigation/CelestialNavigationTab";
 import ChallengeRecordsTab from "./challenge-records/ChallengeRecordsTab";
+import DivineDimensionsTab from "./divine-dimensions/DivineDimensionsTab";
 import DivinityMilestonesTab from "./divinity-milestones/DivinityMilestonesTab";
 import DualityUpgradesTab from "./duality-upgrades/DualityUpgradesTab";
 import EffarigTab from "./celestial-effarig/EffarigTab";
@@ -64,6 +65,7 @@ const TabComponents = {
   InfinityDimensionsTab,
   TimeDimensionsTab,
   CelestialDimensionsTab,
+  DivineDimensionsTab,
   OptionsSavingTab,
   OptionsVisualTab,
   OptionsGameplayTab,

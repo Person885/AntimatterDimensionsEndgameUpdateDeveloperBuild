@@ -105,6 +105,7 @@ export const endgameUpgrades = [
         : 1);
       endgames *= Math.pow(1.25, Alpha.currentStage);
       if (DivinityMilestone.firstDivine.isReached && !player.disablePostReality) endgames *= 10;
+      endgames *= DivineDimensions.conversionFormula1.toNumber();
       const timeStr = Time.bestEndgameRealTime.totalMilliseconds.lte(100) && !Alpha.isDestroyed
         ? `${TimeSpan.fromMilliseconds(new Decimal(1000)).toStringShort()} (capped)`
         : (Time.bestEndgameRealTime.totalMilliseconds.lte(33)

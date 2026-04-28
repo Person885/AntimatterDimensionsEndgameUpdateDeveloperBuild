@@ -233,6 +233,10 @@ export const CelestialDimensions = {
     return Decimal.min(base, DC.NUMMAX).times(Decimal.pow(base.div(DC.NUMMAX).max(1), 1 / CelestialDimensions.OVERFLOW_MAG));
   },
 
+  get OVERFLOW() {
+    return DC.NUMMAX.timesEffectOf(DivinityUpgrade.divineL1U1);
+  },
+
   get OVERFLOW_MAG() {
     return DC.E1.sub(Decimal.pow(player.records.totalCelMatter.add(1).log10().add(1).log10().sub(3).max(0).add(1), 1.25).sub(1)).max(1).toNumber();
   },

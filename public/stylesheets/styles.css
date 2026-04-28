@@ -10875,7 +10875,7 @@ kbd {
 
 .t-s6.c-divinity-upgrade-btn--bought,
 .t-s10.c-divinity-upgrade-btn--bought {
-  color: var(--color-pelle-secondary);
+  color: var(--color-pelle--secondary);
   background-color: var(--color-pelle--base);
   border-color: #600000;
 }

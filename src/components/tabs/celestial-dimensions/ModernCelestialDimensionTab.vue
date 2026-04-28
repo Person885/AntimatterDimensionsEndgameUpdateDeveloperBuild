@@ -70,7 +70,7 @@ export default {
       this.hasInfinities = Currency.celestialInfinities.value.gt(0);
       this.infinityPoints.copyFrom(player.endgame.celDimExpansion.celestialInfinityPoints);
       this.isAnyAutobuyerUnlocked = Autobuyer.celestialDimension(1).isUnlocked;
-      this.timeToCap = 5 * (1 - DivineDimensions.conversionFormula3);
+      this.timeToCap = 5 * CelestialDimensions.alphaDecaySpeed;
     },
     maxAll() {
       CelestialDimensions.buyMax();

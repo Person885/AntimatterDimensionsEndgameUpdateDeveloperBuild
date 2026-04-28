@@ -24,24 +24,15 @@ export class DivinityUpgradeState extends SetPurchasableMechanicState {
   }
 }
 
-DivinityUpgrade.index = mapGameDataToObject(
+export const DivinityUpgrade = mapGameDataToObject(
   GameDatabase.celestials.divinityUpgrades,
   config => (config.rebuyable
     ? new DivinityUpgradeState(config)
     : new DivinityUpgradeState(config))
 );
 
-/**
- * @param {number} id
- * @return {DivinityUpgradeState}
- */
-export const DivinityUpgrade = id => DivinityUpgradeState.index[id];
-
 export const DivinityUpgrades = {
-  /**
-   * @type {(DivinityUpgradeState)[]}
-   */
-  all: DivinityUpgradeState.index.compact(),
+  all: DivinityUpgrade.all,
   get isUnlocked() {
     return DivinityMilestone.divineDimensions.isReached;
   }

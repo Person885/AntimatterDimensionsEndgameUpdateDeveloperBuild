@@ -510,7 +510,9 @@ export const Pelle = {
 
     const gainNew = Decimal.pow((Decimal.log10(am.add(2)).add(Decimal.log10(ip.add(2))).add(Decimal.log10(ep.add(2)))).div(1.6), 8.2).toNumber();
 
-    const gain = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality) ? gainNew : gainOld;
+    const gainNewer = Decimal.pow((Decimal.log10(am.add(2)).add(Decimal.log10(ip.add(2))).add(Decimal.log10(ep.add(2)))).div(1.2), 10).toNumber();
+
+    const gain = DivinityMilestone.divineDimensions.isReached ? gainNewer : ((EndgameMilestone.remnantFormula.isReached && !player.disablePostReality) ? gainNew : gainOld);
     
     return gain < 1 ? gain : Math.floor(gain - this.cel.remnants);
   },

@@ -7,7 +7,7 @@ export default {
     DivinityUpgradeButton
   },
   computed: {
-    upgrades: () => DivinityUpgrade.all
+    upgrades: () => DivinityUpgrades.all
   },
   methods: {
     id(row, column) {

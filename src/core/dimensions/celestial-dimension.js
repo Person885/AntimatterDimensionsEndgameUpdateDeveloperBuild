@@ -306,7 +306,7 @@ export const CelestialDimensions = {
   },
 
   get alphaDecaySpeed() {
-    return new Decimal(1 - DivineDimensions.conversionFormula3).times(DivinityMilestone.divineDimensions.isReached ? 0.8 : 1).timesEffectOf(DivineUpgrade.divineL1U2);
+    return new Decimal(1 - DivineDimensions.conversionFormula3).times(DivinityMilestone.divineDimensions.isReached ? 0.8 : 1).timesEffectOf(DivinityUpgrade.divineL1U2);
   },
 
   get alphaDecayRemnant() {

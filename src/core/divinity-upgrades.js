@@ -24,7 +24,7 @@ export class DivinityUpgradeState extends SetPurchasableMechanicState {
   }
 }
 
-export const DivinityUpgrade = mapGameDataToObject(
+DivinityUpgrade.index = mapGameDataToObject(
   GameDatabase.celestials.divinityUpgrades,
   config => (config.rebuyable
     ? new DivinityUpgradeState(config)

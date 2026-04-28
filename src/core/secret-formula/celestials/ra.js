@@ -354,7 +354,7 @@ export const ra = {
     celestialDimensionPower: {
       id: 34,
       reward: "Endgames and Teresa level empower Celestial Dimensions",
-      effect: () => player.disablePostReality ? 1 : Math.pow(Math.clamp(Ra.pets.teresa.level * Math.log10(player.endgames + 1) / 2000, 1, 2).times(Math.pow(Math.max(Ra.pets.teresa.level * Math.log10(player.endgames + 1) / 4000, 1), 0.2)), 5),
+      effect: () => player.disablePostReality ? 1 : Math.pow(Math.clamp(Ra.pets.teresa.level * Math.log10(player.endgames + 1) / 2000, 1, 2) * Math.pow(Math.max(Ra.pets.teresa.level * Math.log10(player.endgames + 1) / 4000, 1), 0.2), 5),
       pet: "teresa",
       level: 125,
       displayIcon: `<span class="fas fa-award"></span>`,

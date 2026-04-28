@@ -286,7 +286,7 @@ window.player = {
       hasUpperBound: false,
     },
     galaxyGenerator: {
-      all: Array.range(0, 7).map(() => ({
+      all: Array.range(0, 8).map(() => ({
         isActive: false,
         lastTick: 0,
       })),

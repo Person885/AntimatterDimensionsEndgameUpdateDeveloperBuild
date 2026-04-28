@@ -893,9 +893,9 @@ export function gameLoop(passedDiff, options = {}) {
 
   const uncapped = Decimal.min(player.endgame.unnerfedCelestialMatter, CelestialDimensions.SOFTCAP);
   const instability = Decimal.pow(Decimal.max(player.endgame.unnerfedCelestialMatter.div(CelestialDimensions.SOFTCAP), 1), 1 / CelestialDimensions.softcapPow);
-  const beforeOverflow = Decimal.min(uncapped.times(instability), DC.NUMMAX);
-  const afterOverflow = Decimal.pow(Decimal.max(uncapped.times(instability).div(DC.NUMMAX), 1), 1 / CelestialDimensions.OVERFLOW_MAG);
-  const totalPending = player.endgame.celDimExpansion.isBroken ? beforeOverflow.times(afterOverflow) : Decimal.min(beforeOverflow.times(afterOverflow), DC.NUMMAX);
+  const beforeOverflow = Decimal.min(uncapped.times(instability), CelestialDimensions.OVERFLOW);
+  const afterOverflow = Decimal.pow(Decimal.max(uncapped.times(instability).div(CelestialDimensions.OVERFLOW), 1), 1 / CelestialDimensions.OVERFLOW_MAG);
+  const totalPending = player.endgame.celDimExpansion.isBroken ? beforeOverflow.times(afterOverflow) : Decimal.min(beforeOverflow.times(afterOverflow), CelestialDimensions.OVERFLOW);
   player.endgame.celestialMatter = totalPending;
   player.records.thisCelestialInfinity.maxCM = player.records.thisCelestialInfinity.maxCM.max(totalPending);
   player.records.thisCelestialEternity.maxCM = player.records.thisCelestialEternity.maxCM.max(totalPending);

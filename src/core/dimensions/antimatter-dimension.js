@@ -642,6 +642,10 @@ class AntimatterDimensionState extends DimensionState {
         const log10 = production.log10();
         production = Decimal.pow10(Decimal.pow(log10.div(9e15), 0.16 / Math.pow(2, player.celestials.pelle.divinities)).times(9e15));
       }
+      if (production.gt(1e10) && Pelle.isDoomed) {
+        const log10 = production.log10().log10();
+        production = Decimal.pow10(Decimal.pow10(Decimal.pow(log10, DivinityUpgrade.divineL1U4.effectOrDefault(1))));
+      }
     }
     production = production.min(this.cappedProductionInNormalChallenges);
     return production;

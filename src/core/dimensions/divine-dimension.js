@@ -175,6 +175,7 @@ export const DivineDimensions = {
       DivineDimension(tier).produceDimensions(DivineDimension(tier - 1), realDiff / 10);
     }
     DivineDimension(1).produceCurrency(Currency.divineMatter, realDiff);
+    player.celestials.pelle.divinity.divineMatter = player.celestials.pelle.divinity.divineMatter.min(this.HARDCAP);
   },
 
   // Called from "Max All" UI buttons and nowhere else

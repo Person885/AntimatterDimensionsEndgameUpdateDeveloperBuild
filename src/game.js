@@ -891,6 +891,10 @@ export function gameLoop(passedDiff, options = {}) {
   const teresa25 = !isInCelestialReality() && Ra.unlocks.unlockDilationStartingTP.canBeApplied;
   if ((teresa1 || teresa25) && !Pelle.isDoomed && !player.disablePostReality) rewardTP();
 
+  if (DivinityMilestone.divineDimensions.isReached && Pelle.isDoomed) {
+    player.celestials.pelle.remnants = player.celestials.pelle.remnants + Math.max(Pelle.remnantsGain, 0);
+  }
+
   const uncapped = Decimal.min(player.endgame.unnerfedCelestialMatter, CelestialDimensions.SOFTCAP);
   const instability = Decimal.pow(Decimal.max(player.endgame.unnerfedCelestialMatter.div(CelestialDimensions.SOFTCAP), 1), 1 / CelestialDimensions.softcapPow);
   const beforeOverflow = Decimal.min(uncapped.times(instability), CelestialDimensions.OVERFLOW);

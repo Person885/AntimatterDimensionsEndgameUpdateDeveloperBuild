@@ -694,7 +694,7 @@ Currency.divinities = new class extends NumberCurrency {
 Currency.divineMatter = new class extends DecimalCurrency {
   get value() { return player.celestials.pelle.divinity.divineMatter; }
   set value(value) {
-    const newValue = new Decimal(value);
+    const newValue = Decimal.min(value, DivineDimensions.HARDCAP);
     player.celestials.pelle.divinity.divineMatter = newValue;
   }
 }();

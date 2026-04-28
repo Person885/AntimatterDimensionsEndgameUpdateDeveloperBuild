@@ -14,6 +14,7 @@ import CelestialNavigationTab from "./celestial-navigation/CelestialNavigationTa
 import ChallengeRecordsTab from "./challenge-records/ChallengeRecordsTab";
 import DivineDimensionsTab from "./divine-dimensions/DivineDimensionsTab";
 import DivinityMilestonesTab from "./divinity-milestones/DivinityMilestonesTab";
+import DivinityUpgradesTab from "./divinity-upgrades/DivinityUpgradesTab";
 import DualityUpgradesTab from "./duality-upgrades/DualityUpgradesTab";
 import EffarigTab from "./celestial-effarig/EffarigTab";
 import EndgameTab from "./endgame/EndgameTab";
@@ -119,6 +120,7 @@ const TabComponents = {
   CelestialInfinityUpgradesTab,
   CelestialBreakInfinityTab,
   DivinityMilestonesTab,
+  DivinityUpgradesTab,
   ShopTab,
   MultiplierBreakdownTab
 };

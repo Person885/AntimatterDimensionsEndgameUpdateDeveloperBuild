@@ -1449,6 +1449,7 @@ window.player = {
       masteries: true,
       breakEternityUpgrades: true,
       endgameUpgrades: true,
+      divinityUpgrades: true,
     },
     animations: {
       bigCrunch: true,

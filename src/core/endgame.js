@@ -204,6 +204,7 @@ export const Endgame = {
     charge4 = player.celestials.teresa.perkShop[3];
     let rowProtect = 0;
     rowProtect = player.reality.glyphs.protectedRows;
+    let isAutoWeighed = player.celestials.effarig.autoAdjustGlyphWeights;
     player.isGameEnd = false;
     Tab.dimensions.antimatter.show();
     AchievementTimers.marathon2.reset();
@@ -749,7 +750,7 @@ export const Endgame = {
       DarkMatterDimension(1).amount = DC.D1;
     }
     if (Achievement(165).isUnlocked) {
-      player.celestials.effarig.autoAdjustGlyphWeights = true;
+      player.celestials.effarig.autoAdjustGlyphWeights = isAutoWeighed;
     }
     if (EternityMilestone.keepAutobuyers.isReached) {
       NormalChallenges.completeAll();

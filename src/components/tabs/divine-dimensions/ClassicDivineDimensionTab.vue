@@ -16,6 +16,7 @@ export default {
       conversionFormula1: new Decimal(0),
       conversionFormula2: 0,
       conversionFormula3: 0,
+      hardcap: new Decimal(0),
       creditsClosed: false,
     };
   },
@@ -27,6 +28,7 @@ export default {
       this.conversionFormula1 = DivineDimensions.conversionFormula1;
       this.conversionFormula2 = DivineDimensions.conversionFormula2;
       this.conversionFormula3 = DivineDimensions.conversionFormula3;
+      this.hardcap.copyFrom(DivineDimensions.HARDCAP);
       this.creditsClosed = GameEnd.creditsEverClosed;
     },
     maxAll() {
@@ -61,6 +63,7 @@ export default {
         reduction to Hadron and Remnants of Alpha Decay cap times.
       </p>
     </div>
+    <div>Divine Matter is capped at {{ format(hardcap, 2, 0) }}.</div>
     <div>You are getting {{ format(matterPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
     <div class="l-dimensions-container">
       <DivineDimensionRow

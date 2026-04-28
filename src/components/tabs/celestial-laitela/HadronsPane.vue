@@ -21,29 +21,19 @@ export default {
   },
   computed: {
     effect1Time() {
-      return new Decimal(0.25).dividedByEffectOf(Achievement(235)).div(
-        DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 1.25 : 1).times(
-        1 - DivineDimensions.conversionFormula3).sub(this.hadronTimer);
+      return new Decimal(0.25).div(Hadrons.speedFactor).sub(this.hadronTimer);
     },
     effect2Time() {
-      return new Decimal(0.5).dividedByEffectOf(Achievement(235)).div(
-        DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 1.25 : 1).times(
-        1 - DivineDimensions.conversionFormula3).sub(this.hadronTimer);
+      return new Decimal(0.5).div(Hadrons.speedFactor).sub(this.hadronTimer);
     },
     effect3Time() {
-      return new Decimal(1).dividedByEffectOf(Achievement(235)).div(
-        DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 1.25 : 1).times(
-        1 - DivineDimensions.conversionFormula3).sub(this.hadronTimer);
+      return new Decimal(1).div(Hadrons.speedFactor).sub(this.hadronTimer);
     },
     effect4Time() {
-      return new Decimal(2).dividedByEffectOf(Achievement(235)).div(
-        DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 1.25 : 1).times(
-        1 - DivineDimensions.conversionFormula3).sub(this.hadronTimer);
+      return new Decimal(2).div(Hadrons.speedFactor).sub(this.hadronTimer);
     },
     effect5Time() {
-      return new Decimal(5).dividedByEffectOf(Achievement(235)).div(
-        DivinityMilestone.firstDivine.isReached && !player.disablePostReality ? 1.25 : 1).times(
-        1 - DivineDimensions.conversionFormula3).sub(this.hadronTimer);
+      return new Decimal(5).div(Hadrons.speedFactor).sub(this.hadronTimer);
     },
     effect1Text() {
       if (this.effect1Time.lte(0)) return `Effect is capped`;

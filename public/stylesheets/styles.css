@@ -10821,10 +10821,6 @@ kbd {
   cursor: pointer;
 }
 
-.s-base--dark .c-divinity-upgrade-btn {
-  color: var(--color-pelle--base);
-}
-
 .c-divinity-upgrade-btn__requirement {
   font-weight: bold;
 }

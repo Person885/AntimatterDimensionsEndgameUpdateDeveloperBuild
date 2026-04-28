@@ -698,3 +698,11 @@ Currency.divineMatter = new class extends DecimalCurrency {
     player.celestials.pelle.divinity.divineMatter = newValue;
   }
 }();
+
+Currency.divineEnergy = new class extends DecimalCurrency {
+  get value() { return player.celestials.pelle.divinity.divineEnergy; }
+  set value(value) {
+    const newValue = new Decimal(value);
+    player.celestials.pelle.divinity.divineEnergy = newValue;
+  }
+}();

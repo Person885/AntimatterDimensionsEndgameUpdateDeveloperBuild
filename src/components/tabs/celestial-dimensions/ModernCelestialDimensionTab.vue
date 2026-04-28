@@ -59,7 +59,7 @@ export default {
       this.softcap.copyFrom(CelestialDimensions.SOFTCAP);
       this.unstable = this.celestialMatter.gte(this.softcap);
       this.overflowMag = CelestialDimensions.OVERFLOW_MAG;
-      this.overflow.copyFrom(DC.NUMMAX);
+      this.overflow.copyFrom(CelestialDimensions.OVERFLOW);
       this.isOverflowing = this.celestialMatter.gt(this.overflow);
       this.isEffectActive = player.endgame.celestialMatterMultiplier.isActive;
       this.alphaDecayRemnant = CelestialDimensions.alphaDecayRemnant;

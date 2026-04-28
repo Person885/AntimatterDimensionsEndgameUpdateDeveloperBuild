@@ -10773,6 +10773,107 @@ kbd {
   background-color: var(--color-endgame);
 }
 
+.l-divinity-upgrade-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.l-divinity-upgrade-grid__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.l-divinity-upgrade-btn {
+  display: flex;
+  flex-direction: column;
+  width: 20.5rem;
+  height: 10rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin: 1.2rem;
+  padding: 0 0.5rem;
+}
+
+.c-divinity-upgrade-btn {
+  text-align: center;
+  font-family: Typewriter, serif;
+  font-size: 1rem;
+  color: var(--color-pelle--base);
+  background-color: black;
+  border: var(--var-border-width, 0.2rem) solid var(--color-pelle--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+  transition-duration: 0.15s;
+  cursor: pointer;
+}
+
+.s-base--dark .c-divinity-upgrade-btn {
+  color: var(--color-pelle--base);
+}
+
+.c-divinity-upgrade-btn__requirement {
+  font-weight: bold;
+}
+
+.c-divinity-upgrade-btn:hover {
+  color: black;
+  background-color: var(--color-pelle--base);
+}
+
+.c-divinity-upgrade-btn--unavailable {
+  color: var(--color-pelle--base);
+  background-color: #404040;
+  cursor: default;
+}
+
+.c-divinity-upgrade-btn--unavailable:hover {
+  color: var(--color-pelle--base);
+  background-color: #404040;
+}
+
+.c-divinity-upgrade-btn--bought {
+  color: var(--color-pelle--secondary);
+  background-color: var(--color-pelle--base);
+  border-color: #600000;
+  cursor: default;
+}
+
+.c-divinity-upgrade-btn--bought:hover {
+  color: var(--color-pelle--secondary);
+  background-color: var(--color-pelle--base);
+}
+
+.t-dark .c-divinity-upgrade-btn--unavailable {
+  color: var(--color-pelle--base);
+  background-color: #37474f;
+}
+
+.t-s6.c-divinity-upgrade-btn:hover,
+.t-s10.c-divinity-upgrade-btn:hover {
+  background-color: var(--color-pelle--base);
+}
+
+.t-s6.c-divinity-upgrade-btn--unavailable:hover,
+.t-s10.c-divinity-upgrade-btn--unavailable:hover {
+  color: var(--color-pelle--base);
+  background-color: #656565;
+}
+
+.t-s6.c-divinity-upgrade-btn--bought,
+.t-s10.c-divinity-upgrade-btn--bought {
+  background-color: var(--color-pelle--base);
+  border-color: #600000;
+}
+
+.t-s6.c-divinity-upgrade-btn--bought:hover,
+.t-s10.c-divinity-upgrade-btn--bought:hover {
+  color: var(--color-pelle--secondary);
+  background-color: var(--color-pelle--base);
+}
+
 @keyframes a-galactic-power-amount-cycle {
   0% {
     color: #ff0000;

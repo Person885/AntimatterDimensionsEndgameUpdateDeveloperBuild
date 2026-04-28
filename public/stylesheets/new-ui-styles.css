@@ -935,6 +935,22 @@ body.t-s12 {
   font-size: 0.95rem;
 }
 
+.l-hint-text--endgame-upgrade {
+  top: -1.3rem;
+}
+
+.c-hint-text--endgame-upgrade {
+  font-size: 0.95rem;
+}
+
+.l-hint-text--divinity-upgrade {
+  top: -1.3rem;
+}
+
+.c-hint-text--divinity-upgrade {
+  font-size: 0.95rem;
+}
+
 .resource-eternity-canreset > div {
   height: 100%;
 }

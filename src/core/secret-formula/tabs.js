@@ -686,11 +686,20 @@ export const tabs = [
     hidable: true,
     subtabs: [
       {
-        key: "divinity-milestones",
+        key: "milestones",
         name: "Divinity Milestones",
         symbol: "<i class='fas fa-star'></i>",
         component: "DivinityMilestonesTab",
         id: 0,
+        hidable: true,
+      },
+      {
+        key: "upgrades",
+        name: "Divinity Upgrades",
+        symbol: "<i class='fas fa-arrow-up'></i>",
+        component: "DivinityUpgradesTab",
+        condition: () => DivinityUpgrades.isUnlocked,
+        id: 1,
         hidable: true,
       },
     ],

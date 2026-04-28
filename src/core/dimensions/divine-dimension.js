@@ -2,6 +2,7 @@ import { DimensionState } from "./dimension";
 
 export function divineDimensionCommonMultiplier() {
   let mult = DC.D1;
+  mult = mult.timesEffectOf(DivinityUpgrade.divineL1U3);
   return mult;
 }
 

@@ -3,6 +3,7 @@ import { galaxyIcon } from "./navigation-sigils/galaxy-icon";
 import { alchemyResources } from "./alchemy";
 import { alphaUnlocks } from "./alpha";
 import { divinityMilestones } from "./divinity-milestones";
+import { divinityUpgrades } from "./divinity-upgrades";
 import { effarigUnlocks } from "./effarig";
 import { enslaved } from "./enslaved";
 import { pelleGalaxyGeneratorUpgrades } from "./galaxy-generator";
@@ -53,6 +54,7 @@ export const celestials = {
     strikes: pelleStrikeDisabling
   },
   divinityMilestones,
+  divinityUpgrades,
   descriptions: {},
   enslaved,
   navigation: celestialNavigation,

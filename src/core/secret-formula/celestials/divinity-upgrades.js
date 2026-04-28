@@ -22,7 +22,7 @@ export const divinityUpgrades = {
     layer: 1,
     cost: new Decimal(1e20),
     description: "Divine Dimensions are boosted based on Celestial Points",
-    effect: () => Decimal.log10(player.endgame.celestialPoints).div(Decimal.log10(DC.NUMMAX)),
+    effect: () => Decimal.log10(player.endgame.celestialPoints).div(Decimal.log10(DC.NUMMAX)).max(1),
     formatEffect: value => formatX(value, 2, 2)
   },
   divineL1U4: {
@@ -46,8 +46,8 @@ export const divinityUpgrades = {
     layer: 1,
     cost: new Decimal(1e125),
     description: "Divine Energy boosts Divine Dimensions",
-    //effect: () => Decimal.pow(Currency.divineEnergy, 0.25),
-    //formatEffect: value => formatX(value, 2, 2)
+    effect: () => Decimal.pow(Currency.divineEnergy.value, 0.25).max(1),
+    formatEffect: value => formatX(value, 2, 2)
   },
   divineL1U7: {
     name: "Lucky Seven",

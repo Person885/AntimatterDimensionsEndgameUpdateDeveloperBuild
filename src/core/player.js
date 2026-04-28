@@ -995,8 +995,10 @@ window.player = {
       showBought: false,
       divinities: 0,
       divinity: {
-        divineMatter: DC.E1
-      }
+        divineMatter: DC.E1,
+        divineEnergy: DC.D0,
+      },
+      divinityUpgrades: new Set()
     },
     alpha: {
       unlockBits: 0,

@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      canBeBought: false,
+      isAvailableForPurchase: false,
       isBought: false,
     };
   },
@@ -31,14 +31,14 @@ export default {
     classObject() {
       return {
         "c-divinity-upgrade-btn--bought": this.isBought,
-        "c-divinity-upgrade-btn--unavailable": !this.isBought && !this.canBeBought
+        "c-divinity-upgrade-btn--unavailable": !this.isBought && !this.isAvailableForPurchase
       };
     },
   },
   methods: {
     update() {
       const upgrade = this.upgrade;
-      this.canBeBought = upgrade.canBeBought;
+      this.isAvailableForPurchase = upgrade.isAvailableForPurchase;
       this.isBought = upgrade.isBought;
     }
   }

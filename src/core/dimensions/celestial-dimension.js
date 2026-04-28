@@ -305,9 +305,13 @@ export const CelestialDimensions = {
     unlockedDimensions.forEach(dimension => dimension.buyMax(false));
   },
 
+  get alphaDecaySpeed() {
+    return (1 - DivineDimensions.conversionFormula3).times(DivinityMilestone.divineDimensions.isReached ? 0.8 : 1).timesEffectOf(DivineUpgrade.divineL1U2);
+  },
+
   get alphaDecayRemnant() {
     return Alpha.isDestroyed ? Time.thisCelestialInfinityRealTime.totalHours.plusEffectOf(CelestialInfinityUpgrade.alphaDecayStartBoost).div(
-      1 - DivineDimensions.conversionFormula3).min(5).div(5) : DC.D1;
+      this.alphaDecaySpeed).min(5).div(5) : DC.D1;
   },
 
   get conversionExponent() {

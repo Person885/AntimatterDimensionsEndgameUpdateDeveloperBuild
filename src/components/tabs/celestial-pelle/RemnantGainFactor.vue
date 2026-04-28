@@ -23,6 +23,7 @@ export default {
       dilationMult: [1, 1, 1],
       milestoneMult: [1, 1, 1],
       hasMilestone: false,
+      isBuffed: false,
       remnants: 0,
       remnantsGain: 0
     };
@@ -40,6 +41,7 @@ export default {
       this.dilationMult = PelleStrikes.dilation.hasStrike ? [500, 10, 5] : [1, 1, 1];
       this.milestoneMult = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality) ? [10000, 500, 25] : [1, 1, 1];
       this.hasMilestone = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality);
+      this.isBuffed = DivinityMilestone.divineDimensions.isReached;
       this.remnants = Pelle.cel.remnants;
       this.remnantsGain = Pelle.remnantsGain;
     }
@@ -112,10 +114,10 @@ export default {
                 {{ format(best.ep.add(1).log10().times(dilationMult[2]).times(milestoneMult[2]).add(2).log10(), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
-                {{ format(hasMilestone ? 1.6 : 1.7, 2, 2) }}
+                {{ format(isBuffed ? 1.2 : (hasMilestone ? 1.6 : 1.7), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
-                {{ format(hasMilestone ? 8.2 : 8, 2, 2) }}
+                {{ format(isBuffed ? 10 : (hasMilestone ? 8.2 : 8), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
                 {{ format(remnants, 2, 0) }}

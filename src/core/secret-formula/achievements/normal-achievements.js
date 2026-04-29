@@ -1923,7 +1923,7 @@ export const normalAchievements = [
     get reward() {
       return `Dilate Antimatter Dimension Multipliers based on purchased Endgame Skills, which is stronger in Pelle.`;
     },
-    effect: () => player.disablePostReality ? 1 : 1 + ((Math.min(EndgameSkills.totalPurchased(), 2000) + (Math.max(Math.log2(EndgameSkills.totalPurchased() / 2000) - 1, 0) * 1000)) / (Pelle.isDoomed ? 20000 : 100000)),
+    effect: () => player.disablePostReality ? 1 : 1 + ((Math.min(EndgameSkills.totalPurchased(), 2000) + (Math.max(Math.log2(EndgameSkills.totalPurchased() / 2000), 0) * 1000)) / (Pelle.isDoomed ? 20000 : 100000)),
     formatEffect: value => `${formatPow(value, 2, 3)}`,
     progress: () => Achievement(231).isUnlocked ? DC.D1 : Decimal.clamp(new Decimal(EndgameSkills.totalPurchased()).div(1000), 0, 1)
   },

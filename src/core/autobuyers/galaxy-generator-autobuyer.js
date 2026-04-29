@@ -28,14 +28,18 @@ export class GalaxyGeneratorAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get bulk() {
-    return 1;
+    return DivinityMilestone.divineDimensions.isReached ? Infinity : 1;
   }
 
   tick() {
     if (Pelle.hasGalaxyGenerator) {
       super.tick();
       const upgradeName = this._upgradeName;
-      GalaxyGeneratorUpgrades[upgradeName].purchase(this.bulk);
+      if (DivinityMilestone.divineDimensions.isReached) {
+        GalaxyGeneratorUpgrades[upgradeName].purchase(true);
+      } else {
+        GalaxyGeneratorUpgrades[upgradeName].purchase(false);
+      }
     }
   }
 

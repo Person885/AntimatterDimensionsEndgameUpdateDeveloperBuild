@@ -1000,7 +1000,8 @@ window.player = {
         divineEnergy: DC.D0,
         isProducingEnergy: false
       },
-      divinityUpgrades: new Set()
+      divinityUpgrades: new Set(),
+      resurgenceUpgrades: new Set()
     },
     alpha: {
       unlockBits: 0,

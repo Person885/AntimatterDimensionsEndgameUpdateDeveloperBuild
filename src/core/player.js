@@ -1452,6 +1452,7 @@ window.player = {
       breakEternityUpgrades: true,
       endgameUpgrades: true,
       divinityUpgrades: true,
+      resurgenceUpgrades: true,
     },
     animations: {
       bigCrunch: true,

@@ -2659,6 +2659,17 @@ br {
   text-shadow: none;
 }
 
+.l-hint-text--resurgence-upgrade {
+  top: -1.7rem;
+  font-size: 1.25rem;
+}
+
+.c-hint-text--resurgence-upgrade {
+  font-weight: bold;
+  color: var(--color-text);
+  text-shadow: none;
+}
+
 .l-hint-text--achievement {
   top: -2rem;
   z-index: 1;

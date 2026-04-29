@@ -24,6 +24,15 @@ export const Ethereal = {
   },
   get starBoost() {
     return EtherealStars.gray.reward;
+  },
+  get stellarProduct() {
+    let prod = [];
+    for (let star = 0; star < 9; star++) {
+      if (EtherealStars.all.find(s => s.id === star).isUnlocked) {
+        prod.push(player.endgame.ethereal.stars[EtherealStars.all.find(s => s.id === star).config.name]);
+      }
+    }
+    return prod.reduce(Decimal.prodReducer, DC.D1);
   }
 };
 

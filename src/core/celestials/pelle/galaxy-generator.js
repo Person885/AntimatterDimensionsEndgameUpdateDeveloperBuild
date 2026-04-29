@@ -209,7 +209,7 @@ export class GalaxyGeneratorUpgrade extends RebuyableMechanicState {
     }
     let price;
     let logC = [3, 10, 10, 100, 1000, 1e10, 1e100, 10];
-    let exD = [1, 1, 1e7, 20000, 10, 1e90, 1, 1];
+    let exD = [1/3, 0.1, 1e7, 20000, 10, 1e90, 1, 1];
     let currV = (i >= 2 && i <= 4 ? upg.currency.value.max(1).log10().div(exD[i]) : upg.currency.value.div(exD[i]));
     let currW = (i === 6 ? Decimal.sqrt(Decimal.log(currV, logC[i]).times(2).add(0.25)).sub(0.5) : Decimal.log(currV, logC[i]));
     if (bulk) {

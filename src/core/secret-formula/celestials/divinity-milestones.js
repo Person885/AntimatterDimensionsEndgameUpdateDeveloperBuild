@@ -24,7 +24,7 @@ export const divinityMilestones = {
         Pending Remnants are gained immediately without Armageddon required
         Reduce the Hadron Effect cap time for all Hadron/Dark Hadron effects by ${formatPercents(0.2)}
         Reduce the time for Remnants of Alpha Decay to cap by ${formatPercents(0.2)}
-        Remnant Gain is slightly improved`;
+        Galaxy Generator Upgrade Autobuyers buy max`;
     }
   }
 };

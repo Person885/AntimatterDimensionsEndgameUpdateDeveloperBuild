@@ -94,6 +94,7 @@ export * from "./imaginary-upgrades";
 export * from "./duality-upgrades";
 export * from "./endgame-upgrades";
 export * from "./divinity-upgrades";
+export * from "./resurgence-upgrades";
 export * from "./perks";
 export * from "./dilation";
 export * from "./black-hole";

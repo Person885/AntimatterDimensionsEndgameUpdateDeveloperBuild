@@ -117,7 +117,7 @@ export default {
                 {{ format(isBuffed ? 1.2 : (hasMilestone ? 1.6 : 1.7), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
-                {{ format(isBuffed ? 10 : (hasMilestone ? 8.2 : 8), 2, 2) }}
+                {{ format(isBuffed ? 8.5 : (hasMilestone ? 8.2 : 8), 2, 2) }}
               </div>
               <div class="l-remnant-factors-item">
                 {{ format(remnants, 2, 0) }}

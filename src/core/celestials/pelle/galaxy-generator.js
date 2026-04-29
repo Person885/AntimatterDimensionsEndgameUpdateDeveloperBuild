@@ -197,6 +197,8 @@ export class GalaxyGeneratorUpgrade extends RebuyableMechanicState {
   }
 
   purchase(bulk) {
+    if (!this.canBeBought) return false;
+    if (GameEnd.creditsEverClosed) return false;
     let pending;
     let upg = GalaxyGeneratorUpgrades.all.find(g => g.config.id === this.id);
     let i;
@@ -221,6 +223,9 @@ export class GalaxyGeneratorUpgrade extends RebuyableMechanicState {
       player.celestials.pelle.rebuyables[this.id]++;
       upg.currency.value = upg.currency.value.sub(upg.cost);
     }
+    this.onPurchased();
+    GameUI.update();
+    return true;
   }
 }
 

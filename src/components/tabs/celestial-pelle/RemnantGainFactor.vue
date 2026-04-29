@@ -24,8 +24,8 @@ export default {
       milestoneMult: [1, 1, 1],
       hasMilestone: false,
       isBuffed: false,
-      remnants: 0,
-      remnantsGain: 0
+      remnants: new Decimal(0),
+      remnantsGain: new Decimal(0)
     };
   },
   computed: {
@@ -42,8 +42,8 @@ export default {
       this.milestoneMult = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality) ? [10000, 500, 25] : [1, 1, 1];
       this.hasMilestone = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality);
       this.isBuffed = DivinityMilestone.divineDimensions.isReached;
-      this.remnants = Pelle.cel.remnants;
-      this.remnantsGain = Pelle.remnantsGain;
+      this.remnants.copyFrom(Pelle.cel.remnants);
+      this.remnantsGain.copyFrom(Pelle.remnantsGain);
     }
   }
 };
@@ -123,7 +123,7 @@ export default {
                 {{ format(remnants, 2, 0) }}
               </div>
               <div class="l-remnant-factors-item">
-                {{ format(remnantsGain, 2, remnantsGain >= 1 ? 0 : 2) }}
+                {{ format(remnantsGain, 2, remnantsGain.gte(1) ? 0 : 2) }}
               </div>
             </div>
           </div>

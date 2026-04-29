@@ -12,27 +12,46 @@ export default {
     return {
       divineMatter: new Decimal(0),
       matterPerSecond: new Decimal(0),
+      energyPerSecond: new Decimal(0),
       incomeType: "",
       conversionFormula1: new Decimal(0),
       conversionFormula2: 0,
       conversionFormula3: 0,
       hardcap: new Decimal(0),
       creditsClosed: false,
+      isProducingEnergy: false
     };
+  },
+  computed: {
+    changeProdDisplay() {
+      return this.isProducingEnergy
+        ? "Produce Divine Energy"
+        : "Produce Divine Matter";
+    },
+    currencyProd() {
+      return this.isProducingEnergy
+        ? `${format(this.energyPerSecond, 2, 0)}`
+        : `${format(this.matterPerSecond, 2, 0)}`;
+    },
   },
   methods: {
     update() {
       this.divineMatter.copyFrom(Currency.divineMatter);
       this.matterPerSecond.copyFrom(DivineDimension(1).productionPerSecond);
-      this.incomeType = "Divine Matter";
+      this.energyPerSecond.copyFrom(Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerSecond).div(100).sub(1)));
+      this.incomeType = this.isProducingEnergy ? "Divine Energy" : "Divine Matter";
       this.conversionFormula1 = DivineDimensions.conversionFormula1;
       this.conversionFormula2 = DivineDimensions.conversionFormula2;
       this.conversionFormula3 = DivineDimensions.conversionFormula3;
       this.hardcap.copyFrom(DivineDimensions.HARDCAP);
       this.creditsClosed = GameEnd.creditsEverClosed;
+      this.isProducingEnergy = player.celestials.pelle.divinity.isProducingEnergy;
     },
     maxAll() {
       DivineDimensions.buyMax();
+    },
+    shiftProd() {
+      player.celestials.pelle.divinity.isProducingEnergy = !player.celestials.pelle.divinity.isProducingEnergy;
     }
   }
 };
@@ -65,7 +84,13 @@ export default {
         </p>
       </div>
       <div>Divine Matter is capped at {{ format(hardcap, 2, 0) }}.</div>
-      <div>You are getting {{ format(matterPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
+      <div>You are getting {{ currencyProd }} {{ incomeType }} per second.</div>
+      <PrimaryButton
+        class="o-primary-btn--subtab-option"
+        @click="shiftProd"
+      >
+        {{ changeProdDisplay }}
+      </PrimaryButton>
     </div>
     <div class="l-dimensions-container">
       <DivineDimensionRow

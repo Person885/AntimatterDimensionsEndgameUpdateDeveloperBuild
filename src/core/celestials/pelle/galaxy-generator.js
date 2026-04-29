@@ -198,7 +198,7 @@ export class GalaxyGeneratorUpgrade extends RebuyableMechanicState {
 
   purchase(bulk) {
     let pending;
-    let upg = GalaxyGeneratorUpgrades[this.id];
+    let upg = GalaxyGeneratorUpgrades.all.find(g => g.config.id === this.id);
     let i;
     for (let num = 0; num < 20; num++) {
       if (GalaxyGeneratorUpgrades.all[num]) {

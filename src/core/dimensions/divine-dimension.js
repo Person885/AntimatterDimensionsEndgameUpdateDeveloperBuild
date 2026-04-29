@@ -180,7 +180,7 @@ export const DivineDimensions = {
     }
     if (player.celestials.pelle.divinity.isProducingEnergy) {
       player.celestials.pelle.divinity.divineEnergy = player.celestials.pelle.divinity.divineEnergy.add(
-        Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerSecond).div(100).sub(1))).times(realDiff).div(1000);
+        Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerSecond).div(100).sub(1)).times(realDiff).div(1000));
     }
     player.celestials.pelle.divinity.divineMatter = player.celestials.pelle.divinity.divineMatter.min(this.HARDCAP);
   },

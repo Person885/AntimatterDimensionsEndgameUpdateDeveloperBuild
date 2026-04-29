@@ -167,7 +167,7 @@ export const ra = {
       id: 15,
       reward: "Stored game time is amplified and you can store more real time, increasing with Nameless levels",
       effects: {
-        gameTimeAmplification: () => player.disablePostReality ? 1 : Math.pow(20, Math.clampMax(Ra.pets.enslaved.level, Ra.levelCap)),
+        gameTimeAmplification: () => player.disablePostReality ? 1 : Decimal.pow(20, Decimal.clampMax(Ra.pets.enslaved.level, Ra.levelCap)),
         realTimeCap: () => player.disablePostReality ? 0 : 1000 * 3600 * Ra.pets.enslaved.level,
       },
       pet: "enslaved",

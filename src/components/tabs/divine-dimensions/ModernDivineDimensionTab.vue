@@ -3,7 +3,7 @@ import DivineDimensionRow from "./ModernDivineDimensionRow";
 import PrimaryButton from "@/components/PrimaryButton";
 
 export default {
-  name: "DivineCelestialDimensionTab",
+  name: "ModernDivineDimensionTab",
   components: {
     PrimaryButton,
     DivineDimensionRow

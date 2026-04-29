@@ -32,7 +32,7 @@ export default {
     },
     currencyProd() {
       return this.isProducingEnergy
-        ? `${format(this.energyPerSecond, 2, 0)}`
+        ? `${format(this.energyPerSecond, 2, 2)}`
         : `${format(this.matterPerSecond, 2, 0)}`;
     },
   },

@@ -96,6 +96,23 @@ export const Effarig = {
       .reduce((prev, curr) => prev | curr.effects, 0);
     return countValuesFromBitmask(genEffectBitmask) + countValuesFromBitmask(nongenEffectBitmask);
   },
+  get fullGlyphEffectAmount() {
+    let glyphEff = [];
+    let filterInv = Glyphs.inventoryList.filter(g => g.type !== "companion");
+    for (let inv = 0; inv < 120; inv++) {
+      if (filterInv[inv]) glyphEff.push(filterInv[inv]);
+    }
+    for (let act = 0; act < 20; act++) {
+      if (Glyphs.activeWithoutCompanion[act]) glyphEff.push(Glyphs.activeWithoutCompanion[act])
+    }
+    const genEffectBitmaskTotal = glyphEff
+      .filter(g => generatedTypes.includes(g.type))
+      .reduce((prev, curr) => prev | curr.effects, 0);
+    const nongenEffectBitmaskTotal = glyphEff
+      .filter(g => !generatedTypes.includes(g.type))
+      .reduce((prev, curr) => prev | curr.effects, 0);
+    return countValuesFromBitmask(genEffectBitmaskTotal) + countValuesFromBitmask(nongenEffectBitmaskTotal);
+  },
   get shardsGained() {
     const extraBoost = (ExpansionPack.effarigPack.isBought && !player.disablePostReality) ? Decimal.log10(player.antimatter.add(10)) : DC.D1;
     if (!TeresaUnlocks.effarig.canBeApplied && !EndgameMilestone.celestialEarlyUnlock.isReached) return new Decimal(0);

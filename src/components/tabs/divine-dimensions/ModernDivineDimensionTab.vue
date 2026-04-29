@@ -42,7 +42,7 @@ export default {
       this.divineEnergy.copyFrom(Currency.divineEnergy);
       this.matterPerSecond.copyFrom(DivineDimension(1).productionPerSecond);
       this.energyPerSecond.copyFrom(Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerSecond).div(100).sub(1)));
-      this.incomeType = this.isProducingEnergy ? "Divine Energy" : "Divine Matter";
+      this.incomeType = player.celestials.pelle.divinity.isProducingEnergy ? "Divine Energy" : "Divine Matter";
       this.conversionFormula1 = DivineDimensions.conversionFormula1;
       this.conversionFormula2 = DivineDimensions.conversionFormula2;
       this.conversionFormula3 = DivineDimensions.conversionFormula3;

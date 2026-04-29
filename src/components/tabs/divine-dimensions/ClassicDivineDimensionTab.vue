@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       divineMatter: new Decimal(0),
+      divineEnergy: new Decimal(0),
       matterPerSecond: new Decimal(0),
       energyPerSecond: new Decimal(0),
       incomeType: "",
@@ -19,6 +20,7 @@ export default {
       conversionFormula3: 0,
       hardcap: new Decimal(0),
       creditsClosed: false,
+      canProduceEnergy: false,
       isProducingEnergy: false
     };
   },
@@ -37,6 +39,7 @@ export default {
   methods: {
     update() {
       this.divineMatter.copyFrom(Currency.divineMatter);
+      this.divineEnergy.copyFrom(Currency.divineEnergy);
       this.matterPerSecond.copyFrom(DivineDimension(1).productionPerRealSecond);
       this.energyPerSecond.copyFrom(Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerRealSecond).div(100).sub(1)));
       this.incomeType = this.isProducingEnergy ? "Divine Energy" : "Divine Matter";
@@ -45,6 +48,7 @@ export default {
       this.conversionFormula3 = DivineDimensions.conversionFormula3;
       this.hardcap.copyFrom(DivineDimensions.HARDCAP);
       this.creditsClosed = GameEnd.creditsEverClosed;
+      this.canProduceEnergy = DivinityUpgrade.divineL1U5.isBought;
       this.isProducingEnergy = player.celestials.pelle.divinity.isProducingEnergy;
     },
     maxAll() {
@@ -67,6 +71,9 @@ export default {
         Max all
       </PrimaryButton>
     </div>
+    <div v-if="canProduceEnergy">
+      You have <span class="c-divine-dim-description__accent">{{ format(divineEnergy, 2, 1) }}</span> Divine Energy.
+    </div>
     <div>
       <p>
         You have
@@ -85,6 +92,7 @@ export default {
     <div>Divine Matter is capped at {{ format(hardcap, 2, 0) }}.</div>
     <div>You are getting {{ currencyProd }} {{ incomeType }} per second.</div>
     <PrimaryButton
+      v-if="canProduceEnergy"
       class="o-primary-btn--subtab-option"
       @click="shiftProd"
     >

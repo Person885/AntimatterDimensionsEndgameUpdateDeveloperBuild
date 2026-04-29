@@ -10882,6 +10882,111 @@ kbd {
   background-color: var(--color-pelle--base);
 }
 
+.l-resurgence-upgrade-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.l-resurgence-upgrade-grid__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.l-resurgence-upgrade-btn {
+  display: flex;
+  flex-direction: column;
+  width: 20.5rem;
+  height: 10rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin: 1.2rem;
+  padding: 0 0.5rem;
+}
+
+.c-resurgence-upgrade-btn {
+  text-align: center;
+  font-family: Typewriter, serif;
+  font-size: 1rem;
+  color: var(--color-antimatter);
+  background-color: black;
+  border: var(--var-border-width, 0.2rem) solid var(--color-antimatter);
+  border-radius: var(--var-border-radius, 0.5rem);
+  transition-duration: 0.15s;
+  cursor: pointer;
+}
+
+.c-resurgence-upgrade-btn__requirement {
+  font-weight: bold;
+}
+
+.c-resurgence-upgrade-btn:hover {
+  color: black;
+  background-color: var(--color-antimatter);
+}
+
+.c-resurgence-upgrade-btn--unavailable {
+  color: var(--color-antimatter);
+  background-color: #404040;
+  cursor: default;
+}
+
+.c-resurgence-upgrade-btn--unavailable:hover {
+  color: var(--color-antimatter);
+  background-color: #404040;
+}
+
+.c-resurgence-upgrade-btn--bought {
+  color: var(--color-elemental--base);
+  border-color: var(--color-antimatter);
+  cursor: default;
+  animation: a-resurgence__antimatter--glow 10s infinite;
+}
+
+.c-resurgence-upgrade-btn--bought:hover {
+  color: var(--color-elemental--base);
+  animation: a-resurgence__antimatter--glow 10s infinite;
+}
+
+.t-dark .c-resurgence-upgrade-btn--unavailable {
+  color: var(--color-antimatter);
+  background-color: #37474f;
+}
+
+.t-s6.c-resurgence-upgrade-btn:hover,
+.t-s10.c-resurgence-upgrade-btn:hover {
+  background-color: var(--color-antimatter);
+}
+
+.t-s6.c-resurgence-upgrade-btn--unavailable:hover,
+.t-s10.c-resurgence-upgrade-btn--unavailable:hover {
+  color: var(--color-antimatter);
+  background-color: #656565;
+}
+
+.t-s6.c-resurgence-upgrade-btn--bought,
+.t-s10.c-resurgence-upgrade-btn--bought {
+  color: var(--color-elemental--base);
+  border-color: var(--color-antimatter);
+  animation: a-resurgence__antimatter--glow 10s infinite;
+}
+
+.t-s6.c-resurgence-upgrade-btn--bought:hover,
+.t-s10.c-resurgence-upgrade-btn--bought:hover {
+  color: var(--color-elemental--base);
+  animation: a-resurgence__antimatter--glow 10s infinite;
+}
+
+@keyframes a-resurgence__antimatter--glow {
+  0% { background-color: #2196f3; }
+  33% { background-color: #673ab7; }
+  66% { background-color: #00bcd4; }
+  100% { background-color: #2196f3; }
+}
+
 @keyframes a-galactic-power-amount-cycle {
   0% {
     color: #ff0000;

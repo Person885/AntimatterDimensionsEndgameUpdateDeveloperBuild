@@ -50,7 +50,8 @@ export const stars = {
     resetReq: 1e40,
     effect: (amount = player.endgame.ethereal.stars.blue) => {
       const boost = Ethereal.starBoost;
-      return Decimal.pow(Decimal.pow(amount.add(1), 0.8), boost.div(100).add(1));
+      return Decimal.pow(Decimal.pow(amount.add(1), 0.8).min(1e20).times(
+        Decimal.pow10(Decimal.pow(5, amount.max(1e20).div(1e20).log10().add(1).log10()).sub(1))), boost.div(100).add(1));
     },
     description: amount => `Multiply Ethereal Power Gain by ${formatX(amount, 2, 3)}`
   },

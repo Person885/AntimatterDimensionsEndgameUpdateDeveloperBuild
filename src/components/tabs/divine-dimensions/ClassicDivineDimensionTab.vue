@@ -27,8 +27,8 @@ export default {
   computed: {
     changeProdDisplay() {
       return this.isProducingEnergy
-        ? "Produce Divine Energy"
-        : "Produce Divine Matter";
+        ? "Produce Divine Matter"
+        : "Produce Divine Energy";
     },
     currencyProd() {
       return this.isProducingEnergy

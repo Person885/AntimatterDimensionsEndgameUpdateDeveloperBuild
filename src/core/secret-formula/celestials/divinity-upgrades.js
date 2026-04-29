@@ -22,7 +22,7 @@ export const divinityUpgrades = {
     layer: 1,
     cost: new Decimal(1e20),
     description: "Divine Dimensions are boosted based on Celestial Points",
-    effect: () => Decimal.log10(player.endgame.celestialPoints).div(100).max(1),
+    effect: () => Decimal.pow(Decimal.log10(player.endgame.celestialPoints).div(Decimal.log(DC.NUMMAX)).max(1), 3),
     formatEffect: value => formatX(value, 2, 2)
   },
   divineL1U4: {

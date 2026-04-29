@@ -702,6 +702,15 @@ export const tabs = [
         id: 1,
         hidable: true,
       },
+      {
+        key: "resurgence",
+        name: "Resurgence Upgrades",
+        symbol: "<i class='fas fa-bolt-lightning'></i>",
+        component: "ResurgenceUpgradesTab",
+        condition: () => ResurgenceUpgrades.isUnlocked,
+        id: 2,
+        hidable: true,
+      },
     ],
   }
 ];

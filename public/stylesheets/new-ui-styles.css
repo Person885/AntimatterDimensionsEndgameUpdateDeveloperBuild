@@ -951,6 +951,14 @@ body.t-s12 {
   font-size: 0.95rem;
 }
 
+.l-hint-text--resurgence-upgrade {
+  top: -1.3rem;
+}
+
+.c-hint-text--resurgence-upgrade {
+  font-size: 0.95rem;
+}
+
 .resource-eternity-canreset > div {
   height: 100%;
 }

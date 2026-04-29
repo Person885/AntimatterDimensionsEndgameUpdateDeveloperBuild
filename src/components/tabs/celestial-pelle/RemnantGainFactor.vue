@@ -41,7 +41,7 @@ export default {
       this.dilationMult = PelleStrikes.dilation.hasStrike ? [500, 10, 5] : [1, 1, 1];
       this.milestoneMult = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality) ? [10000, 500, 25] : [1, 1, 1];
       this.hasMilestone = (EndgameMilestone.remnantFormula.isReached && !player.disablePostReality);
-      this.isBuffed = DivinityMilestone.divineDimensions.isReached;
+      this.isBuffed = false;
       this.remnants.copyFrom(Pelle.cel.remnants);
       this.remnantsGain.copyFrom(Pelle.remnantsGain);
     }

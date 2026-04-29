@@ -892,7 +892,7 @@ export function gameLoop(passedDiff, options = {}) {
   if ((teresa1 || teresa25) && !Pelle.isDoomed && !player.disablePostReality) rewardTP();
 
   if (DivinityMilestone.divineDimensions.isReached && Pelle.isDoomed) {
-    player.celestials.pelle.remnants = player.celestials.pelle.remnants + Math.max(Pelle.remnantsGain, 0);
+    player.celestials.pelle.remnants = player.celestials.pelle.remnants.add(Decimal.max(Pelle.remnantsGain, 0));
   }
 
   const uncapped = Decimal.min(player.endgame.unnerfedCelestialMatter, CelestialDimensions.SOFTCAP);

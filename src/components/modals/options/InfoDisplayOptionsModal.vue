@@ -28,6 +28,7 @@ export default {
       masteries: false,
       breakEternityUpgrades: false,
       endgameUpgrades: false,
+      divinityUpgrades: false,
     };
   },
   computed: {
@@ -72,6 +73,9 @@ export default {
     endgameUpgrades(newValue) {
       player.options.showHintText.endgameUpgrades = newValue;
     },
+    divinityUpgrades(newValue) {
+      player.options.showHintText.divinityUpgrades = newValue;
+    },
   },
   methods: {
     update() {
@@ -95,6 +99,7 @@ export default {
       this.masteries = options.masteries;
       this.breakEternityUpgrades = options.breakEternityUpgrades;
       this.endgameUpgrades = options.endgameUpgrades;
+      this.divinityUpgrades = options.divinityUpgrades;
     }
   },
 };
@@ -162,6 +167,11 @@ export default {
         v-if="endgameUnlocked"
         v-model="endgameUpgrades"
         text="Endgame Upgrade names:"
+      />
+      <ModalOptionsToggleButton
+        v-if="divinityUnlocked"
+        v-model="divinityUpgrades"
+        text="Divinity Upgrade names:"
       />
     </div>
     Note: All types of additional info above will always display when holding shift.

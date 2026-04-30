@@ -649,6 +649,9 @@ class AntimatterDimensionState extends DimensionState {
       if (ResurgenceUpgrade.ipSurge.isBought) {
         production = production.times(gainedInfinityPoints());
       }
+      if (ResurgenceUpgrade.epSurge.isBought) {
+        production = production.times(gainedEternityPoints());
+      }
     }
     production = production.min(this.cappedProductionInNormalChallenges);
     return production;

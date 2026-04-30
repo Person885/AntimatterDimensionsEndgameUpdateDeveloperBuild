@@ -179,8 +179,9 @@ export const DivineDimensions = {
       DivineDimension(1).produceCurrency(Currency.divineMatter, realDiff);
     }
     if (player.celestials.pelle.divinity.isProducingEnergy) {
+      const veMults = DC.D1.timesEffectOf(DivinityUpgrade.divineL1U7);
       player.celestials.pelle.divinity.divineEnergy = player.celestials.pelle.divinity.divineEnergy.add(
-        Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerSecond).div(100).sub(1)).times(realDiff).div(1000));
+        Decimal.pow(100, Decimal.log10(DivineDimension(1).productionPerSecond).div(100).sub(1)).times(veMults).times(realDiff).div(1000));
     }
     player.celestials.pelle.divinity.divineMatter = player.celestials.pelle.divinity.divineMatter.min(this.HARDCAP);
   },

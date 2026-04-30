@@ -646,6 +646,9 @@ class AntimatterDimensionState extends DimensionState {
         const log10 = production.log10().log10();
         production = Decimal.pow10(Decimal.pow10(Decimal.pow(log10, DivinityUpgrade.divineL1U4.effectOrDefault(1))));
       }
+      if (ResurgenceUpgrade.ipSurge.isBought) {
+        production = production.times(gainedInfinityPoints());
+      }
     }
     production = production.min(this.cappedProductionInNormalChallenges);
     return production;

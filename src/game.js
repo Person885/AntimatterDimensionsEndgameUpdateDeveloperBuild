@@ -1,4 +1,4 @@
-import TWEEN from "tween.js";
+ import TWEEN from "tween.js";
 
 import { ElectronRuntime, SteamRuntime } from "@/steam";
 
@@ -729,6 +729,7 @@ export function gameLoop(passedDiff, options = {}) {
   updateDualMachines(realDiff);
 
   if (ResurgenceUpgrade.ipSurge.isBought) player.infinityPoints = player.antimatter;
+  if (ResurgenceUpgrade.epSurge.isBought) player.eternityPoints = player.antimatter;
 
   if (ExpansionPack.teresaPack.isBought && player.celestials.teresa.autoPour && !player.disablePostReality) {
     Teresa.pourRM(realDiff, true);

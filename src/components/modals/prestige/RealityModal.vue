@@ -91,7 +91,7 @@ export default {
       this.hasFilter = EffarigUnlock.glyphFilter.isUnlocked;
       this.level = gainedGlyphLevel().actualLevel;
       this.simRealities.copyFrom(new Decimal(simulatedRealityCount(false)).add(1));
-      this.hasSpace = GameCache.glyphInventorySpace.value.gte(this.simRealities);
+      this.hasSpace = new Decimal(GameCache.glyphInventorySpace.value).gte(this.simRealities);
       const simRMGained = MachineHandler.gainedRealityMachines.times(this.simRealities);
       this.realityMachines.copyFrom(simRMGained.clampMax(MachineHandler.distanceToRMCap));
       this.shardsGained.copyFrom(Effarig.shardsGained.times(simulatedRealityCount(false) + 1));

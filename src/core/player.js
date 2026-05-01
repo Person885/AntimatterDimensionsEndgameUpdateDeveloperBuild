@@ -1307,6 +1307,7 @@ window.player = {
     upgradeBits: 0,
     upgReqs: 0,
     reqLock: 0,
+    partRealitied: DC.D0,
     partEndgamed: 0,
     expansionPacks: {
       areUnlocked: false,

@@ -28,7 +28,7 @@ export const divinityMilestones = {
     }
   },
   hadronEmpowerment: {
-    divinities: 2,
+    divinities: 3,
     get reward() {
       return ` Automatically destabilize Lai'tela's Reality if your Antimatter exceeds the amount required to disable it in less than ${formatInt(30)} seconds, rooted by ${formatInt(8)} divided by the number of Dimensions left intact
         Automatically hadronize Lai'tela's Reality if all ${formatInt(8)} Dimensions are disabled

@@ -1040,6 +1040,15 @@ function updatePrestigeRates() {
 }
 
 function globalPassivePrestigeGen(realDiff) {
+  let realitiedGain = DC.D0;
+  let realityMult = DC.D1;
+  if (ResurgenceUpgrade.realSurge.isBought) {
+    realitiedGain = Time.deltaTime.times(realityMult);
+    player.endgame.partRealitied = player.endgame.partRealitied.add(realitiedGain);
+    Currency.realities.add(player.endgame.partRealitied.floor());
+    player.endgame.partRealitied = player.endgame.partRealitied.sub(player.endgame.partRealitied.floor());
+  }
+
   let endgamedGain = 0;
   let endgameMult = 1;
   endgameMult *= ((ExpansionPack.enslavedPack.isBought && !player.disablePostReality)

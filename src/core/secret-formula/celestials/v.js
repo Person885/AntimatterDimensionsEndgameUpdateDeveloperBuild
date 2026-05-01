@@ -37,7 +37,7 @@ export const v = {
       resource: () => Currency.realities.value,
       requirement: 1250,
       format: x => formatInt(x),
-      progress: () => new Decimal(Currency.realities.value).div(EndgameMastery(51).effectOrDefault(1250)),
+      progress: () => new Decimal(Currency.realities.value).div(EndgameMastery(51).effectOrDefault(1250)).toNumber(),
     },
     eternities: {
       id: 2,

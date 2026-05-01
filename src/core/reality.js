@@ -44,7 +44,7 @@ export const GlyphSelection = {
     // effects are spread out over the choices of each consecutive group of 5 realities
     // This is disabled when you can pick over 4 Glyphs.
     if (GlyphGenerator.isUniformityActive && GlyphSelection.choiceCount <= 4) {
-      glyphList = GlyphGenerator.uniformGlyphs(level, rng, player.realities);
+      glyphList = GlyphGenerator.uniformGlyphs(level, rng, player.realities.toNumber());
     } else {
       for (let out = 0; out < count; ++out) {
         types.push(GlyphGenerator.randomType(rng, types));

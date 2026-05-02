@@ -106,7 +106,7 @@ export default {
 <template>
   <div class="reset-container galaxy">
     <h4>{{ typeName }} ({{ sumText }})</h4>
-    <span>Requires: {{ formatHybridLarge(requirement.amount, 3) }} Celestial Matter</span>
+    <span>Requires: {{ formatHybridLarge(requirement.amount, 3) }} Cel Matter</span>
     <span v-if="hasIncreasedScaling">{{ costScalingText }}</span>
     <button
       :class="classObject"

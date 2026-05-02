@@ -11211,6 +11211,28 @@ kbd {
   border-radius: var(--var-border-radius, 0.5rem);
 }
 
+.o-expansion-pack--alpha {
+  color: var(--color-alpha--base);
+  background: black;
+  border: var(--var-border-width, 0.2rem) solid var(--color-alpha--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+}
+
+.o-expansion-pack--alpha:hover {
+  color: black;
+  background: var(--color-alpha--base);
+  border: var(--var-border-width, 0.2rem) solid var(--color-alpha--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+  cursor: pointer;
+}
+
+.o-expansion-pack--alpha--bought {
+  color: black;
+  background: var(--color-alpha--base);
+  border: var(--var-border-width, 0.2rem) solid var(--color-alpha--base);
+  border-radius: var(--var-border-radius, 0.5rem);
+}
+
 .o-ethereal-button {
   font-family: Typewriter, serif;
   font-size: 1rem;

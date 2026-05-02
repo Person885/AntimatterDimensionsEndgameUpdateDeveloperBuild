@@ -2,7 +2,7 @@ import { DimensionState } from "./dimension";
 
 export function divineDimensionCommonMultiplier() {
   let mult = DC.D1;
-  mult = mult.timesEffectsOf(DivinityUpgrade.divineL1U3, DivinityUpgrade.divineL1U6).times(
+  mult = mult.timesEffectsOf(DivinityUpgrade.divineL1U3, DivinityUpgrade.divineL1U6, DivinityUpgrade.divineL2U1).times(
     DivinityMilestone.hadronEmpowerment.isReached ? 77 : 1).times(Decimal.pow(7, Decimal.log10(player.celestials.pelle.divinity.divineStars.add(1)).add(1)));
   return mult;
 }

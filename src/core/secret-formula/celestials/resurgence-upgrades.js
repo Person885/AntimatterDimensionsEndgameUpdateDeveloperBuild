@@ -21,7 +21,7 @@ export const resurgenceUpgrades = {
     name: "Cosmic Surge",
     id: "rmSurge",
     cost: new Decimal(1e10),
-    description: "Realities multiply Reality Machine gain and cap"
+    description: "Realities multiply Reality Machine gain and cap, applying after all power effects"
   },
   imSurge: {
     name: "Fabricated Ends",

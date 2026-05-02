@@ -72,12 +72,45 @@ export const divinityUpgrades = {
     cost: new Decimal(1e250),
     description: "Producing Divine Energy no longer halts Divine Dimension production"
   },
-  divineL1U10: {
-    name: "In Over My Head",
-    id: "divineL1U10",
-    layer: 1,
-    cost: new Decimal(1e300),
-    description: () => `Reduce the time for Dual Machines to approach their cap by ${formatPercents(0.5)}`,
-    effect: 0.5
+  divineL2U1: {
+    name: "Stellar Compound",
+    id: "divineL2U1",
+    layer: 2,
+    cost: new Decimal(1),
+    description: () => `Divine Dimensions gain a multiplier based on real time since your last Condense`,
+    effect: () => player.records.thisCondense.realTime ** 3,
+    formatEffect: value => formatX(value, 2, 2)
+  },
+  divineL2U2: {
+    name: "Solar Flares",
+    id: "divineL2U2",
+    layer: 2,
+    cost: new Decimal(7),
+    description: () => `Divine Energy production is multiplied by your total Divine Stars`,
+    effect: () => player.celestials.pelle.divinity.divineStars,
+    formatEffect: value => formatX(value, 2, 2)
+  },
+  divineL2U3: {
+    name: "Postmortal",
+    id: "divineL2U3",
+    layer: 2,
+    cost: new Decimal(17),
+    description: () => `Current Divine Stars boost Ethereal Power production`,
+    effect: () => player.celestials.pelle.divinity.divineStars.add(1).log10().add(1).pow(7),
+    formatEffect: value => formatX(value, 2, 2)
+  },
+  divineL2U4: {
+    name: "Electrify",
+    id: "divineL2U4",
+    layer: 2,
+    cost: new Decimal(77),
+    description: () => `Divine Energy base gain is now based on your highest-ever Divine Matter`,
+  },
+  divineL2U5: {
+    name: "Cannot Afford Loss",
+    id: "divineL2U5",
+    layer: 2,
+    cost: new Decimal(277),
+    description: () => `Keep all Layer One Divine Upgrades on Condense`,
   },
 };

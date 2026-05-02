@@ -18,7 +18,7 @@ class ExpansionPackState extends SetPurchasableMechanicState {
   }
 
   get isUnlocked() {
-    return this.isBought || Currency.antimatter.gte(this.unlockAM);
+    return this.isBought || (Currency.antimatter.gte(this.unlockAM) && (!this.config.id !== "alphaPack" || !Pelle.isDoomed));
   }
 }
 

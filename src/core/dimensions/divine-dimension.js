@@ -226,11 +226,11 @@ export const DivineDimensions = {
   get conversionFormula3() {
     let logD = Decimal.log10(Decimal.log10(Currency.divineMatter.value.max(10)));
     return DC.D1.sub(Decimal.pow(0.8, logD)).toNumber();
-  }
+  },
   export function manualDivineStarResetRequest() {
   if (Currency.divineMatter.value.lt(DC.NUMMAX)) return;
   divineStarResetRequest()
-}
+},
 export function divineStarResetRequest() {
   if (Currency.divineMatter.lt(DC.NUMMAX)) return;
   divineStarReset();

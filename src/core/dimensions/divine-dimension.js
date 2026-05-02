@@ -237,8 +237,9 @@ function divineStarReset() {
       divineStarResetGiveRewards();
       Endgame.resetNoReward();
       dimension.fullReset();
-      Currency.divineMatter = DC.E1;
-      Currency.divineEnergy = DC.D0;
+      Currency.divineMatter.value = DC.E1;
+      Currency.divineEnergy.value = DC.D0;
+      player.celestials.pelle.divinityUpgrades = new Set()
     }
   }
 

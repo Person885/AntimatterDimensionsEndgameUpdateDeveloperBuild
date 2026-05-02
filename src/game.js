@@ -898,7 +898,7 @@ export function gameLoop(passedDiff, options = {}) {
     player.celestials.pelle.remnants = player.celestials.pelle.remnants.add(Decimal.max(Pelle.remnantsGain, 0));
   }
 
-  if (DivinityMilestone.hadronEmpowerment.isReached) {
+  if (DivinityMilestone.hadronEmpowerment.isReached && !Pelle.isDoomed) {
     if (player.antimatter.gte(Laitela.antimatterNeededToDestabilize)) {
       player.celestials.laitela.difficultyTier++;
       player.celestials.laitela.fastestCompletion = 300;

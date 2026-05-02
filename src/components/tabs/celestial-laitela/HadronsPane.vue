@@ -174,6 +174,9 @@ export default {
       <h2 v-if="hasDark">
         You have {{ quantify("Dark Hadron", darkHadrons, 2) }}
       </h2>
+      <h2 v-if="hasExotic">
+        You have {{ quantify("Exotic Hadron", exoticHadrons, 2) }}
+      </h2>
       <br>
       <h2>
         You have spent {{ hadronTime }} in your current Endgame

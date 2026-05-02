@@ -150,7 +150,7 @@ export const divinityUpgrades = {
     layer: 2,
     cost: new Decimal(77777),
     description: () => `Divine Dimensions are multiplied based on Celestial Matter`,
-    effect: () => player.celestialMatter.max(1).log10().add(1).pow(7),
+    effect: () => player.endgame.celestialMatter.max(1).log10().add(1).pow(7),
     formatEffect: value => formatX(value, 2, 2)
   },
   divineL2U10: {

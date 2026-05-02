@@ -50,8 +50,8 @@ export const stars = {
     resetReq: 1e40,
     effect: (amount = player.endgame.ethereal.stars.blue) => {
       const boost = Ethereal.starBoost;
-      return Decimal.pow(Decimal.pow(amount.add(1), 0.8).min(1e20).times(
-        Decimal.pow10(Decimal.pow(5, amount.max(1e20).div(1e20).log10().add(1).log10()).sub(1))), boost.div(100).add(1));
+      return Decimal.pow(Decimal.pow(amount.add(1), 0.8).min(1e25).times(
+        Decimal.pow10(Decimal.pow(5, amount.max(1e25).div(1e25).log10().add(1).log10()).sub(1))), boost.div(100).add(1));
     },
     description: amount => `Multiply Ethereal Power Gain by ${formatX(amount, 2, 3)}`
   },
@@ -59,7 +59,7 @@ export const stars = {
     id: 5,
     name: "purple",
     dmReq: 1e55,
-    resetReq: 1e50,
+    resetReq: 1e55,
     effect: (amount = player.endgame.ethereal.stars.purple) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 0.8).div(200).add(1), boost.div(100).add(1));
@@ -70,7 +70,7 @@ export const stars = {
     id: 6,
     name: "white",
     dmReq: 1e70,
-    resetReq: 1e60,
+    resetReq: 1e75,
     effect: (amount = player.endgame.ethereal.stars.white) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow10(Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)).times(100), 1.8), boost.div(100).add(1)));
@@ -81,7 +81,7 @@ export const stars = {
     id: 7,
     name: "black",
     dmReq: 1e85,
-    resetReq: 1e80,
+    resetReq: 1e100,
     effect: (amount = player.endgame.ethereal.stars.black) => {
       const boost = Ethereal.starBoost;
       return Decimal.pow(Decimal.pow(Decimal.log10(amount.add(1)), 1.3).div(200).add(1), boost.div(100).add(1));
@@ -92,7 +92,7 @@ export const stars = {
     id: 8,
     name: "gray",
     dmReq: 1e100,
-    resetReq: 1e100,
+    resetReq: 1e125,
     effect: (amount = player.endgame.ethereal.stars.gray) => {
       return Decimal.log10(amount.add(1)).times(10);
     },

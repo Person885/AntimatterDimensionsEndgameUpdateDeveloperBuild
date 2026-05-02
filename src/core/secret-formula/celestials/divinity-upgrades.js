@@ -72,6 +72,14 @@ export const divinityUpgrades = {
     cost: new Decimal(1e250),
     description: "Producing Divine Energy no longer halts Divine Dimension production"
   },
+  divineL1U10: {
+    name: "In Over My Head",
+    id: "divineL1U10",
+    layer: 1,
+    cost: new Decimal(1e300),
+    description: () => `Reduce the time for Dual Machines to approach their cap by ${formatPercents(0.5)}`,
+    effect: 0.5
+  },
   divineL2U1: {
     name: "Stellar Compound",
     id: "divineL2U1",

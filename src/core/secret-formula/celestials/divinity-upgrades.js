@@ -142,6 +142,7 @@ export const divinityUpgrades = {
     layer: 2,
     cost: new Decimal(7777),
     description: () => `The Divine Dimension Per-Purchase Multiplier is increased to x17`,
+    effect: 17/7
   },
   divineL2U9: {
     name: "Ascension",

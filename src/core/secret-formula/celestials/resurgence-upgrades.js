@@ -59,9 +59,7 @@ export const resurgenceUpgrades = {
     name: "Sacrificial Surge",
     id: "glyphSurge",
     cost: new Decimal(1e120),
-    description: () => `Music Glyphs now generate at ${formatInt(1)} level lower than your highest Glyph Level this Endgame`,
-    effect: () => 1 + Math.log10(Math.log10(player.endgames + 1) + 1),
-    formatEffect: value => formatPow(value, 2, 3)
+    description: () => `Music Glyphs now generate at ${formatInt(1)} level lower than your highest Glyph Level this Endgame`
   },
   ethSurge: {
     name: "Aether Amplitude",

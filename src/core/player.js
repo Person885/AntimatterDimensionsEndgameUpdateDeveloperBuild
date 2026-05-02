@@ -522,6 +522,10 @@ window.player = {
     permanent: {
       maxCP: DC.D0,
       maxDP: DC.D0,
+      maxVM: DC.D0,
+    },
+    thisCondense: {
+      realTime: 0,
     },
   },
   speedrun: {

@@ -79,7 +79,7 @@ export function getEtherealPowerGainPerSecond() {
   const alphaBoost = player.disablePostReality ? DC.D1 : Decimal.pow(1.25, Alpha.currentStage);
   return cpFactor.times(singFactor).times(rmFactor).times(gpFactor).div(1000).times(
     Achievement(216).effectOrDefault(1)).times(alphaBoost).times(EtherealStars.blue.reward).times(
-    DivineDimensions.conversionFormula1).times(DivinityMilestone.hadronEmpowerment.isReached ? 10 : 1);
+    DivineDimensions.conversionFormula1).times(DivinityMilestone.hadronEmpowerment.isReached ? 10 : 1).times(DivinityUpgrade.divineL2U3.effectOrDefault(1));
 }
 
 export function tryAdvanceSector() {

@@ -30,6 +30,13 @@ export default {
           DivinityUpgrade.divineL2U4,
           DivinityUpgrade.divineL2U5,
         ],
+        [
+          DivinityUpgrade.divineL2U6,
+          DivinityUpgrade.divineL2U7,
+          DivinityUpgrade.divineL2U8,
+          DivinityUpgrade.divineL2U9,
+          DivinityUpgrade.divineL2U10,
+        ],
       ];
     }
   },

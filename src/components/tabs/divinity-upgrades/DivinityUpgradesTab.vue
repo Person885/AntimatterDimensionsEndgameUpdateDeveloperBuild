@@ -22,7 +22,7 @@ export default {
           DivinityUpgrade.divineL1U8,
           DivinityUpgrade.divineL1U9,
           DivinityUpgrade.divineL1U10,
-        ]
+        ],
         [
           DivinityUpgrade.divineL2U1,
           DivinityUpgrade.divineL2U2,

@@ -161,7 +161,7 @@ export const MachineHandler = {
 
   // Time in seconds to reduce the missing amount by a factor of two
   get scaleTimeForDM() {
-    return 600 / DualityUpgrade(20).effectOrDefault(1);
+    return (600 / DualityUpgrade(20).effectOrDefault(1)) / (DivinityUpgrade.divineL1U10.isBought ? 2 : 1);
   },
 
   gainedDualMachines(diff) {

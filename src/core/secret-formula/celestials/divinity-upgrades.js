@@ -121,4 +121,42 @@ export const divinityUpgrades = {
     cost: new Decimal(277),
     description: () => `Keep all Layer One Divine Upgrades on Condense`,
   },
+  divineL2U6: {
+    name: "Headstart",
+    id: "divineL2U6",
+    layer: 2,
+    cost: new Decimal(777),
+    description: () => `Start Condense with 5e36 Divine Matter`,
+  },
+  divineL2U7: {
+    name: "Gravitate",
+    id: "divineL2U7",
+    layer: 2,
+    cost: new Decimal(2777),
+    description: () => `Divine Dimensions are raised ^1.1`,
+    effect: 1.1
+  },
+  divineL2U8: {
+    name: "Liftoff",
+    id: "divineL2U8",
+    layer: 2,
+    cost: new Decimal(7777),
+    description: () => `The Divine Dimension Per-Purchase Multiplier is increased to x17`,
+  },
+  divineL2U9: {
+    name: "Ascension",
+    id: "divineL2U9",
+    layer: 2,
+    cost: new Decimal(77777),
+    description: () => `Divine Dimensions are multiplied based on Celestial Matter`,
+    effect: () => player.celestialMatter.max(1).log10().add(1).pow(7),
+    formatEffect: value => formatX(value, 2, 2)
+  },
+  divineL2U10: {
+    name: "Completion",
+    id: "divineL2U10",
+    layer: 2,
+    cost: new Decimal(1777777),
+    description: () => `Divine Matter effects are set to highest-ever Divine Matter and Divine Energy gain is always produced at a 100% rate with no penalty`,
+  },
 };

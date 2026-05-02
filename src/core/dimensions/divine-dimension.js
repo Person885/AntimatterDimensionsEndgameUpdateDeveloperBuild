@@ -230,7 +230,7 @@ export function divineStarResetRequest() {
   divineStarReset();
 }
 function divineStarResetGiveRewards() {
-  Currency.divineStars.add(gainedDivineStars)
+  Currency.divineStars.value = Currency.divineStars.value.add(gainedDivineStars)
 }
 function divineStarReset() {
     for (const dimension of DivineDimensions.all) {

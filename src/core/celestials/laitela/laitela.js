@@ -122,7 +122,7 @@ export const Laitela = {
   annihilate(force) {
     if (!force && !this.canAnnihilate) return false;
     this.celestial.darkMatterMult = this.celestial.darkMatterMult.add(this.darkMatterMultGain);
-    DarkMatterDimensions.reset();
+    if (force || !DivinityMilestone.hadronEmpowerment.isReached) DarkMatterDimensions.reset();
     Laitela.quotes.annihilation.show();
     Achievement(176).unlock();
     return true;

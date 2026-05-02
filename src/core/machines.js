@@ -61,7 +61,7 @@ export const MachineHandler = {
       new Decimal(Decimal.log10(this.uncappedRM.add(1).log10())).div(7.5)))).pow(
       new Decimal(Effects.product(EndgameMastery(144), Ra.unlocks.imaginaryMachines, Ra.unlocks.imaginaryMachineEternityPower)).times(
       Decimal.max(Decimal.log10(this.uncappedRM.add(1).log10()).sub(45), 0).div(10).add(1)).times(
-      EtherealStars.green.reward).times(DivineDimensions.conversionFormula2)), this.hardcapIM);
+      EtherealStars.green.reward).times(DivineDimensions.conversionFormula2).timesEffectOf(ResurgenceUpgrade.imSurge)), this.hardcapIM);
   },
 
   get baseIMHardcap() {
@@ -85,7 +85,7 @@ export const MachineHandler = {
         new Decimal(Decimal.log10(this.uncappedRM.add(1).log10())).div(7.5)))).pow(
         new Decimal(Effects.product(EndgameMastery(144), Ra.unlocks.imaginaryMachines, Ra.unlocks.imaginaryMachineEternityPower)).times(
         Decimal.max(Decimal.log10(this.uncappedRM.add(1).log10()).sub(45), 0).div(10).add(1)).times(
-        EtherealStars.green.reward).times(DivineDimensions.conversionFormula2));
+        EtherealStars.green.reward).times(DivineDimensions.conversionFormula2).timesEffectOf(ResurgenceUpgrade.imSurge));
   },
 
   get currentIMCap() {

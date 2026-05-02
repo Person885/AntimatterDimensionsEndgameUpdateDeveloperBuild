@@ -226,7 +226,7 @@ export function manualDivineStarResetRequest() {
   divineStarResetRequest()
 }
 export function divineStarResetRequest() {
-  if (Currency.divineMatter.lt(DC.NUMMAX)) return;
+  if (Currency.divineMatter.value.lt(DC.NUMMAX)) return;
   divineStarReset();
 }
 function divineStarResetGiveRewards() {

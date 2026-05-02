@@ -179,11 +179,13 @@ export const DivineDimensions = {
   },
 
   tick(realDiff) {
-    if (!player.celestials.pelle.divinity.isProducingEnergy) {
+    if (!player.celestials.pelle.divinity.isProducingEnergy || DivinityUpgrade.divineL1U9.isBought) {
       for (let tier = 8; tier > 1; tier--) {
         DivineDimension(tier).produceDimensions(DivineDimension(tier - 1), realDiff / 10);
       }
-      DivineDimension(1).produceCurrency(Currency.divineMatter, realDiff);
+      if (!player.celestials.pelle.divinity.isProducingEnergy) {
+        DivineDimension(1).produceCurrency(Currency.divineMatter, realDiff);
+      }
     }
     if (player.celestials.pelle.divinity.isProducingEnergy || DivinityUpgrade.divineL1U8.isBought) {
       player.celestials.pelle.divinity.divineEnergy = player.celestials.pelle.divinity.divineEnergy.add(

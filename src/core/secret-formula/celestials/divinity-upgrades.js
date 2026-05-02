@@ -86,7 +86,7 @@ export const divinityUpgrades = {
     layer: 2,
     cost: new Decimal(1),
     description: () => `Divine Dimensions gain a multiplier based on real time since your last Condense`,
-    effect: () => player.records.thisCondense.realTime ** 3,
+    effect: () => (player.records.thisCondense.realTime / 1000) ** 3,
     formatEffect: value => formatX(value, 2, 2)
   },
   divineL2U2: {

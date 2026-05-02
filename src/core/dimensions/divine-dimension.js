@@ -158,7 +158,8 @@ export const DivineDimensions = {
   },
 
   resetAmount() {
-    Currency.divineMatter.reset();
+    Currency.divineMatter = DC.E1
+    Currency.divineEnergy = DC.D0
     for (const dimension of DivineDimensions.all) {
       dimension.resetAmount();
     }

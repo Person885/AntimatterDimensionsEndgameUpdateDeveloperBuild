@@ -562,6 +562,7 @@ export function realTimeMechanics(realDiff) {
     player.records.thisInfinity.realTime += realDiff;
     player.records.thisEternity.realTime += realDiff;
     player.records.thisReality.realTime += realDiff;
+    player.records.thisCondense.realTime += realDiff;
     Enslaved.storeRealTime();
     // Most autobuyers will only tick usefully on the very first tick, but this needs to be here in order to allow
     // the autobuyers unaffected by time storage to tick as well
@@ -966,6 +967,7 @@ export function gameLoop(passedDiff, options = {}) {
 
   player.records.bestEndgame.galaxies = Decimal.max(player.records.bestEndgame.galaxies, Replicanti.galaxies.total.add(
     player.galaxies).add(player.dilation.totalTachyonGalaxies).add(GalaxyGenerator.galaxies));
+  player.records.permanent.bestVM = Decimal.max(player.celestials.pelle.divinity.divineMatter, player.records.permanent.bestVM)
 
   if (Enslaved.canTickHintTimer) {
     player.celestials.enslaved.hintUnlockProgress += Enslaved.isRunning ? realDiff : (realDiff * 0.4);

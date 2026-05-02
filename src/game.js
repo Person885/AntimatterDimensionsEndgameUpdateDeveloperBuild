@@ -405,7 +405,7 @@ export function gainedCelestialInfinityPoints() {
   return cip.floor();
 }
 export function gainedDivineStars() {
-  return Decimal.pow10(Decimal.log10(player.celestials.pelle.divinity.divineMatter).div(308).sub(1))
+  return Decimal.pow10(Decimal.log10(player.celestials.pelle.divinity.divineMatter.add(1)).div(308).sub(1))
 }
 
 export function updateRefresh() {

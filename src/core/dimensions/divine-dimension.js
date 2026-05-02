@@ -244,5 +244,7 @@ function divineStarReset() {
     for(const i of player.celestials.pelle.divinityUpgrades)
       if (DivinityUpgrade[i].layer == 1) DivinityUpgrade[i].isBought = false;
       DivinityUpgrade.divineL1U5.isBought = true}
+  player.records.thisCondense.realTime = 0
   }
+
 

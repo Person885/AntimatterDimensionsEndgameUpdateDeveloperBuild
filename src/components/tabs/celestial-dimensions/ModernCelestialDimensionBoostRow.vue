@@ -52,7 +52,7 @@ export default {
 <template>
   <div class="reset-container dimboost">
     <h4>Celestial Dimension Boost ({{ boostCountText }})</h4>
-    <span>Requires: {{ formatHybridLarge(requirement.amount, 3) }} Celestial Matter</span>
+    <span>Requires: {{ formatHybridLarge(requirement.amount, 3) }} Cel Matter</span>
     <button
       :class="classObject"
       @click.exact="celestialDimensionBoost(true)"

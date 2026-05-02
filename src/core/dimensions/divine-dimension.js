@@ -236,7 +236,8 @@ function divineStarReset() {
     for (const dimension of DivineDimensions.all) {
       Endgame.resetNoReward();
       dimension.fullReset();
-      Currency.divineMatter.reset();
+      Currency.divineMatter = DC.E1;
+      Currency.divineEnergy = DC.D0;
       divineStarResetGiveRewards()
     }
   }

@@ -161,6 +161,7 @@ export const Laitela = {
     this.celestial.hadronizes += 1;
     if (DualityUpgrade(15).isBought) this.celestial.hadrons.total += 1;
     if (DualityUpgrade(15).isBought) this.celestial.hadrons.light += 1;
+    if (DivinityMilestone.hadronEmpowerment.isReached) this.celestial.hadrons.dark += 1;
     return true;
   },
   reset() {

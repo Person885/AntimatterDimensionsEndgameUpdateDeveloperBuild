@@ -999,7 +999,8 @@ window.player = {
       divinity: {
         divineMatter: DC.E1,
         divineEnergy: DC.D0,
-        isProducingEnergy: false
+        isProducingEnergy: false,
+        divineStars: DC.D0
       },
       divinityUpgrades: new Set(),
       resurgenceUpgrades: new Set()

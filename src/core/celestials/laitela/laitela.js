@@ -80,7 +80,7 @@ export const Laitela = {
     const hadrAM = Decimal.pow(1000, this.hadronizes).times(hadrBump).times(1e11)
       .div(Hadrons.entropyFormulaBoost).div(Decimal.log10(player.records.bestEndgame.galaxies.max(1)));
     const currRoot = (this.maxAllowedDimension === 0 ? Infinity : 8 / this.maxAllowedDimension);
-    return hadrAM.pow(Decimal.sqrt(20/3)).pow(currRoot);
+    return Decimal.pow10(hadrAM).pow(Decimal.sqrt(20/3)).pow(currRoot);
   },
   get darkMatterMultGain() {
     const extraPow = (ExpansionPack.laitelaPack.isBought && !player.disablePostReality)

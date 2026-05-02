@@ -241,7 +241,8 @@ function divineStarReset() {
   Currency.divineMatter.value = DC.E1;
       Currency.divineEnergy.value = DC.D0;
   if(!DivinityUpgrade.divineL2U5.isBought){
-      player.celestials.pelle.divinityUpgrades = new Set()
+    for(const i of player.celestials.pelle.divinityUpgrades)
+      if (DivinityUpgrade[i].layer == 1) DivinityUpgrade[i].isBought = false;
       DivinityUpgrade.divineL1U5.isBought = true}
   }
 

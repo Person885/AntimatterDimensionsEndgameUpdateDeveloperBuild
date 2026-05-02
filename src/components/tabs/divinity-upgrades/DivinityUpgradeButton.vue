@@ -69,7 +69,7 @@ export default {
             v-if="!isBought"
             :config="config"
             br
-            :name="false ? 'Nebula' : (false ? 'Divine Star' : 'Divine Matter')"
+            :name="false ? 'Nebula' : (upgrade.layer==2||3? 'Divine Star' : 'Divine Matter')"
           />
         </template>
       </span>

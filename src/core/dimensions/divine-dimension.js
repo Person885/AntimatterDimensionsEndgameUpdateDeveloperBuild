@@ -56,7 +56,7 @@ class DivineDimensionState extends DimensionState {
   get multiplier() {
     const tier = this.tier;
     let mult = GameCache.divineDimensionCommonMultiplier.value;
-    mult = mult.times(Decimal.pow(this.powerMultiplier, Decimal.floor(this.baseAmount)));
+    mult = mult.times(Decimal.pow(this.powerMultiplier, Decimal.floor(this.baseAmount))).powEffectOf(DivinityUpgrade.divineL2U7);
     return mult;
   }
 
@@ -238,7 +238,7 @@ function divineStarReset() {
     for (const dimension of DivineDimensions.all) {
       dimension.fullReset();
     }
-  Currency.divineMatter.value = DC.E1;
+  Currency.divineMatter.value = DivinityUpgrade.divineL2U6.isBought ? new Decimal(5e36) : DC.E1;
       Currency.divineEnergy.value = DC.D0;
   if(!DivinityUpgrade.divineL2U5.isBought){
     for(const i of player.celestials.pelle.divinityUpgrades)

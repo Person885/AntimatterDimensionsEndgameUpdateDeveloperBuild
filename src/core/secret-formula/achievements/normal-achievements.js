@@ -1124,7 +1124,7 @@ export const normalAchievements = [
       Currency.infinityPoints.value.add(1).log10().gte(200000),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     reward: "You start Eternities with all Infinity Challenges unlocked and completed.",
-    progress: () => Achievement(133).isUnlocked ? DC.D1 : ((!Array.dimensionTiers.map(InfinityDimension).every(dim => dim.baseAmount === 0) || player.IPMultPurchases.neq(0)) ? DC.DM1 : Decimal.clamp(Currency.infinityPoints.value.add(1).log10().div(200000), 0, 1))
+    progress: () => Achievement(133).isUnlocked ? DC.D1 : ((!Array.dimensionTiers.map(InfinityDimension).every(dim => dim.baseAmount.eq(0)) || player.IPMultPurchases.neq(0)) ? DC.DM1 : Decimal.clamp(Currency.infinityPoints.value.add(1).log10().div(200000), 0, 1))
   },
   {
     id: 134,
